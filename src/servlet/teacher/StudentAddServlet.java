@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;  
 
 import util.JdbcUtil;
+import model.Course;
 import model.Student;
 
 
@@ -37,6 +38,8 @@ public class StudentAddServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Course course  = (Course)request.getSession().getAttribute("course");
+		int course_id = course.getId();
 		String student_id = request.getParameter("student_id");
 		String name = request.getParameter("name");
 		String sex = request.getParameter("sex");

@@ -48,7 +48,7 @@ request.setAttribute("teacher", teacher);
       </span>
       <div class="btn">
       <div class="shanchu"><a href="#"><img src="<%=path %>/image/teacher/shanchu.png"  /></a></div>
-            <div class="shanchu"><a href="student_add.jsp"><img src="<%=path %>/image/teacher/tianjia.png"  /></a></div>
+            <div class="shanchu"><a href="<%=path %>/student_add.jsp"><img src="<%=path %>/image/teacher/tianjia.png"  /></a></div>
        </div>
 </div>
        

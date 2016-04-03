@@ -73,7 +73,7 @@ int teacher_id = t.getId();
       </div>
      
       <div class="juzhong">
-          <div><input type="button" value="提 交" class="btntijiao" /></div>
+          <div><input type="submit" name="but" id="but" " value="添加"  onclick="this.disabled='true'"/></div>
      </div>
 
 </div>

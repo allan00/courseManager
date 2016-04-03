@@ -12,8 +12,9 @@ int teacher_id = t.getId();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
+<title>通知管列表</title>
 <link href="<%=path %>/css/teacher.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
