@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;  
 
 import util.JdbcUtil;
+import model.Assignment;
 import model.Course;
 import model.Message;
 import model.Student;
@@ -39,7 +40,7 @@ public class AssignmentListServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List assignment_list = new ArrayList<Message>();
+		List assignment_list = new ArrayList<Assignment>();
 		String type = request.getParameter("type");
 		Teacher t = (Teacher) request.getSession().getAttribute("teacher");
 		int teacher_id= t.getId();
@@ -56,12 +57,13 @@ public class AssignmentListServlet extends HttpServlet {
 			String sql = "SELECT * FROM table_assignment where course_id="+course_id;
 			ResultSet rs = statement.executeQuery(sql);
 			while(rs.next()) {
-			Message s = new Message();
+				Assignment s = new Assignment();
 				s.setId(rs.getInt("id"));
 				s.setTitle(rs.getString("title"));
 				s.setContent(rs.getString("content"));
-				s.setDate(rs.getTimestamp("date_begin"));
-				s.setDate(rs.getTimestamp("deadline"));
+				s.setDate_begin(rs.getTimestamp("date_begin"));
+				s.setDeadline(rs.getTimestamp("deadline"));
+				s.setCourseId(rs.getInt("course_id"));
 				assignment_list.add(s);
 			}
 			JdbcUtil.close(rs, statement);

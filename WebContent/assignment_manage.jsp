@@ -72,8 +72,8 @@ int teacher_id = t.getId();
                            <a href="<%=path %>/Teacher/AssignmentDetail?id=${assignment.id }&type=update"><img src="<%=path %>/image/teacher/bianji.png" /></a>
                      </span>
                </span>
-               <span class="tongzhidate">${assignment.date }</span>
-               <span class="tongzhidate">${assignment.deadline }</span>
+               <span class="tongzhidate">${assignment.date_begin }</span>
+               <span class="tongzhidate">${assignment.deadline}</span>
           </div>
           </c:forEach>
      </div>

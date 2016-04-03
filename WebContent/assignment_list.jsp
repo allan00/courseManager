@@ -62,7 +62,7 @@ if(t==null){
           <c:forEach var="assignment" items="${assignment_list}">
           <div class="list1">  <!--列表项 -->
                <span class="biaoti"><a href="<%=path %>/Teacher/AssignmentDetail?id=${assignment.id }">${assignment.title }</a></span>   <!--通知标题 -->
-               <span class="date">${assignment.date}</span>
+               <span class="date">${assignment.deadline}</span>
           </div>
           </c:forEach>
      </div>

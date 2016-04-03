@@ -10,6 +10,7 @@ public class Assignment {
 	private String content;
 	private Timestamp  date_begin;
 	private Timestamp deadline;
+	private int courseId;
 	public int getId() {
 		return id;
 	}
@@ -40,5 +41,12 @@ public class Assignment {
 	public void setDeadline(Timestamp deadline) {
 		this.deadline = deadline;
 	}
+	public int getCourseId() {
+		return courseId;
+	}
+	public void setCourseId(int courseId) {
+		this.courseId = courseId;
+	}
+	
 	
 }

@@ -6,59 +6,88 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String message = request.getParameter("message");
 Teacher t = (Teacher)request.getSession().getAttribute("teacher");
-if(t==null){
-	request.setAttribute("message", "你没有权限查看此页面");
-	request.getRequestDispatcher("index.jsp").forward(request, response);
-}
-request.setAttribute("teacher", t);
-String course_map_id = request.getParameter("course_map_id");
-request.setAttribute("course_map_id", course_map_id);
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<style type="text/css">
-body {
-font-size:12px;
-}
-table,tr,td,input{
-border: 1px solid blue;
-border-collapse:collapse;
-font-size:14px;
-vertical-align: middle;
-}
-td{
-height:30px;
-}
-ul li {
-	padding: 0;
-	margin: 0;
-	display: inline-block;
-}
-</style>
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>教师列表</title>
+<SCRIPT language=javascript>
+function check_file()
+{
+  var strFileName=form1.FileName.value;
+  if (strFileName=="")
+  {
+    alert("请选择要上传的文件");
+    return false;
+  }
+}
+</SCRIPT>
+<script language="javascript">
+// javascript 动态添加 input type="file"
+var i = 1;
+function addFile(dvID, inputNamePrefix)
+{
+  var dv = document.getElementById(dvID);
+  var file = document.createElement("input");
+  file.type = "file";
+  file.id = file.name = inputNamePrefix + i;
+
+  dv.appendChild(file);
+
+  var btn =  document.createElement("input");
+  btn.type = "button";
+  btn.id = btn.name = "btn" + i;
+  btn.value = "删除" ;
+
+  btn.onclick = function() {
+var b = document.getElementById(btn.id);
+dv.removeChild(b.nextSibling); //remove <BR>
+dv.removeChild(b.previousSibling); //file
+dv.removeChild(b); //btn
+  }
+  dv.appendChild(btn);
+  dv.appendChild(document.createElement("BR"));
+
+  i++;
+}
+</script>
+<title>通知添加</title>
+<link href="<%=path %>/css/teacher.css" rel="stylesheet" type="text/css" />
 </head>
-<body align="center">
-<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
-   	<script type="text/javascript">
- 		var msg = document.getElementById('msg').value;
- 		if(msg != null && msg != "null"){
-			alert(msg);
-		}
- 	</script>
-<center>
 
-<form id="assignment" name="assignment" action="<%=path %>/AssignmentAdd?course_map_id=${course_map_id}" method="post">
+<body>
+<div class="logo">课程管理系统</div>
+<div class="top"></div>
+<div class="jiange"></div>
+<div class="menu">
+     <ul>
+		   <li><a href="<%=path %>/Teacher/MessageList" target=frmright>通知公告</a></li>
+           <li><a href="<%=path %>/Teacher/TeacherCourseList" target=frmright>视频管理</a></li>
+            <li><a href="<%=path %>/Teacher/AssignmentList" target=frmright>作业管理</a></li>
+           <li><a href="<%=path %>/Teacher/StudentList" target=frmright>学生管理</a></li>
+          <li><a href="<%=path %>/Teacher/FileList" target=frmright>资源管理</a></li>
+           <li><a href="<%=path %>/Teacher/Discussion" target=frmright>讨论区</a></li>
+	 </ul>
+</div>
+<form name="form" action="<%=path %>/Teacher/AssignmentAdd" method="post" enctype="multipart/form-data">
+<div class="mainzuoye">
+     <div class="zuoyebiaoti"><input type="text" class="text" id="title" name="title" /></div>
+     <div class="zuoyejiezhiriqi">
+          <label for="meeting">截止日期：</label><input id="deadline"  name="deadline" type="date" value="2016-04-01"/>
+    </div>
 
-标题：&nbsp;&nbsp;<input id="title" name="title"/></br></br>
-内容：&nbsp;&nbsp;<textarea id="content" name="content" class="ckeditor" rows="10" cols="80"></textarea></br></br>
-截止时间：&nbsp;&nbsp;<input id="deadline" name="deadline"/></br></br>
-<input type="submit" name="subm" value="提交"  onclick="this.disabled='true'" style="margin-left:100px"/>
-
+    <label for="textarea"></label>
+   <textarea id="content" name="content"  class="zuoyeneirong" ></textarea>
+   <div id = "dvTitles"></div>
+      <input type="button" value="添加文件" onclick="addFile('dvTitles','file')"/> 
+     <div class="juzhong">
+          <div><input type="submit" name="but" id="but" " value="发布通知"  onclick="this.disabled='true'"/>
+        <input type="reset" name="but_1" id="but_1" value="重新填写" /></div>
+     </div>
+</div>
 </form>
-</center>
+
+
 
 </body>
 </html>
