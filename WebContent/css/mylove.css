@@ -1,0 +1,286 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	margin-top: 0px;
+	background-repeat: repeat;
+	background-color: #BDD1EC;
+}
+
+.wz {
+	font-family: "新宋体", "幼圆";
+	font-size: 12px;
+	margin: 1px;
+	padding: 3px;
+}
+
+#apDiv1 {
+	position: absolute;
+	left: 276px;
+	top: 502px;
+	width: 50px;
+	height: 23px;
+	z-index: 1;
+}
+
+#apDiv2 {
+	position: absolute;
+	left: 400px;
+	top: 501px;
+	width: 25px;
+	height: 25px;
+	z-index: 1;
+}
+
+#apDiv3 {
+	position: absolute;
+	left: 425px;
+	top: 501px;
+	width: 25px;
+	height: 25px;
+	z-index: 2;
+}
+
+#apDiv4 {
+	position: absolute;
+	left: 450px;
+	top: 501px;
+	width: 25px;
+	height: 25px;
+	z-index: 3;
+}
+
+#apDiv5 {
+	position: absolute;
+	left: 475px;
+	top: 501px;
+	width: 25px;
+	height: 25px;
+	z-index: 4;
+}
+
+#apDiv6 {
+	position: absolute;
+	left: 588px;
+	top: 529px;
+	width: 59px;
+	height: 52px;
+	z-index: 5;
+}
+
+#apDiv7 {
+	position: absolute;
+	left: 677px;
+	top: 530px;
+	width: 3px;
+	height: 11px;
+	z-index: 6;
+}
+
+.style1 {
+	font-size: 14px;
+	background-color: #0CF;
+	text-align: center;
+	float: left;
+	height: 25px;
+	width: 25px;
+	border: 1px solid #CCC;
+}
+
+.style2 {
+	background-color: #CCC;
+	text-align: center;
+	float: left;
+	height: 25px;
+	width: 25px;
+	border: 1px solid #CCC;
+}
+
+body, td, th {
+	color: #000000;
+}
+body
+{
+	width:1024px;
+	margin:0 auto;
+}
+li
+{
+	list-style:none;
+}
+#container
+{
+	width:1024px;
+	margin:0 auto;
+	float:leftl;
+}
+#head
+{
+	width:1024px;
+	height:240px;
+	float:left;
+	background:url(../img/head_bg.gif) no-repeat;
+}
+#fancyClock
+{
+	width:300px;
+	height:100px;
+	float:left;
+	margin-left:520px;
+	*margin-left:260px;
+	margin-top:0px;
+	background:none;
+}
+#menu{
+	width:1024px;
+	height:41px;
+	float:left;
+	/*background:url(../img/fm_menu_bg.jpg) repeat-x;*/
+	background: #9A2;
+}
+#menu ul{
+	width:80%;
+	margin:0 auto;
+	list-style:none;
+}
+#menu li{
+	list-style:none;
+	display:block;
+	float:left;
+	font-size:11px;
+	font-weight:bold;
+	height:41px;
+	line-height:41px;
+	margin:0 5px;
+	cursor:pointer;
+}
+#menu li a{
+	display:block;
+	float:left;
+	height:41px;				
+	color:#ccc;
+	text-decoration:none;
+	text-transform:uppercase;
+	padding:0 20px;				
+}
+#menu li a:hover{	
+	/*background:url(../img/fm_hover_bg.jpg) repeat-x;*/
+	background:#606;
+	color:#fff;
+}
+#menu li a:hover span, #menu li .current span{
+	background:url(../img/fm_hover_pointer.jpg) no-repeat top;
+	height:41px;
+	display:block;
+	float:left;
+}
+#menu li .current{
+	display:block;
+	float:left;
+	height:41px;				
+	/*background:url(../img/fm_hover_bg.jpg) repeat-x;*/
+	background:#03C;
+	color:#fff;
+	text-decoration:none;
+	text-transform:uppercase;
+	padding:0 20px;		
+}
+
+#content
+{
+	width:1024px;
+	height:1060px;
+	float:left;
+	margin-top:20px;
+	background:url(./img/content_bg.gif) no-repeat;
+	background:url(../img/content_top_bg.gif) repeat-x top;
+}
+#jianxi
+{
+	width:60px; 
+	height:1060px; 
+	float:left; 
+	background:url(../img/content_jianxi_bg.gif) repeat-y;
+}
+#content_left
+{
+	width:224px;
+	height:650px;
+	float:left;
+	padding-left:10px;
+	padding-top:30px;
+	background:url(../img/content_left_bg.gif) repeat-y left;
+	
+}
+#login
+{
+	width:210px;
+	height:180px;
+	float:left;
+	background:url(../img/login.gif) no-repeat;
+}
+#dongting
+{
+	width:210px;
+	height:280px;
+	float:left;
+	margin-top:20px;
+	background:url(../img/dontting.gif) no-repeat;
+}
+#dongting ul
+{
+	width:170px;
+	height:180px;
+	float:left;
+	margin-left:0px;
+	margin-top:0px;
+	padding-left:40px;
+}
+#dongting ul li
+{
+	width:150px;
+	height:25px;
+	line-height:25px;
+	list-style:url(../img/bofang_button.png);
+	font-size:14px;
+	color:#FFF;
+	padding:0;
+	margin:0;
+}
+#calender
+{
+	width: 260px;
+	height: 260px;
+	float: none;
+	margin-top: 20px;
+	font: 62.5% "Trebuchet MS", sans-serif;
+}
+#calculater
+{
+	width:210px;
+	height:300px;
+	float:left;
+	margin-top:0px;
+	background: #CCC;
+}
+#content_right
+{
+	width:700px;
+	height:900px;
+	float:left;
+	margin-left:16px;
+	*margin-left:4px;
+	margin-top:20px;
+	
+}
+
+#content_content
+{
+	width:700px;
+	height:700px;
+	float:left;
+	
+}
+#bottom
+{
+	width:1024px;
+}

@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color: #CCC;
+}
+td {
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #FFF;
+	border-right-color: #FFF;
+	border-bottom-color: #FFF;
+	border-left-color: #FFF;
+}
+.wz {
+	font-size: 12px;
+	text-align: center;
+}
+#templatemo_menu {
+	
+	width: 200px;
+	margin-top: 40px;
+	margin-right: 10px;
+	display: inline-block;
+	height: 500px;
+}
+
+#templatemo_menu ul {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	width:210px;
+}
+
+
+
+
+#templatemo_menu ul li a {
+	float: left;
+	display: block;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-weight: bold;
+	outline: none;
+	background: url(images/templatemo_menu.png) no-repeat center left;
+	padding-top: 15px;
+	padding-right: 0;
+	padding-bottom: 5px;
+	padding-left: 25px;
+	margin-top: 35px;
+	margin-left: 50px;
+}
+#templatemo_menu ul li a:active {
+	color: #09F;
+}
+
+#templatemo_menu ul li a:hover{
+	color: #4a9db3;
+	background: url(images/templatemo_menu_hover.png) no-repeat center left;
+}

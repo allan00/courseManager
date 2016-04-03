@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color: #FFF;
+	margin: 0px;
+	padding: 5px;
+	font-size: 12px;
+	color: #000;
+}
+a:hover {
+	color: #06F;
+}
+
+li {
+	margin: 10px;
+	width: 500px;
+}

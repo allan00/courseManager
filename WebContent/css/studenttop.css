@@ -1,0 +1,384 @@
+@charset "utf-8";
+*{
+	margin:0px;
+	border:0px;
+	padding:0px;
+}
+/*网站标题*/
+.top{
+	width: auto;
+	height: 203px;	
+	margin:auto;
+	background-repeat:no-repeat;
+	background-color:#136097;
+	}
+.logo {
+	float: left;
+}
+
+.logo * {
+	margin: 0;
+	padding: 0;
+	text-transform: lowercase;
+	color: #FFFFFF;
+}
+
+.logo h1 {
+	padding: 50px 0 0 100px;
+	letter-spacing: -3px;
+	font-size: 5em;
+	font-family:"行楷"；
+	
+}
+
+/*导航条*/
+.menu{
+	float: right;
+}
+.menu ul {
+	margin: 0;
+	padding: 154px 0 0 0;
+	list-style: none;
+}
+
+.menu li {
+	display: inline;
+}
+
+.menu a {
+	display: block;
+	float: left;
+	padding: 5px 20px;
+	text-decoration: none;
+	text-transform: lowercase;
+	font-size: 1em;
+	font-weight: bold;
+	color:#CCC;
+}
+.menu a:hover {
+	padding: 5px 19px;
+	background: #15517c  repeat-x left bottom;
+	color: #FFFFFF;
+}
+
+/*网站主体*/
+.main{
+	margin-top:0px;
+	margin-left:150px;
+	padding-top:30px;
+	width:1002px;
+	height:auto;
+	
+}
+/*网站下标*/
+.footer{
+	margin-top:50px;
+	margin-left:150px;
+	padding:5px 0 0 0;
+	background-image:url(../image/student/footer1.jpg);
+	width:1002px;
+	height:30px;
+	text-align:center;
+	text-decoration:
+	font-size:10px;
+	color:#666;
+	font-family:Verdana, Geneva, sans-serif;
+	}
+	
+/*网站文本域格式*/
+.text{
+	border:1px solid #7fbbdd;
+	width:200px;
+	height:20px;
+	font-size:10px;
+	}
+/*页数控制*/
+.page{
+	margin-bottom:0;
+	padding:0;
+	text-align:center;
+	font-size:14px;
+	color:#000;
+	
+}
+.page a{
+	color:#03C;
+	font-size:14px;
+	text-decoration:none;
+}
+.page a:hover{
+	color:#60C;
+}
+/*搜索模块*/
+.sousuo{
+	margin-left:70px;
+}
+/*搜索文字框*/
+.textsousuo{
+	border:1px solid #7fbbdd;
+	width:200px;
+	height:20px;
+	font-size:10px;
+	background-image:url(../image/student/sousuo1.jpg);
+	background-repeat:no-repeat;
+	background-position:left;
+	text-indent:20px;
+}
+/*搜索按钮*/
+.btnsousuo{
+	margin:0;
+	padding:0;
+	width:50px;
+	height:20px;
+	font-size:9px;
+	background-color:#7fbbdd;
+	color:#000;
+}
+.btnsousuo:hover{
+	-moz-opacity:0.68 !important;
+    filter:alpha(opacity=68); 
+	opacity: 0.68; 
+    _-moz-opacity:0.68;
+	color:#666;
+}
+/*文件上传*/
+#fileload{
+	margin-left:250px;
+	border:1px solid #7fbbdd;
+	width:200px;
+	height:20px;
+	font-size:10px;
+}
+
+	
+	/* 个性*/
+	
+	/*个人中心*/
+.biaotigeren{
+	margin-top:25px;
+	margin-left:150px;
+	padding:0;
+    background-image:url(../image/student/xueshenggeren1.jpg);
+	width:1002px;
+	height:30px;
+}
+/*信息内容块*/
+.xinxikuai{
+	margin-top:50px;
+	margin-left:100px;
+	margin-bottom:40px;
+}
+/*每一行格式*/
+.xinxi{
+	margin-top:20px;
+	height:40px;
+	font-size:20px;
+}
+/*名称格式*/
+.mingcheng{
+	display:inline-block;
+	margin:0;
+	padding:0;
+	width:150px;
+	text-align:right;
+	
+}
+/*各项内容格式*/
+.neirong{
+	display:inline-block;
+	margin:0;
+	padding:0;
+	width:250px;
+	text-align:left;
+}
+/*提交按钮*/
+.btntijiao{
+	margin-left:430px;
+	padding:5px 15px 5px 15px;
+	border:1px solid #7fbbdd;
+	background:#7fbbdd;
+	font-size:16px;
+	height:30px;
+	color:#000;
+	
+}
+.btntijiao:hover{
+	padding:5px 14px 5px 14px;
+	background:#069;
+	color:#FFF;
+		
+}
+/*修改密码按钮*/
+#btnchange{
+	width:101px;
+	height:30px;
+	margin-left:802px;
+	padding-left:1px;
+	border:none;
+}
+
+#btnchange:hover{
+	padding-left:0;
+	-moz-opacity:0.68 !important; 
+	filter:alpha(opacity=68); 
+	opacity: 0.68; 
+	 _-moz-opacity:0.68;
+
+	
+}
+/*修改密码页面*/
+.mimachange{
+	margin:50px 250px 50px 250px;
+	padding:0;
+	text-align:left;
+}
+
+    /*我的课程*/
+.biaotikecheng{
+	margin-top:25px;
+	margin-left:150px;
+	padding:0;
+	background-image:url(../image/student/kechengxuexi6.jpg);
+	width:1002px;
+	height:30px;
+}
+	/*通知公告*/
+.biaotitongzhi{
+	margin-top:25px;
+	margin-left:150px;
+	padding:0;
+	background-image:url(../image/student/xueshengtongzhi1.jpg);
+	width:1002px;
+	height:30px;
+}
+/*列表模块格式*/
+.list{
+	margin-top:40px;
+	margin-left:50px;
+	width:902px;
+	height:600px;
+}
+/*列表每项格式*/
+.list1{
+	margin:0;
+	padding-top:10px;
+	padding-left:30px;
+	background-color:#FFF;
+	height:30px;
+	width:872px;
+	
+}
+.list1 a{
+	padding:0;
+	margin:0;
+	text-decoration: none;
+	color:#000;
+	font-size:18px;
+}
+.list1:hover{
+	padding-left:31px;
+	background:#b7daed;
+	color:#666;
+}
+.list1 a:hover{
+	color:#666;
+}
+/*日期格式*/
+.date{
+	float:right;
+	padding:0;
+	margin:0;
+	font-size:14px;
+	color:#999;
+	width:150px;
+}
+
+/*公告查看*/
+/*公告标题*/
+.gonggaobiaoti{
+	margin-top:40px;
+	width:1002px;
+	text-align:center; 
+}
+/*公告日期*/
+.gonggaoriqi{
+	margin:0;
+	width:1002px;
+	text-align:center; 
+	color:#999;
+}
+/*公告内容*/
+.gonggaoneirong{
+	margin:50px 150px 0 150px;
+	padding:0;
+	width:702px;
+	font-size:16px;
+	line-height:10pt;
+}
+.gonggaoneirong p{
+	text-indent:30px;
+}
+
+
+	/*讨论区*/
+.biaotitaolun{
+	margin-top:25px;
+	margin-left:150px;
+	padding:0;
+	background-image:url(../image/student/xueshengtaolun1.jpg);
+	width:1002px;
+	height:30px;
+}
+	/*我的作业*/
+.biaotizuoye{
+	margin-top:25px;
+	margin-left:150px;
+	padding:0;
+	background-image:url(../image/student/wodezuoye1.jpg);
+	width:1002px;
+	height:30px;
+}
+#btnupload{
+	margin-left:802px;
+	padding-left:1px;
+	width:29px;
+	height:18px;
+}
+#btnupload:hover{
+	padding-left:0px;
+	-moz-opacity:0.68 !important;
+    filter:alpha(opacity=68); 
+	opacity: 0.68; 
+    _-moz-opacity:0.68;
+}
+	/*资源下载*/
+.biaotiziyuan{
+	margin-top:25px;
+	margin-left:150px;
+	padding:0;
+	background-image:url(../image/student/ziyuanxiazai1.jpg);
+	width:1002px;
+	height:30px;
+}
+#fuxuankuang{
+	margin-top:10px;
+	width:30px;
+}
+#btndownload{
+	margin-left:70px;
+	padding-left=1px;
+	margin-bottom:0px;
+	width:29px;
+	height:28px;
+	border:none;
+}
+#btndownload:hover{
+	padding-left:0px;
+	-moz-opacity:0.68 !important;
+    filter:alpha(opacity=68); 
+	opacity: 0.68; 
+    _-moz-opacity:0.68;
+}
+
+
+
