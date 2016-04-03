@@ -143,6 +143,7 @@
 	text-align:left;
 }
 
+
 /*页数控制*/
 .page{
 	margin-bottom:0;
@@ -447,6 +448,11 @@
 }
 .fuxuankuang{
 	float:left;
+}
+.mimaxiugai{
+	margin:100px 150px 40px 150px;
+	padding:0;
+	text-align:left;
 }
 /*信息内容块*/
 .xinxikuai{

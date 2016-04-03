@@ -39,35 +39,8 @@ public class StudentListServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List student_list = new ArrayList<Student>();
-		List map_list = new ArrayList<Course>();
-		Teacher t =  (Teacher) request.getSession().getAttribute("teacher");
-		try {
-			Connection con = JdbcUtil.getConn();
-//			if(!con.isClosed())
-//				System.out.println("Succeeded connecting to the Database!");
-			Statement statement;
-			statement = con.createStatement();
-			int teacher_id = t.getId();
-			// 要执行的SQL语句
-			String sql = "SELECT A.id,B.name,A.state FROM teacher_course_map A,table_course B where teacher_id="+teacher_id+" and A.course_id = B.id";
-			//System.out.println(sql);
-			ResultSet rs = statement.executeQuery(sql);
-			while(rs.next()) {
-				Course map = new Course();
-				map.setId(rs.getInt("id"));
-				map.setName(rs.getString("name"));
-				String state = rs.getInt("state")==1?"开启":"关闭";
-				
-				map_list.add(map);
-			}
-			JdbcUtil.close(rs, statement);
-			JdbcUtil.closeConnection(con);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		request.setAttribute("map_list", map_list);
-		List course_list = new ArrayList<Course>();
+		Course c = (Course) request.getSession().getAttribute("course");
+		int course_id= c.getId();
 		try {
 			Connection con = JdbcUtil.getConn();
 //			if(!con.isClosed())
@@ -75,8 +48,9 @@ public class StudentListServlet extends HttpServlet {
 			Statement statement;
 			statement = con.createStatement();
 			// 要执行的SQL语句
-			String sql = "SELECT * FROM table_student";
+			String sql = "SELECT A.* FROM  table_student A,student_course_map B where A.student_id=B.student_id and B.course_id ="+course_id;
 			ResultSet rs = statement.executeQuery(sql);
+		
 			while(rs.next()) {
 				Student s = new Student();
 				s.setId(rs.getInt("id"));
@@ -99,7 +73,7 @@ public class StudentListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("student_list", student_list);
-		request.getRequestDispatcher("/course_student_list.jsp").forward(request, response);
+		request.getRequestDispatcher("/student_list.jsp").forward(request, response);
 		return;
 	}
 

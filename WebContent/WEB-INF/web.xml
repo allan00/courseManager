@@ -155,10 +155,24 @@
     <servlet-name>AssignmentList</servlet-name>
     <url-pattern>/Teacher/AssignmentList</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AssignmentDetail</servlet-name>
+    <servlet-class>servlet.teacher.AssignmentDetailServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
-    <servlet-name>AssignmentAdd</servlet-name>
-    <url-pattern>/Teacher/AssignmentAdd</url-pattern>
+    <servlet-name>AssignmentDetail</servlet-name>
+    <url-pattern>/Teacher/AssignmentDetail</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>AssignmentUpdate</servlet-name>
+    <servlet-class>servlet.teacher.AssignmentUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AssignmentUpdate</servlet-name>
+    <url-pattern>/Teacher/AssignmentUpdate</url-pattern>
+  </servlet-mapping>
+
+   
   <servlet>
     <servlet-name>AssignmentDelete</servlet-name>
     <servlet-class>servlet.teacher.AssignmentDeleteServlet</servlet-class>

@@ -50,17 +50,17 @@ int teacher_id = t.getId();
             <div class="shanchu"><a href="<%=path %>/assignment_add.jsp"><img src="<%=path %>/image/teacher/tianjia.png"  /></a></div>
        </div>
 </div>
-       
-      <div class="list">   <!--列表块 -->
-                
+      <div class="xianzhi"></div>
+ <div class="list">   <!--列表块 -->
+             
           <div class="listtitle">  <!--列表项 -->
                <span><input type="checkbox" /></span>    <!--复选框 -->
                <span class="tongzhititle">标题</span> 
                <span class="tongzhiaction">操作</span>
-               <span class="tongzhidate">截止时间</span>
                <span class="tongzhidate">发布时间</span>
+               <span class="tongzhidate"> 截止时间</span>
           </div>
-            <c:forEach var="assignment" items="${assignment_list}">
+             <c:forEach var="assignment" items="${assignment_list}">
           <div class="list1">  <!--列表项 -->
                <span><input type="checkbox" /></span>    <!--复选框 -->
                <span class="tongzhititle">${assignment.title }</span> 
@@ -69,25 +69,14 @@ int teacher_id = t.getId();
                            <a href="<%=path %>/Teacher/AssignmentDetail?id=${assignment.id }"><img src="<%=path %>/image/teacher/chakan.png" /></a>
                      </span>
                      <span class="btntongzhiaction">
-                           <a href="<%=path %>/Teacher/AssignmentDetail?id=${assignment.id }&type=update"><img src="<%=path %>/image/teacher/bianji.png" /></a>
+                          <a href="<%=path %>/Teacher/AssignmentDetail?id=${assignment.id }&type=update"><img src="<%=path %>/image/teacher/bianji.png" /></a>
                      </span>
                </span>
-               <span class="tongzhidate">${assignment.date_begin }</span>
-               <span class="tongzhidate">${assignment.deadline}</span>
+               <span class="tongzhidate">2016/4/2</span>
+               <span class="tongzhidate">2016/4/2</span>
           </div>
           </c:forEach>
      </div>
-      
-     <div class="page">
-          <a href="#" >上一页</a>
-          <a href="#" >1</a>
-          <a href="#" >2</a>
-          <a href="#" >3</a> 
-          <a href="#" >...</a>
-          <a href="#" >n</a>
-          <a href="#" >下一页</a>    第   页/共  页
-  </div>
-</div>
 
 
 

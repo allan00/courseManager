@@ -50,14 +50,14 @@ int teacher_id = t.getId();
             <div class="shanchu"><a href="<%=path %>/message_add.jsp"><img src="<%=path %>/image/teacher/tianjia.png"  /></a></div>
        </div>
 </div>
-       
+       <div  class="xianzhi"></div>
       <div class="list">   <!--列表块 -->
      
           <div class="listtitle">  <!--列表项 -->
                <span><input type="checkbox" /></span>    <!--复选框 -->
                <span class="tongzhititle">标题</span> 
-               <span class="tongzhidate">发布时间</span>
-                <span class="tongzhiaction">操作</span>
+               <span class="tongzhidate">操作</span>
+                <span class="tongzhiaction">发布时间</span>
           </div>
            <c:forEach var="message" items="${message_list}">
         
@@ -72,7 +72,7 @@ int teacher_id = t.getId();
                            <a href="<%=path %>/Teacher/MessageDetail?id=${message.id }&type=update"><img src="<%=path %>/image/teacher/bianji.png" /></a>
                      </span>
                </span>
-               <span class="tongzhidate">${message.date }</span>
+               <span class="tongzhidate">2016/4/2</span>
     
           </div>
           </c:forEach>
