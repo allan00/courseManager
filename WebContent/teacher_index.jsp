@@ -49,7 +49,7 @@ e.checked = form.selectAll.checked;
            	<form name="studentListForm" id="studentListForm" action="<%=path %>/Teacher/CourseDeleteChecked" method="post" >
      <c:forEach var="map" items="${course_list}">
           <div class="list1">  <!--列表项 -->
-               <span><input type="checkbox"   id="checkList" name="checkList"  onclick='select()' value="${course.id }"/>
+               <span><input type="checkbox"   id="checkList" name="checkList"  onclick='select()' value="${map.id }"/>
                </span>    <!--复选框 -->
                <span ><a href="<%=path %>/Teacher/CourseWelcome?course_id=${map.id }" >${map.name }</a></span>   <!--通知标题 -->    
           </div>

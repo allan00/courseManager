@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
-encoding//WebContent/fil_list.jsp=UTF-8
+encoding//WebContent/file_list.jsp=UTF-8
 encoding//WebContent/message_detail.jsp=UTF-8
-encoding//WebContent/student_vedio_list.jsp=UTF-8
+encoding//WebContent/student_assignment_list.jsp=UTF-8
 encoding//src/servlet/ManagerLoginServlet.java=UTF-8
 encoding/<project>=UTF-8

@@ -43,7 +43,15 @@ int teacher_id = t.getId();
      <div class="zuoyebiaoti">标题：${assignment.title }</div>
      <div  class="juzhong" ><span>发布时间：${assignment.date_begin }</span><span>截止时间：${assignment.deadline }</span></div>
      <div class="zuoyejiezhiriqi">${assignment.content }</div>
-</div>
+       <div class="zuoyejiezhiriqi">附件：
+         <div class="list1">  <!--列表项 -->
+		  <c:forEach var="son" items="${assignment_son_list}">
+           <a href="<%=path %>${son.path}/${son.file_name}">${son.file_name}</a>
+            </c:forEach>
+           </div>
+           </div>
+	</div>
 
+</div>
 </body>
 </html>

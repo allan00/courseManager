@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>courseManagerbak</display-name>
+  
+  <!-- filter start -->
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>filter.CharsetEncodingFilter</filter-class>
@@ -19,6 +21,9 @@
     <url-pattern>/Teacher/*</url-pattern>
     <url-pattern>/Manager/*</url-pattern>
   </filter-mapping>
+  <!-- filter end -->
+  
+  <!-- common start -->
   <servlet>
     <servlet-name>StudentLogin</servlet-name>
     <servlet-class>servlet.StudentLoginServlet</servlet-class>
@@ -43,6 +48,9 @@
     <servlet-name>ManagerLogin</servlet-name>
     <url-pattern>/ManagerLogin</url-pattern>
   </servlet-mapping>
+  <!-- common end -->
+  
+  <!-- student start -->
   <servlet>
     <servlet-name>StudentDetail</servlet-name>
     <servlet-class>servlet.student.studentDetailServlet</servlet-class>
@@ -70,12 +78,12 @@
   </servlet-mapping>
   
   <servlet>
-    <servlet-name>VedioList</servlet-name>
-    <servlet-class>servlet.student.VedioListServlet</servlet-class>
+    <servlet-name>VideoList</servlet-name>
+    <servlet-class>servlet.student.VideoListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>VedioList</servlet-name>
-    <url-pattern>/Student/VedioList</url-pattern>
+    <servlet-name>VideoList</servlet-name>
+    <url-pattern>/Student/VideoList</url-pattern>
   </servlet-mapping>
   
    <servlet>
@@ -88,6 +96,17 @@
   </servlet-mapping>
   
   
+   <servlet>
+    <servlet-name>StudentAssignmentList</servlet-name>
+    <servlet-class>servlet.student.StudentAssignmentListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentAssignmentList</servlet-name>
+    <url-pattern>/Student/StudentAssignmentList</url-pattern>
+  </servlet-mapping>
+  <!-- student end -->
+  
+  <!-- teacher start -->
   <servlet>
     <servlet-name>AbleCourse</servlet-name>
     <servlet-class>servlet.teacher.AbleCourseServlet</servlet-class>
@@ -354,6 +373,10 @@
     <servlet-name>ManagerTeacherUpdate</servlet-name>
     <url-pattern>/Manager/TeacherUpdate</url-pattern>
   </servlet-mapping>
+  
+  <!-- teacher end -->
+  
+  
   <session-config>
     <session-timeout>60</session-timeout>
   </session-config>

@@ -24,10 +24,10 @@ if(t==null){
 <div class="top"></div>
 <div class="jiange">
      <div class="btnchange">
-          <a href="teacherxiugaimima.html"><img src="../image/teacher/xiugaimima.jpg" /></a>
+          <a href="teacherxiugaimima.html"><img src="<%=path %>/image/teacher/xiugaimima.jpg" /></a>
      </div>
      <div class="btnchange">
-          <a href="teacherkecheng.html"><img src="../image/teacher/kecheng.jpg" /></a>
+          <a href="<%=path %>/Teacher/TeacherWelcome"><img src="<%=path %>/image/teacher/kecheng.jpg" /></a>
      </div>
 </div>
 <div class="menu">
@@ -59,13 +59,16 @@ if(t==null){
                <span class="biaoti">标题</span>   <!--通知标题 -->
                <span class="date">截止日期</span>
           </div>
-          <c:forEach var="assignment" items="${assignment_list}">
+    
+          
           <div class="list1">  <!--列表项 -->
+          <c:forEach var="assignment" items="${assignment_list}">
                <span class="biaoti"><a href="<%=path %>/Teacher/AssignmentDetail?id=${assignment.id }">${assignment.title }</a></span>   <!--通知标题 -->
                <span class="date">${assignment.deadline}</span>
+                 </c:forEach>
           </div>
-          </c:forEach>
-     </div>
+          </div>
+        
       
      <div class="page">
           <a href="#" >上一页</a>

@@ -31,6 +31,8 @@ public class loginFilter implements Filter {
 		// hresponse.setHeader("Pragma","No-cache");
 		// hresponse.setHeader("Cache-Control","no-cache");
 		// hresponse.setHeader("Expires","0");
+		
+		
 		HttpSession session = hrequest.getSession();
 		Student student = (Student) session.getAttribute("student");
 		Teacher teacher = (Teacher) session.getAttribute("teacher");
@@ -38,6 +40,18 @@ public class loginFilter implements Filter {
 		// System.out.println("RequestURI:"+hrequest.getRequestURI());
 		// System.out.println("ServletPath:"+hrequest.getServletPath());
 		// System.out.println("getPathInfo:"+hrequest.getPathInfo());
+		
+		
+//	/////测试teacher的免登录代码
+//			if(teacher==null){
+//			Teacher t =new Teacher();
+//			t.setId(2);
+//			t.setAccount("teacher");
+//			t.setName("bengbeng");
+//			teacher = t;
+//			hrequest.getSession().setAttribute("teacher",t);
+//			}
+//			/////
 
 		if (student != null || teacher != null || manager != null) {
 			String path = hrequest.getServletPath();

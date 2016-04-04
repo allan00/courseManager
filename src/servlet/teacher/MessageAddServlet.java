@@ -135,10 +135,10 @@ public class MessageAddServlet extends HttpServlet {
 			int i = ps.executeUpdate();
 			
 			//获取刚刚插入通知的id
-			int messege_id = 0;
+			int message_id = 0;
 			rs = ps.getGeneratedKeys();
 			if (rs.next())
-				messege_id=rs.getInt(1);
+				message_id=rs.getInt(1);
 
 			
 			Iterator iter2 = items.iterator();
@@ -165,12 +165,12 @@ public class MessageAddServlet extends HttpServlet {
 					item.write(uploadFile);
 					
 				
-					
-					sql = "INSERT INTO table_message_son(fileName,path,messege_id) VALUES(?,?,?)";
+					String directory = "/document/upload/message/" + year+ month;
+					sql = "INSERT INTO table_message_son(fileName,path,message_id) VALUES(?,?,?)";
 					ps = con.prepareStatement(sql);
 					ps.setString(1, fileName);
-					ps.setString(2, path);
-					ps.setLong(3, messege_id);
+					ps.setString(2, directory);
+					ps.setLong(3, message_id);
 					i = ps.executeUpdate();
 				}
 			}

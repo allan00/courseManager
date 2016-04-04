@@ -43,6 +43,7 @@ public class CourseDeleteCheckedServlet extends HttpServlet {
 		int size = 0;
 		if(checkArray==null)
 		{
+			System.out.println("checkArray is null");
 			request.getRequestDispatcher("/Teacher/TeacherWelcome").forward(request, response);
 			return;
 		}

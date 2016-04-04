@@ -61,7 +61,7 @@ int teacher_id = t.getId();
       <c:forEach var="message" items="${message_list}">
        <div class="list1">  <!--列表项 -->
        
-               <span class="biaoti"><a href="<%=path %>/Teacher/AssignmentDetail?id=${message.id }">${message.title }</a></span>   <!--通知标题 -->
+               <span class="biaoti"><a href="<%=path %>/Teacher/MessageDetail?id=${message.id }">${message.title }</a></span>   <!--通知标题 -->
                <span class="date">${message.date }</span>
           </div>
               </c:forEach>

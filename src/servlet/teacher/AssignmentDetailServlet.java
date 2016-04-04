@@ -17,7 +17,9 @@ import java.sql.Statement;
 
 import util.JdbcUtil;
 import model.Assignment;
+import model.Assignment_son;
 import model.Message;
+import model.Message_son;
 import model.Student;
 import model.Teacher;
 
@@ -39,15 +41,17 @@ public class AssignmentDetailServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String id = String.valueOf(request.getParameter("id"));
+		String id = request.getParameter("id");
 		String type = request.getParameter("type");	
 		Assignment s= new Assignment();
+		List<Assignment_son> assignment_son_list = new ArrayList<Assignment_son>();
+		Connection con = null;
+		PreparedStatement ps = null;
 
 		try {
-			Connection con = JdbcUtil.getConn();
+		 con = JdbcUtil.getConn();
 			// if(!con.isClosed())
 			// System.out.println("Succeeded connecting to the Database!");
-			PreparedStatement ps = null;
 			// 要执行的SQL语句
 			String sql = "SELECT * FROM table_assignment WHERE id=?";
 			ps = con.prepareStatement(sql);
@@ -65,13 +69,30 @@ public class AssignmentDetailServlet extends HttpServlet {
 			else{
 				System.out.println("the result set is empty");
 			}
-			JdbcUtil.close(null, ps);
-			JdbcUtil.closeConnection(con);
+			
+			sql = "SELECT * FROM table_assignment_son WHERE assignment_id=?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, rs.getInt("id")); // 对占位符设置值，占位符顺序从1开始，第一个参数是占位符的位置，第二个参数是占位符的值。
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				Assignment_son son = new Assignment_son();
+				son.setId(rs.getInt("id"));
+				son.setFile_name(rs.getString("fileName"));
+				son.setPath(rs.getString("path"));
+				assignment_son_list.add(son);
+				}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally{
+			JdbcUtil.close(null, ps);
+			JdbcUtil.closeConnection(con);
+		}
 		request.setAttribute("assignment", s);
+		request.setAttribute("assignment_son_list", assignment_son_list);
 		if(type == null){
 			request.getRequestDispatcher("/assignment_detail.jsp").forward(request, response);
 			return;

@@ -39,7 +39,7 @@ e.checked = form.selectAll.checked;
           <a href="teacherxiugaimima.html"><img src="<%=path %>/image/teacher/xiugaimima.jpg" /></a>
      </div>
      <div class="btnchange">
-          <a href="teacherkecheng.html"><img src="<%=path %>/image/teacher/kecheng.jpg" /></a>
+          <a href="<%=path %>/Teacher/TeacherWelcome"><img src="<%=path %>/image/teacher/kecheng.jpg" /></a>
      </div>
 </div>
 <div class="menu">

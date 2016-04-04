@@ -21,7 +21,7 @@ int teacher_id = t.getId();
 <div class="top"></div>
 <div class="jiange">
      <div class="tongzhixiugai">
-          <a href="teachertongzhixiugai.html"><img src="<%=path %>/image/teacher/tongzhixiugai.jpg" / ></a>
+          <a href="<%=path %>/Teacher/TeacherWelcome"><img src="<%=path %>/image/teacher/tongzhixiugai.jpg" / ></a>
      </div>
 </div>
 <div class="menu">
@@ -38,6 +38,14 @@ int teacher_id = t.getId();
      <div class="zuoyebiaoti">标题：${message.title }</div>
      <div  class="juzhong" ><span>发布人：${message.author }</span><span>发布时间：${message.date }</span></div>
      <div class="zuoyejiezhiriqi">内容：${message.content }</div>
+     <div class="zuoyejiezhiriqi">附件：
+     <div class="list1">  <!--列表项 -->
+		<c:forEach var="son" items="${message_son_list}">
+         <a href="<%=path %>${son.path}/${son.file_name}">${son.file_name}</a>
+          </c:forEach>
+           </div>
+
+	</div>
 </div>
 
 

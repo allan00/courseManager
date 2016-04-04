@@ -151,7 +151,7 @@ public class AssignmentAddServlet extends HttpServlet {
 					int m = new java.util.Date().getMonth()+1;
 					String month = m<10?("0"+m):(""+m);
 					String fileName = returnDate() + "-"+name.substring(name.lastIndexOf("\\") + 1, name.length()); // 获取原文件名
-					String uploadpath = request.getRealPath("/document/upload/message/" + year+ month);
+					String uploadpath = request.getRealPath("/document/upload/assignment/" + year+ month);
 					
 					//如果不存在目录则新建
 					File filepath = new File(uploadpath);
@@ -164,11 +164,11 @@ public class AssignmentAddServlet extends HttpServlet {
 					item.write(uploadFile);
 					
 				
-					
+					String directory = "/document/upload/assignment/" + year+ month;
 					sql = "INSERT INTO table_assignment_son(fileName,path,assignment_id) VALUES(?,?,?)";
 					ps = con.prepareStatement(sql);
 					ps.setString(1, fileName);
-					ps.setString(2, path);
+					ps.setString(2, directory);
 					ps.setLong(3, assignment_id);
 					i = ps.executeUpdate();
 				}
