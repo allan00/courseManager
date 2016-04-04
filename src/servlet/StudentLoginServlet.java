@@ -80,7 +80,7 @@ public class StudentLoginServlet extends HttpServlet {
 			JdbcUtil.closeConnection(con);
 		}
 		request.getSession().setAttribute("student", s);
-		request.getRequestDispatcher("/student_index.jsp").forward(request, response);
+		request.getRequestDispatcher("/Student/StudentWelcome").forward(request, response);
 		return;
 
 	}

@@ -59,6 +59,35 @@
     <servlet-name>StudentUpdate</servlet-name>
     <url-pattern>/Student/StudentUpdate</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>StudentWelcome</servlet-name>
+    <servlet-class>servlet.student.StudentWelcomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentWelcome</servlet-name>
+    <url-pattern>/Student/StudentWelcome</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>VedioList</servlet-name>
+    <servlet-class>servlet.student.VedioListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VedioList</servlet-name>
+    <url-pattern>/Student/VedioList</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>StudentCourseWelcome</servlet-name>
+    <servlet-class>servlet.student.StudentCourseWelcomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentCourseWelcome</servlet-name>
+    <url-pattern>/Student/StudentCourseWelcome</url-pattern>
+  </servlet-mapping>
+  
+  
   <servlet>
     <servlet-name>AbleCourse</servlet-name>
     <servlet-class>servlet.teacher.AbleCourseServlet</servlet-class>

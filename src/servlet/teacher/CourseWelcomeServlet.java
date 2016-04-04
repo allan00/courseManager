@@ -39,7 +39,7 @@ public class CourseWelcomeServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+	
 		int course_id = Integer.valueOf(request.getParameter("course_id"));
 		Course c = null;
 		
@@ -69,8 +69,11 @@ public class CourseWelcomeServlet extends HttpServlet {
 		if(c!=null){
 			request.getSession().setAttribute("course", c);
 		}
-		request.getRequestDispatcher("/Teacher/MessageList").forward(request, response);
-		return;
+		
+			request.getRequestDispatcher("/Teacher/MessageList").forward(request, response);
+			return;
+			
+		
 	}
 
 	/**
