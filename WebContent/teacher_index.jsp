@@ -14,6 +14,20 @@ request.setAttribute("teacher", t);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>课程选择</title>
 <link href="<%=path %>/css/teacher.css" rel="stylesheet" type="text/css" />
+<script language=javascript>
+function select(){
+if(document.studentListForm.selectAll.checked){
+document.studentListForm.selectAll.checked = document.studentListForm.selectAll.checked&0;
+}
+}
+function CheckAll(form){
+for (var i=0;i<form.elements.length;i++){
+var e = form.elements[i];
+if (e.Name != 'selectAll'&&e.disabled==false)
+e.checked = form.selectAll.checked;
+}
+}
+</script>
 </head>
 
 <body>
@@ -27,18 +41,20 @@ request.setAttribute("teacher", t);
 <div class="mainkecheng">
     <div class="xianzhi">
          <div class="btn">
-            <div class="shanchu"><a href="<%=path %>/Teacher/CourseDeleteChecked"><img src="<%=path %>/image/teacher/shanchu.png"  /></a></div>
+            <div class="shanchu"><a href=javascript:studentListForm.submit();><img src="<%=path %>/image/teacher/shanchu.png"  /></a></div>
             <div class="shanchu"><a href="<%=path %>/course_add.jsp" ><img src="<%=path %>/image/teacher/tianjia.png"  /></a></div>
          </div>
      </div>
      <div class="list">   <!--列表块 -->
+           	<form name="studentListForm" id="studentListForm" action="<%=path %>/Teacher/CourseDeleteChecked" method="post" >
      <c:forEach var="map" items="${course_list}">
           <div class="list1">  <!--列表项 -->
-               <span><input type="checkbox" id="fuxuankuang" />
+               <span><input type="checkbox"   id="checkList" name="checkList"  onclick='select()' value="${course.id }"/>
                </span>    <!--复选框 -->
                <span ><a href="<%=path %>/Teacher/CourseWelcome?course_id=${map.id }" >${map.name }</a></span>   <!--通知标题 -->    
           </div>
            </c:forEach>
+           </form>
      </div>
       
      <div class="page">

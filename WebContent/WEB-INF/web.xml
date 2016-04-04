@@ -174,12 +174,12 @@
 
    
   <servlet>
-    <servlet-name>AssignmentDelete</servlet-name>
-    <servlet-class>servlet.teacher.AssignmentDeleteServlet</servlet-class>
+    <servlet-name>AssignmentDeleteChecked</servlet-name>
+    <servlet-class>servlet.teacher.AssignmentDeleteCheckedServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AssignmentDelete</servlet-name>
-    <url-pattern>/Teacher/AssignmentDelete</url-pattern>
+    <servlet-name>AssignmentDeleteChecked</servlet-name>
+    <url-pattern>/Teacher/AssignmentDeleteChecked</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>StudentImport</servlet-name>
@@ -262,12 +262,12 @@
     <url-pattern>/Teacher/CourseList</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>CourseDelete</servlet-name>
-    <servlet-class>servlet.teacher.CourseDeleteServlet</servlet-class>
+    <servlet-name>CourseDeleteChecked</servlet-name>
+    <servlet-class>servlet.teacher.CourseDeleteCheckedServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CourseDelete</servlet-name>
-    <url-pattern>/Teacher/CourseDelete</url-pattern>
+    <servlet-name>CourseDeleteChecked</servlet-name>
+    <url-pattern>/Teacher/CourseDeleteChecked</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>CourseDetail</servlet-name>

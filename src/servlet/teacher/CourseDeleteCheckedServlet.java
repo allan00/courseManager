@@ -19,9 +19,9 @@ import util.JdbcUtil;
 import model.Student;
 
 
-public class AssignmentDeleteServlet extends HttpServlet {
+public class CourseDeleteCheckedServlet extends HttpServlet {
 
-	public AssignmentDeleteServlet() {
+	public CourseDeleteCheckedServlet() {
 		super();
 	}
 
@@ -37,29 +37,38 @@ public class AssignmentDeleteServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-		String id = request.getParameter("id");
-		
+		String[] checkArray = request.getParameterValues("checkList");
+		Connection con = null;
+		PreparedStatement ps = null;
+		int size = 0;
+		if(checkArray==null)
+		{
+			request.getRequestDispatcher("/Teacher/TeacherWelcome").forward(request, response);
+			return;
+		}
+		String sql = "DELETE FROM table_course WHERE id in(";
+		for(int i=0;i<checkArray.length;i++)
+		{
+			sql= sql+checkArray[i]+",";
+		}
+		sql = sql.substring(0,sql.length()-1)+")";					//截去最后一个","
+		//System.out.println(sql);
 		try {
-			Connection con = JdbcUtil.getConn();
-//			if(!con.isClosed())
-//				System.out.println("Succeeded connecting to the Database!");
-			PreparedStatement ps = null;
-			// 要执行的SQL语句
-			String sql = "DELETE FROM table_assignment WHERE id=?";
+			con = JdbcUtil.getConn();
 			ps=con.prepareStatement(sql);
-            ps.setString(1, id); //对占位符设置值，占位符顺序从1开始，第一个参数是占位符的位置，第二个参数是占位符的值。
             int i=ps.executeUpdate();
-				
-			JdbcUtil.close(null, ps);
-			JdbcUtil.closeConnection(con);
+            request.setAttribute("message", "删除成功 ");
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("message", "删除成功 ");
-		request.getRequestDispatcher("/AssignmentList").forward(request, response);
+		finally{
+			JdbcUtil.close(null, ps);
+			JdbcUtil.closeConnection(con);
+		}
+		
+		request.getRequestDispatcher("/Teacher/TeacherWelcome").forward(request, response);
 		return;
 	}
 

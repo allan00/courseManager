@@ -15,6 +15,20 @@ int teacher_id = t.getId();
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
 <link href="../css/teacher.css" rel="stylesheet" type="text/css" />
+<script language=javascript>
+function select(){
+if(document.studentListForm.selectAll.checked){
+document.studentListForm.selectAll.checked = document.studentListForm.selectAll.checked&0;
+}
+}
+function CheckAll(form){
+for (var i=0;i<form.elements.length;i++){
+var e = form.elements[i];
+if (e.Name != 'selectAll'&&e.disabled==false)
+e.checked = form.selectAll.checked;
+}
+}
+</script>
 </head>
 
 <body>
@@ -30,12 +44,12 @@ int teacher_id = t.getId();
 </div>
 <div class="menu">
      <ul>
-		   <li><a href="<%=path %>/Teacher/MessageList" target=frmright>通知公告</a></li>
-           <li><a href="<%=path %>/Teacher/TeacherCourseList" target=frmright>视频管理</a></li>
-            <li><a href="<%=path %>/Teacher/AssignmentList" target=frmright>作业管理</a></li>
-           <li><a href="<%=path %>/Teacher/StudentList" target=frmright>学生管理</a></li>
-          <li><a href="<%=path %>/Teacher/FileList" target=frmright>资源管理</a></li>
-           <li><a href="<%=path %>/Teacher/Discussion" target=frmright>讨论区</a></li>
+		   <li><a href="<%=path %>/Teacher/MessageList" >通知公告</a></li>
+           <li><a href="<%=path %>/Teacher/TeacherCourseList" >视频管理</a></li>
+            <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
+           <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
+          <li><a href="<%=path %>/Teacher/FileList" >资源管理</a></li>
+           <li><a href="<%=path %>/Teacher/Discussion" >讨论区</a></li>
 	 </ul>
 </div>
 <div class="mainzuoye">
@@ -46,15 +60,16 @@ int teacher_id = t.getId();
             
       </span>
       <div class="btn">
-      <div class="shanchu"><a href="<%=path %>/Teacher/AssignmentDeleteChecked?type=manage"><img src="<%=path %>/image/teacher/shanchu.png"  /></a></div>
+      <div class="shanchu"><a href=javascript:studentListForm.submit();><img src="<%=path %>/image/teacher/shanchu.png"  /></a></div>
             <div class="shanchu"><a href="<%=path %>/assignment_add.jsp"><img src="<%=path %>/image/teacher/tianjia.png"  /></a></div>
        </div>
 </div>
       <div class="xianzhi"></div>
  <div class="list">   <!--列表块 -->
+         <form name="studentListForm" id="studentListForm" action="<%=path %>/Teacher/AssignmentDeleteChecked?type=manage" method="post" >
              
           <div class="listtitle">  <!--列表项 -->
-               <span><input type="checkbox" /></span>    <!--复选框 -->
+               <span><input type='checkbox' name='selectAll' id="selectAll"  onclick='CheckAll(this.form)'  /></span>    <!--复选框 -->
                <span class="tongzhititle">标题</span> 
                <span class="tongzhiaction">操作</span>
                <span class="tongzhidate">发布时间</span>
@@ -62,7 +77,7 @@ int teacher_id = t.getId();
           </div>
              <c:forEach var="assignment" items="${assignment_list}">
           <div class="list1">  <!--列表项 -->
-               <span><input type="checkbox" /></span>    <!--复选框 -->
+               <span><input type="checkbox"   id="checkList" name="checkList"  onclick='select()' value="${assignment.id }"/></span>    <!--复选框 -->
                <span class="tongzhititle">${assignment.title }</span> 
                <span class="tongzhiaction">
                      <span class="btntongzhiaction">
@@ -76,6 +91,7 @@ int teacher_id = t.getId();
                <span class="tongzhidate">2016/4/2</span>
           </div>
           </c:forEach>
+          </form>
      </div>
 
 

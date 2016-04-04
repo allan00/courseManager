@@ -61,12 +61,12 @@ dv.removeChild(b); //btn
 <div class="jiange"></div>
 <div class="menu">
      <ul>
-		   <li><a href="<%=path %>/Teacher/MessageList" target=frmright>通知公告</a></li>
-           <li><a href="<%=path %>/Teacher/TeacherCourseList" target=frmright>视频管理</a></li>
-            <li><a href="<%=path %>/Teacher/AssignmentList" target=frmright>作业管理</a></li>
-           <li><a href="<%=path %>/Teacher/StudentList" target=frmright>学生管理</a></li>
-          <li><a href="<%=path %>/Teacher/FileList" target=frmright>资源管理</a></li>
-           <li><a href="<%=path %>/Teacher/Discussion" target=frmright>讨论区</a></li>
+		   <li><a href="<%=path %>/Teacher/MessageList" >通知公告</a></li>
+           <li><a href="<%=path %>/Teacher/TeacherCourseList" >视频管理</a></li>
+            <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
+           <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
+          <li><a href="<%=path %>/Teacher/FileList" >资源管理</a></li>
+           <li><a href="<%=path %>/Teacher/Discussion" >讨论区</a></li>
 	 </ul>
 </div>
 <form name="form" action="<%=path %>/Teacher/AssignmentAdd" method="post" enctype="multipart/form-data">
