@@ -19,9 +19,9 @@ import util.JdbcUtil;
 import model.Student;
 import model.Teacher;
 
-public class StudentDetailServlet extends HttpServlet {
+public class StudentInformationDetailServlet extends HttpServlet {
 
-	public StudentDetailServlet() {
+	public StudentInformationDetailServlet() {
 		super();
 	}
 

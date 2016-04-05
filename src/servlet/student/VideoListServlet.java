@@ -1,9 +1,10 @@
-package servlet.teacher;
+package servlet.student;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,14 +16,16 @@ import java.sql.SQLException;
 import java.sql.Statement;  
 
 import util.JdbcUtil;
+import view.V_StudentCourseMap;
 import model.Course;
+import model.Message;
 import model.Student;
 import model.Teacher;
 
 
-public class StudentListServlet extends HttpServlet {
+public class VideoListServlet extends HttpServlet {
 
-	public StudentListServlet() {
+	public VideoListServlet() {
 		super();
 	}
 
@@ -38,33 +41,29 @@ public class StudentListServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List student_list = new ArrayList<Student>();
-		Course c = (Course) request.getSession().getAttribute("course");
-		int course_id= c.getId();
+		  List vedio_list = new ArrayList<Message>();
+		    Student s =  (Student) request.getSession().getAttribute("student");
+		    Teacher t = (Teacher) request.getSession().getAttribute("teacher");
+			int teacher_id= t.getId();
+			Course c = (Course) request.getSession().getAttribute("course");
+			int course_id= c.getId();
+		  System.out.println(course_id);
 		try {
 			Connection con = JdbcUtil.getConn();
 //			if(!con.isClosed())
 //				System.out.println("Succeeded connecting to the Database!");
 			Statement statement;
 			statement = con.createStatement();
+			
 			// 要执行的SQL语句
-			String sql = "SELECT A.* FROM  table_student A,student_course_map B where A.student_id=B.student_id and B.course_id ="+course_id;
+			String sql = "SELECT * FROM table_message where course_id="+course_id;
 			ResultSet rs = statement.executeQuery(sql);
-		
 			while(rs.next()) {
-				Student s = new Student();
+				Message v = new Message();
 				s.setId(rs.getInt("id"));
-				s.setStudent_id(rs.getString("student_id"));
-				s.setName(rs.getString("name"));
-				s.setSex(rs.getString("sex"));
-				s.setPhone(rs.getString("phone"));
-				s.setEmail(rs.getString("email"));
-				s.setAcademy(rs.getString("academy"));
-				s.setGrade(rs.getString("grade"));
-				s.setMajor(rs.getString("major"));
-				s.setClazz(rs.getString("clazz"));
-				s.setPassword(rs.getString("password"));
-				student_list.add(s);
+				s.setName(rs.getString("title"));
+				s.setMajor(rs.getString("author"));
+				vedio_list.add(s);
 			}
 			JdbcUtil.close(rs, statement);
 			JdbcUtil.closeConnection(con);
@@ -72,12 +71,10 @@ public class StudentListServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("student_list", student_list);
 		
-		
-			request.getRequestDispatcher("/student_list.jsp").forward(request, response);
-			return;
-			
+		request.setAttribute("vedio_list", vedio_list);
+		request.getRequestDispatcher("/student_vedio_list.jsp").forward(request, response);
+		return;
 	}
 
 	/**

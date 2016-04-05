@@ -14,7 +14,21 @@ request.setAttribute("teacher", teacher);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>学生管理</title>
-<link href="../css/teacher.css" rel="stylesheet" type="text/css" />
+<link href="<%=path %>/css/teacher.css" rel="stylesheet" type="text/css" />
+<script language=javascript>
+function select(){
+if(document.studentListForm.selectAll.checked){
+document.studentListForm.selectAll.checked = document.studentListForm.selectAll.checked&0;
+}
+}
+function CheckAll(form){
+for (var i=0;i<form.elements.length;i++){
+var e = form.elements[i];
+if (e.Name != 'selectAll'&&e.disabled==false)
+e.checked = form.selectAll.checked;
+}
+}
+</script>
 </head>
 
 <body>
@@ -25,7 +39,7 @@ request.setAttribute("teacher", teacher);
           <a href="teacherxiugaimima.html"><img src="<%=path %>/image/teacher/xiugaimima.jpg" /></a>
      </div>
      <div class="btnchange">
-          <a href="<%=path %>/Teacher/TeacherWelcome">><img src="<%=path %>/image/teacher/kecheng.jpg" /></a>
+          <a href="<%=path %>/Teacher/TeacherWelcome"><img src="<%=path %>/image/teacher/kecheng.jpg" /></a>
      </div>
 </div>
 <div class="menu">
@@ -47,14 +61,14 @@ request.setAttribute("teacher", teacher);
             
       </span>
       <div class="btn">
-      <div class="shanchu"><a href="#"><img src="<%=path %>/image/teacher/shanchu.png"  /></a></div>
+      <div class="shanchu"><a href=javascript:studentListForm.submit();><img src="<%=path %>/image/teacher/shanchu.png"  /></a></div>
             <div class="shanchu"><a href="<%=path %>/student_add.jsp"><img src="<%=path %>/image/teacher/tianjia.png"  /></a></div>
        </div>
 </div>
-       
+      <form name="studentListForm" id="studentListForm" action="<%=path %>/Teacher/StudentDeleteChecked" method="post" >
       <div class="list">   <!--列表块 -->
           <div class="listtitle">  <!--列表项 -->
-               <span><input type="checkbox"  class="fuxuankuang"/> </span>    <!--复选框 -->
+               <span><input type='checkbox' class="fuxuankuang" name='selectAll' id="selectAll"  onclick='CheckAll(this.form)'  /> </span>    <!--复选框 -->
                <span class="stuname">姓名</span>
                <span class="stunum">学号</span>
                <span class="stusex">性别</span>
@@ -64,7 +78,7 @@ request.setAttribute("teacher", teacher);
           </div>
           <c:forEach var="student" items="${student_list}">
           <div class="list1">  <!--列表项 -->
-               <span><input type="checkbox"  class="fuxuankuang"/> </span>    <!--复选框 -->
+               <span><input type="checkbox"  class="fuxuankuang" id="checkList" name="checkList"  onclick='select()' value="${student.student_id }"/> </span>    <!--复选框 -->
                <span class="stuname">${student.name }</span>
                <span class="stunum">${student.student_id }</span>
                <span class="stusex">${student.sex }</span>
@@ -72,7 +86,7 @@ request.setAttribute("teacher", teacher);
                <span class="stuclass">${student.clazz }</span>
                <span class="stuaction">
                      <span class="btntongzhiaction" title="查看">
-                          <a href="<%=path %>/Teacher/StudentDetail?id=${student.student_id }"><img src="<%=path %>/image/teacher/chakan.png" /></a>
+                          <a href="<%=path %>/Teacher/StudentDetail?student_id=${student.student_id }"><img src="<%=path %>/image/teacher/chakan.png" /></a>
                      </span>
                      <span class="btntongzhiaction" title="编辑">
                           <a href="<%=path %>/Teacher/StudentDetail?id=${student.student_id }"><img src="<%=path %>/image/teacher/bianji.png" /></a>
@@ -80,8 +94,9 @@ request.setAttribute("teacher", teacher);
                </span>
           </div>
           </c:forEach>
+     
      </div>
-      
+      </form>
      <div class="page">
           <a href="#" >上一页</a>
           <a href="#" >1</a>

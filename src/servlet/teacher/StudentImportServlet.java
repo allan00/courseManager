@@ -194,7 +194,7 @@ public class StudentImportServlet extends HttpServlet {
 						s.setAcademy(st);
 						break;
 					case 7:
-						s.setGrade(Integer.valueOf(st));
+						s.setGrade((st));
 						break;
 					case 8:
 						s.setClazz(st);
@@ -247,7 +247,7 @@ public class StudentImportServlet extends HttpServlet {
 				ps.setString(4, s.getPhone());
 				ps.setString(5, s.getEmail());
 				ps.setString(6, s.getAcademy());
-				ps.setInt(7, s.getGrade());
+				ps.setString(7, s.getGrade());
 				ps.setString(8, s.getClazz());
 				ps.setString(9, s.getMajor());
 				ps.setString(10, s.getPassword());

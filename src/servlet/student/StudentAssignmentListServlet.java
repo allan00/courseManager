@@ -1,4 +1,4 @@
-package servlet.teacher;
+package servlet.student;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,14 +15,16 @@ import java.sql.SQLException;
 import java.sql.Statement;  
 
 import util.JdbcUtil;
+import model.Assignment;
 import model.Course;
+import model.Message;
 import model.Student;
 import model.Teacher;
 
 
-public class StudentListServlet extends HttpServlet {
+public class StudentAssignmentListServlet extends HttpServlet {
 
-	public StudentListServlet() {
+	public StudentAssignmentListServlet() {
 		super();
 	}
 
@@ -38,7 +40,10 @@ public class StudentListServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List student_list = new ArrayList<Student>();
+		List assignment_list = new ArrayList<Assignment>();
+		String type = request.getParameter("type");
+		Student s = (Student) request.getSession().getAttribute("student");
+		String student_id= s.getStudent_id();
 		Course c = (Course) request.getSession().getAttribute("course");
 		int course_id= c.getId();
 		try {
@@ -47,24 +52,19 @@ public class StudentListServlet extends HttpServlet {
 //				System.out.println("Succeeded connecting to the Database!");
 			Statement statement;
 			statement = con.createStatement();
+			
 			// 要执行的SQL语句
-			String sql = "SELECT A.* FROM  table_student A,student_course_map B where A.student_id=B.student_id and B.course_id ="+course_id;
+			String sql = "SELECT * FROM table_assignment where course_id="+course_id;
 			ResultSet rs = statement.executeQuery(sql);
-		
 			while(rs.next()) {
-				Student s = new Student();
-				s.setId(rs.getInt("id"));
-				s.setStudent_id(rs.getString("student_id"));
-				s.setName(rs.getString("name"));
-				s.setSex(rs.getString("sex"));
-				s.setPhone(rs.getString("phone"));
-				s.setEmail(rs.getString("email"));
-				s.setAcademy(rs.getString("academy"));
-				s.setGrade(rs.getString("grade"));
-				s.setMajor(rs.getString("major"));
-				s.setClazz(rs.getString("clazz"));
-				s.setPassword(rs.getString("password"));
-				student_list.add(s);
+				Assignment s1 = new Assignment();
+				s1.setId(rs.getInt("id"));
+				s1.setTitle(rs.getString("title"));
+				s1.setContent(rs.getString("content"));
+				s1.setDate_begin(rs.getTimestamp("date_begin"));
+				s1.setDeadline(rs.getTimestamp("deadline"));
+				s1.setCourseId(rs.getInt("course_id"));
+				assignment_list.add(s1);
 			}
 			JdbcUtil.close(rs, statement);
 			JdbcUtil.closeConnection(con);
@@ -72,12 +72,13 @@ public class StudentListServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("student_list", student_list);
+		request.setAttribute("assignment_list", assignment_list);
+
 		
-		
-			request.getRequestDispatcher("/student_list.jsp").forward(request, response);
+			request.getRequestDispatcher("/student_assignment_list.jsp").forward(request, response);
 			return;
-			
+	
+
 	}
 
 	/**

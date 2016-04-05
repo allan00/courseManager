@@ -73,7 +73,7 @@ public class StudentDetailServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("student", s);
-		request.getRequestDispatcher("/student_update.jsp").forward(request, response);
+		request.getRequestDispatcher("/student_detail.jsp").forward(request, response);
 	}
 
 	/**

@@ -8,7 +8,7 @@ public class Student {
 	private String phone;
 	private String email;
 	private String academy;
-	private int    grade;
+	private String    grade;
 	private String clazz;
 	private String major;
 	private String password;
@@ -54,10 +54,11 @@ public class Student {
 	public void setAcademy(String academy) {
 		this.academy = academy;
 	}
-	public int getGrade() {
+	
+	public String getGrade() {
 		return grade;
 	}
-	public void setGrade(int grade) {
+	public void setGrade(String grade) {
 		this.grade = grade;
 	}
 	public String getClazz() {

@@ -1,4 +1,4 @@
-package servlet.teacher;
+package servlet.student;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,9 +20,9 @@ import model.Student;
 import model.Teacher;
 
 
-public class StudentListServlet extends HttpServlet {
+public class StudentInformationListServlet extends HttpServlet {
 
-	public StudentListServlet() {
+	public StudentInformationListServlet() {
 		super();
 	}
 
@@ -41,6 +41,9 @@ public class StudentListServlet extends HttpServlet {
 		List student_list = new ArrayList<Student>();
 		Course c = (Course) request.getSession().getAttribute("course");
 		int course_id= c.getId();
+		System.out.println(course_id);
+		Student s = (Student) request.getSession().getAttribute("student");
+		String student_id= s.getStudent_id();
 		try {
 			Connection con = JdbcUtil.getConn();
 //			if(!con.isClosed())
@@ -52,19 +55,19 @@ public class StudentListServlet extends HttpServlet {
 			ResultSet rs = statement.executeQuery(sql);
 		
 			while(rs.next()) {
-				Student s = new Student();
-				s.setId(rs.getInt("id"));
-				s.setStudent_id(rs.getString("student_id"));
-				s.setName(rs.getString("name"));
-				s.setSex(rs.getString("sex"));
-				s.setPhone(rs.getString("phone"));
-				s.setEmail(rs.getString("email"));
-				s.setAcademy(rs.getString("academy"));
-				s.setGrade(rs.getString("grade"));
-				s.setMajor(rs.getString("major"));
-				s.setClazz(rs.getString("clazz"));
-				s.setPassword(rs.getString("password"));
-				student_list.add(s);
+				Student s1 = new Student();
+				s1.setId(rs.getInt("id"));
+				s1.setStudent_id(rs.getString("student_id"));
+				s1.setName(rs.getString("name"));
+				s1.setSex(rs.getString("sex"));
+				s1.setPhone(rs.getString("phone"));
+				s1.setEmail(rs.getString("email"));
+				s1.setAcademy(rs.getString("academy"));
+				s1.setGrade(rs.getString("grade"));
+				s1.setMajor(rs.getString("major"));
+				s1.setClazz(rs.getString("clazz"));
+				s1.setPassword(rs.getString("password"));
+				student_list.add(s1);
 			}
 			JdbcUtil.close(rs, statement);
 			JdbcUtil.closeConnection(con);
@@ -73,11 +76,8 @@ public class StudentListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("student_list", student_list);
-		
-		
-			request.getRequestDispatcher("/student_list.jsp").forward(request, response);
-			return;
-			
+		request.getRequestDispatcher("/student_information_list.jsp").forward(request, response);
+		return;
 	}
 
 	/**

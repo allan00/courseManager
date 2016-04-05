@@ -58,7 +58,7 @@ public class CourseStudentListServlet extends HttpServlet {
 				s.setPhone(rs.getString("phone"));
 				s.setEmail(rs.getString("email"));
 				s.setAcademy(rs.getString("academy"));
-				s.setGrade(rs.getInt("grade"));
+				s.setGrade(rs.getString("grade"));
 				s.setMajor(rs.getString("major"));
 				s.setClazz(rs.getString("clazz"));
 				s.setPassword(rs.getString("password"));

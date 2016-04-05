@@ -52,12 +52,12 @@
   
   <!-- student start -->
   <servlet>
-    <servlet-name>StudentDetail</servlet-name>
-    <servlet-class>servlet.student.studentDetailServlet</servlet-class>
+    <servlet-name>StudentInformationDetail</servlet-name>
+    <servlet-class>servlet.student.StudentInformationDetailServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>StudentDetail</servlet-name>
-    <url-pattern>/Student/StudentDetail</url-pattern>
+    <servlet-name>StudentInformationDetail</servlet-name>
+    <url-pattern>/Student/StudentInformationDetail</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>StudentUpdate</servlet-name>
@@ -75,6 +75,15 @@
   <servlet-mapping>
     <servlet-name>StudentWelcome</servlet-name>
     <url-pattern>/Student/StudentWelcome</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>StudentInformationList</servlet-name>
+    <servlet-class>servlet.student.StudentInformationListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentInformationList</servlet-name>
+    <url-pattern>/Student/StudentInformationList</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -103,6 +112,14 @@
   <servlet-mapping>
     <servlet-name>StudentAssignmentList</servlet-name>
     <url-pattern>/Student/StudentAssignmentList</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>StudentMessageList</servlet-name>
+    <servlet-class>servlet.student.StudentMessageListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentMessageListt</servlet-name>
+    <url-pattern>/Student/StudentMessageList</url-pattern>
   </servlet-mapping>
   <!-- student end -->
   
@@ -254,20 +271,22 @@
     <url-pattern>/Teacher/StudentAdd</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>StudentDelete</servlet-name>
-    <servlet-class>servlet.teacher.StudentDeleteServlet</servlet-class>
+    <servlet-name>StudentDetail</servlet-name>
+    <servlet-class>servlet.teacher.StudentDetailServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>StudentDelete</servlet-name>
-    <url-pattern>/Teacher/StudentDelete</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>TeacherStudentDetail</servlet-name>
-    <servlet-class>servlet.teacher.studentDetailServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TeacherStudentDetail</servlet-name>
+    <servlet-name>StudentDetail</servlet-name>
     <url-pattern>/Teacher/StudentDetail</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+
+    <servlet-name>StudentDeleteChecked</servlet-name>
+    <servlet-class>servlet.teacher.StudentDeleteCheckedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentDeleteChecked</servlet-name>
+    <url-pattern>/Teacher/StudentDeleteChecked</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>TeacherStudentUpdate</servlet-name>
