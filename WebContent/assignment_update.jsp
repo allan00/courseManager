@@ -57,7 +57,7 @@ dv.removeChild(b); //btn
 
 <body>
 <div class="logo">课程管理系统</div>
-<div class="top"></div>
+
 <div class="jiange">
      
 </div>

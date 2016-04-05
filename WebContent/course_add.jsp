@@ -17,7 +17,7 @@ String message = request.getParameter("message");
 
 <body>
 <div class="logo">课程管理系统</div>
-<div class="top"></div>
+
 <div class="jiange">
      <div class="btnchange">
           <a href="teacherxiugaimima.html"><img src="<%=path %>/image/teacher/xiugaimima.jpg" /></a>

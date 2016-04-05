@@ -68,6 +68,7 @@
 	padding-top:30px;
 	width:1002px;
 	height:auto;
+
 	
 }
 /*网站下标*/
@@ -165,22 +166,23 @@
 /*信息内容块*/
 .xinxikuai{
 	margin-top:50px;
-	margin-left:100px;
+	margin-left:70px;
 	margin-bottom:40px;
 }
 /*每一行格式*/
 .xinxi{
 	margin-top:20px;
 	height:40px;
-	font-size:20px;
+	
 }
 /*名称格式*/
 .mingcheng{
 	display:inline-block;
 	margin:0;
 	padding:0;
-	width:150px;
+	width:100px;
 	text-align:right;
+	font-size:16px;
 	
 }
 /*各项内容格式*/
@@ -188,8 +190,9 @@
 	display:inline-block;
 	margin:0;
 	padding:0;
-	width:250px;
+	width:350px;
 	text-align:left;
+	font-size:18px;
 }
 /*提交按钮*/
 .btntijiao{

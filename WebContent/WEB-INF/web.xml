@@ -118,7 +118,7 @@
     <servlet-class>servlet.student.StudentMessageListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>StudentMessageListt</servlet-name>
+    <servlet-name>StudentMessageList</servlet-name>
     <url-pattern>/Student/StudentMessageList</url-pattern>
   </servlet-mapping>
   <!-- student end -->

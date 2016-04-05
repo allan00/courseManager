@@ -18,7 +18,7 @@ request.setAttribute("student", t);
 </head>
 
 <body>
-<div class="top">
+
     <div class="logo">
 		<h1>课程管理系统</h1>
 	</div>

@@ -18,7 +18,7 @@ int teacher_id = t.getId();
 
 <body>
 <div class="logo">课程管理系统</div>
-<div class="top"></div>
+
 <div class="jiange">
      <div class="tongzhixiugai">
           <a href="<%=path %>/Teacher/TeacherWelcome"><img src="<%=path %>/image/teacher/tongzhixiugai.jpg" / ></a>

@@ -16,12 +16,12 @@ if(t==null){
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
-<link href="../css/teacher.css" rel="stylesheet" type="text/css" />
+<link href="<%=path %>/css/teacher.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 <div class="logo">课程管理系统</div>
-<div class="top"></div>
+
 <div class="jiange">
      <div class="btnchange">
           <a href="teacherxiugaimima.html"><img src="<%=path %>/image/teacher/xiugaimima.jpg" /></a>

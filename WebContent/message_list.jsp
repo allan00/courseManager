@@ -19,7 +19,7 @@ int teacher_id = t.getId();
 
 <body>
 <div class="logo">课程管理系统</div>
-<div class="top"></div>
+
 <div class="jiange">
      <div class="btnchange">
           <a href="teacherxiugaimima.html"><img src="<%=path %>/image/teacher/xiugaimima.jpg" /></a>
@@ -31,7 +31,7 @@ int teacher_id = t.getId();
 <div class="menu">
      <ul>
 		   <li><a href="<%=path %>/Teacher/MessageList" >通知公告</a></li>
-           <li><a href="<%=path %>/Teacher/TeacherCourseList" >视频管理</a></li>
+           <li><a href="<%=path %>/video_list.jsp" >视频管理</a></li>
             <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
            <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
           <li><a href="<%=path %>/Teacher/FileList" >资源管理</a></li>

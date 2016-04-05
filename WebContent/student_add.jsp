@@ -18,7 +18,7 @@ int teacher_id = t.getId();
 
 <body>
 <div class="logo">课程管理系统</div>
-<div class="top"></div>
+
 <div class="jiange">
      <div class="biaogedaoru">
           <a href="student_add_excel.jsp"><img src="<%=path %>/image/teacher/biaogedaoru1.jpg" /></a>

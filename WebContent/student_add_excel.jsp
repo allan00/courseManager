@@ -45,7 +45,7 @@ input{border:none;border:1px solid #CCC;vertical-align:middle; }
 
 <body>
 <div class="logo">课程管理系统</div>
-<div class="top"></div>
+
 <div class="jiange"></div>
 <div class="menu">
       <ul>

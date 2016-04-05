@@ -6,14 +6,20 @@
 	background-image:url(../image/teacher/top.jpg);
 }
 .logo {
-	margin:0;
+	margin-top:30px;;
 	height:100px;
-	width:1024px;
-	padding:20px 0 0 100px;
+	padding:20px 0 0 150px;
 	letter-spacing: -3px;
-	font-size: 65px;
+	font-size: 75px;
 	color:#2d6f9b;
-	font-weight:600;
+	font-weight:600;	
+}
+body{
+	margin:0;
+	padding:0;
+	background-image:url(../image/teacher/u=2422386843,1299541835&fm=21&gp=0.jpg);
+	background-repeat:repeat-x;
+	background-color:#f5fafe;
 }
 /*导航*/
 .menu{
@@ -311,13 +317,45 @@
 /*课程管理*/
 .mainkecheng{
 	margin-right:250px;
-	padding:0;
+	padding-top:50px;
+	padding-left:30px;
 	background-image:url(../image/teacher/kechengguanli.jpg);
 	background-repeat:no-repeat;
 	width:790px;
 	height:453px;
 	float:right;
+}
+.mainkechengxuanze{
+	margin-right:250px;
+	padding-top:50px;
+	padding-left:30px;
+	background-image:url(../image/teacher/mainkechengxuanze.jpg);
+	background-repeat:no-repeat;
+	width:790px;
+	height:453px;
+	float:right;
 	}
+#btnkechengguanli{
+	padding:0;
+	margin-left:650px;
+	margin-bottom:10px;
+	width:70px;
+	height:20px;
+	border:none;
+}
+#btnkechengguanli:hover{
+	-moz-opacity:0.68 !important;
+    filter:alpha(opacity=68); 
+	opacity: 0.68; 
+    _-moz-opacity:0.68;
+}
+#btngroup{
+	margin:0px;
+	height:25px;
+	width:790px;
+}
+
+
 /*修改密码*/
 .xiugai{
 	margin:0;
@@ -348,6 +386,19 @@
 	text-align:center;
 	width:790px;
 	height:30px;
+}
+.btnshipinguanli{
+	margin-left:300px;
+	padding:0;
+	width:70px;
+	height:20px;
+	border:none;
+}
+.btnshipinguanli:hover{
+	-moz-opacity:0.68 !important;
+    filter:alpha(opacity=68); 
+	opacity: 0.68; 
+    _-moz-opacity:0.68;
 }
 /*作业管理*/
 .mainzuoye{
