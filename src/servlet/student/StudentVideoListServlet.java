@@ -23,9 +23,9 @@ import model.Student;
 import model.Teacher;
 
 
-public class VideoListServlet extends HttpServlet {
+public class StudentVideoListServlet extends HttpServlet {
 
-	public VideoListServlet() {
+	public StudentVideoListServlet() {
 		super();
 	}
 

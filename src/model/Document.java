@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-public class File {
+public class Document {
 	private long id; 
 	private String path;   //保存路径
 	private String file_name;

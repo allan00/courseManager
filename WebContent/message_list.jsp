@@ -31,10 +31,10 @@ int teacher_id = t.getId();
 <div class="menu">
      <ul>
 		   <li><a href="<%=path %>/Teacher/MessageList" >通知公告</a></li>
-           <li><a href="<%=path %>/video_list.jsp" >视频管理</a></li>
+           <li><a href="<%=path %>/Teacher/VideoList" >视频管理</a></li>
             <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
            <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
-          <li><a href="<%=path %>/Teacher/FileList" >资源管理</a></li>
+          <li><a href="<%=path %>/Teacher/DocumentList" >资源管理</a></li>
            <li><a href="<%=path %>/Teacher/Discussion" >讨论区</a></li>
 	 </ul>
 </div>

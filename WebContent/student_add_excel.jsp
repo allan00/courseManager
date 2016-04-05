@@ -53,7 +53,7 @@ input{border:none;border:1px solid #CCC;vertical-align:middle; }
            <li><a href="<%=path %>/Teacher/VideoList" >视频管理</a></li>
             <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
            <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
-          <li><a href="<%=path %>/Teacher/FileList" >资源管理</a></li>
+          <li><a href="<%=path %>/Teacher/DocumentList" >资源管理</a></li>
            <li><a href="<%=path %>/Teacher/Discussion" >讨论区</a></li>
 	 </ul>
 </div>

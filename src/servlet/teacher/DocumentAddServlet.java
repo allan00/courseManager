@@ -29,12 +29,12 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import util.JdbcUtil;
 
-public class FileAddServlet extends HttpServlet {
+public class DocumentAddServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public FileAddServlet() {
+	public DocumentAddServlet() {
 		super();
 	}
 
@@ -86,91 +86,56 @@ public class FileAddServlet extends HttpServlet {
 			throws ServletException, IOException {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if (!isMultipart) {
-			request.getRequestDispatcher("/Teacher/FileList").forward(request,
+			request.getRequestDispatcher("/Teacher/DocumentList").forward(request,
 					response);
 			return;
 		}
-		
-		
+
 		FileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(factory);
-		Teacher t = (Teacher) request.getSession().getAttribute("teacher");
-		String title = "",  content = "";
-		Timestamp date_begin = new Timestamp(System.currentTimeMillis());
-		Date deadline = null;
-		Course course  = (Course)request.getSession().getAttribute("course");
+		Course course = (Course) request.getSession().getAttribute("course");
 		int course_id = course.getId();
 		Connection con = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
 
 		// 获取文本信息
 		try {
 			List items = upload.parseRequest(request);
-			Iterator iter = items.iterator();
-			while (iter.hasNext()) {
-				FileItem item = (FileItem) iter.next();
-				String field = item.getFieldName();
-				//如果是文本框则获取文本信息
-				if (field.equals("title")) {
-					title = item.getString("UTF-8");// 这里需要看你页面的编码方式
-				}
-				
-				if (field.equals("content")) {
-					content = item.getString("UTF-8");
-				}
-				if (field.equals("deadline")) {
-					deadline = Date.valueOf(item.getString("UTF-8"));
-				}
-			}
-			con = JdbcUtil.getConn();
-			String sql = "INSERT INTO table_assignment(title,content,date_begin,deadline,course_id) VALUES(?,?,?,?,?)";
-			ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-			ps.setString(1, title); 
-			ps.setString(2, content);
-			ps.setTimestamp(3, date_begin);
-			ps.setDate(4, deadline);
-			ps.setInt(5, course_id);
-			int i = ps.executeUpdate();
-			
-			//获取刚刚插入通知的id
-			int assignment_id = 0;
-			rs = ps.getGeneratedKeys();
-			if (rs.next())
-				assignment_id=rs.getInt(1);
-
-			
 			Iterator iter2 = items.iterator();
+			con = JdbcUtil.getConn();
 			while (iter2.hasNext()) {
 				FileItem item = (FileItem) iter2.next();
-				String field = item.getFieldName();
 				// 如果是文件，则上传
 				if (!item.isFormField()) {
 					String name = item.getName();
-					String year = (new java.util.Date().getYear() + 1900)+"";
-					int m = new java.util.Date().getMonth()+1;
-					String month = m<10?("0"+m):(""+m);
-					String fileName = returnDate() + "-"+name.substring(name.lastIndexOf("\\") + 1, name.length()); // 获取原文件名
-					String uploadpath = request.getRealPath("/document/upload/file/" + year+ month);
-					
-					//如果不存在目录则新建
+					String year = (new java.util.Date().getYear() + 1900) + "";
+					int m = new java.util.Date().getMonth() + 1;
+					String month = m < 10 ? ("0" + m) : ("" + m);
+					String fileName = returnDate()
+							+ "-"
+							+ name.substring(name.lastIndexOf("\\") + 1,
+									name.length()); // 获取原文件名
+					String uploadpath = request
+							.getRealPath("/document/upload/file/" + year
+									+ month);
+					// 如果不存在目录则新建
 					File filepath = new File(uploadpath);
 					if (!filepath.exists()) {
 						filepath.mkdirs();
 					}
-					
-					String path = uploadpath+ File.separator + fileName;
+
+					String path = uploadpath + File.separator + fileName;
 					File uploadFile = new File(path);
 					item.write(uploadFile);
-					
-				
-					String directory = "/document/upload/file/" + year+ month;
-					sql = "INSERT INTO table_file(fileName,path,course_id) VALUES(?,?,?)";
+
+					String directory = "/document/upload/file/" + year + month;
+					String sql = "INSERT INTO table_document(fileName,path,course_id) VALUES(?,?,?)";
 					ps = con.prepareStatement(sql);
 					ps.setString(1, fileName);
 					ps.setString(2, directory);
 					ps.setLong(3, course_id);
-					i = ps.executeUpdate();
+					int i = ps.executeUpdate();
+					request.setAttribute("message", "文件上传成功 ");
 				}
 			}
 		} catch (FileUploadException e1) {
@@ -183,11 +148,12 @@ public class FileAddServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			JdbcUtil.close(rs, ps);
+			JdbcUtil.close(null, ps);
 			JdbcUtil.closeConnection(con);
 		}
-		request.setAttribute("message", "发布成功 ");
-		request.getRequestDispatcher("/Teacher/FileList").forward(request, response);
+		
+		request.getRequestDispatcher("/Teacher/DocumentList").forward(request,
+				response);
 		return;
 	}
 

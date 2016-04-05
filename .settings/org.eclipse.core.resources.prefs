@@ -1,10 +1,13 @@
 eclipse.preferences.version=1
-encoding//WebContent/file_list.jsp=UTF-8
+encoding//WebContent/document_add.jsp=UTF-8
+encoding//WebContent/document_list.jsp=UTF-8
 encoding//WebContent/message_detail.jsp=UTF-8
 encoding//WebContent/student_assignment_list.jsp=UTF-8
 encoding//WebContent/student_detail.jsp=UTF-8
 encoding//WebContent/student_information_list.jsp=UTF-8
 encoding//WebContent/student_message_list.jsp=UTF-8
+encoding//WebContent/video_add.jsp=UTF-8
+encoding//WebContent/video_detail.jsp=UTF-8
 encoding//WebContent/video_list.jsp=UTF-8
 encoding//src/servlet/ManagerLoginServlet.java=UTF-8
 encoding/<project>=UTF-8

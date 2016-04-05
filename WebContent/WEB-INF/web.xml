@@ -50,6 +50,7 @@
   </servlet-mapping>
   <!-- common end -->
   
+  
   <!-- student start -->
   <servlet>
     <servlet-name>StudentInformationDetail</servlet-name>
@@ -86,14 +87,6 @@
     <url-pattern>/Student/StudentInformationList</url-pattern>
   </servlet-mapping>
   
-  <servlet>
-    <servlet-name>VideoList</servlet-name>
-    <servlet-class>servlet.student.VideoListServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>VideoList</servlet-name>
-    <url-pattern>/Student/VideoList</url-pattern>
-  </servlet-mapping>
   
    <servlet>
     <servlet-name>StudentCourseWelcome</servlet-name>
@@ -103,8 +96,6 @@
     <servlet-name>StudentCourseWelcome</servlet-name>
     <url-pattern>/Student/StudentCourseWelcome</url-pattern>
   </servlet-mapping>
-  
-  
    <servlet>
     <servlet-name>StudentAssignmentList</servlet-name>
     <servlet-class>servlet.student.StudentAssignmentListServlet</servlet-class>
@@ -236,8 +227,6 @@
     <servlet-name>AssignmentUpdate</servlet-name>
     <url-pattern>/Teacher/AssignmentUpdate</url-pattern>
   </servlet-mapping>
-
-   
   <servlet>
     <servlet-name>AssignmentDeleteChecked</servlet-name>
     <servlet-class>servlet.teacher.AssignmentDeleteCheckedServlet</servlet-class>
@@ -280,7 +269,6 @@
   </servlet-mapping>
   
   <servlet>
-
     <servlet-name>StudentDeleteChecked</servlet-name>
     <servlet-class>servlet.teacher.StudentDeleteCheckedServlet</servlet-class>
   </servlet>
@@ -353,6 +341,51 @@
     <url-pattern>/Teacher/CourseUpdate</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>DocumentAdd</servlet-name>
+    <servlet-class>servlet.teacher.DocumentAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DocumentAdd</servlet-name>
+    <url-pattern>/Teacher/DocumentAdd</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DocumentList</servlet-name>
+    <servlet-class>servlet.teacher.DocumentListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DocumentList</servlet-name>
+    <url-pattern>/Teacher/DocumentList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>VideoAdd</servlet-name>
+    <servlet-class>servlet.teacher.VideoAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VideoAdd</servlet-name>
+    <url-pattern>/Teacher/VideoAdd</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>VideoDetail</servlet-name>
+    <servlet-class>servlet.teacher.VideoDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VideoDetail</servlet-name>
+    <url-pattern>/Teacher/VideoDetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>VideoList</servlet-name>
+    <servlet-class>servlet.teacher.VideoListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VideoList</servlet-name>
+    <url-pattern>/Teacher/VideoList</url-pattern>
+  </servlet-mapping>
+  <!-- teacher end -->
+  
+  
+  
+  <!-- manager start -->
+  <servlet>
     <servlet-name>TeacherList</servlet-name>
     <servlet-class>servlet.manager.TeacherListServlet</servlet-class>
   </servlet>
@@ -393,7 +426,7 @@
     <url-pattern>/Manager/TeacherUpdate</url-pattern>
   </servlet-mapping>
   
-  <!-- teacher end -->
+  <!-- manager end -->
   
   
   <session-config>

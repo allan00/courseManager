@@ -14,15 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Course;
+import model.Document;
 import util.JdbcUtil;
 
 import com.jspsmart.upload.File;
 
 
 
-public class FileListServlet extends HttpServlet {
+public class DocumentListServlet extends HttpServlet {
 
-	public FileListServlet() {
+	public DocumentListServlet() {
 		super();
 	}
 
@@ -41,8 +42,7 @@ public class FileListServlet extends HttpServlet {
 		Course c = (Course) request.getSession().getAttribute("course");
 		int course_id= c.getId();
 		String type = request.getParameter("type");	
-		List<File> file_list = new ArrayList<File>();
-		File s= new File();
+		List<Document> document_list = new ArrayList<Document>();
 
 		try {
 			Connection con = JdbcUtil.getConn();
@@ -50,15 +50,15 @@ public class FileListServlet extends HttpServlet {
            //		System.out.println("Succeeded connecting to the Database!");
 	          Statement statement;
 	          statement = con.createStatement();
-			String sql = "SELECT * FROM table_file WHERE course_id=?";
+			String sql = "SELECT * FROM table_document WHERE course_id="+course_id;
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
-			      File s= new File();
+				Document s= new Document();
 				s.setId(rs.getInt("id"));
-				s.setFieldName(rs.getString("fileName"));
+				s.setFile_name(rs.getString("fileName"));
 				s.setPath(rs.getString("path"));
 				s.setCourse_id(rs.getString("course_id"));
-				file_list.add(s);
+				document_list.add(s);
 				}
 			JdbcUtil.close(rs, statement);
 			JdbcUtil.closeConnection(con);
@@ -67,10 +67,9 @@ public class FileListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("file_list", file_list);
-		
-			request.getRequestDispatcher("/file_list.jsp").forward(request, response);
-			return;
+		request.setAttribute("document_list", document_list);
+		request.getRequestDispatcher("/document_list.jsp").forward(request, response);
+		return;
 		
 	}
 

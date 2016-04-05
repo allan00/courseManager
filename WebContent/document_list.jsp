@@ -33,10 +33,10 @@ if(t==null){
 <div class="menu">
       <ul>
 		   <li><a href="<%=path %>/Teacher/MessageList" >通知公告</a></li>
-           <li><a href="<%=path %>/Teacher/TeacherCourseList" >视频管理</a></li>
+           <li><a href="<%=path %>/Teacher/VideoList" >视频管理</a></li>
             <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
            <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
-          <li><a href="<%=path %>/Teacher/FileList" >资源管理</a></li>
+          <li><a href="<%=path %>/Teacher/DocumentList" >资源管理</a></li>
            <li><a href="<%=path %>/Teacher/Discussion" >讨论区</a></li>
 	 </ul>
 </div>
@@ -49,7 +49,7 @@ if(t==null){
       </span>
       <!--<span ><input type="button"  class="btnguanli" /></span>-->
       <span class="btnguanli">
-          <a href="#"><img src="<%=path %>/image/teacher/btnziyuanguanli.jpg" /></a>
+          <a href="<%=path %>/document_add.jsp"><img src="<%=path %>/image/teacher/btnziyuanguanli.jpg" /></a>
      </span>
       
 </div>
@@ -57,15 +57,15 @@ if(t==null){
       <div class="list">   <!--列表块 -->
           <div class="listtitle">  <!--列表项 -->
                <span class="biaoti">标题</span>   <!--通知标题 -->
-               <span class="date">发布时间</span>
+               <span class="date">操作</span>
           </div>
-     
-          <div class="list1">  <!--列表项 -->
-          <c:forEach var="son" items="${assignment_son_list}">
-           
-            </c:forEach>
-               <span class="biaoti" title="此处显示标题"><a href="<%=path %>${son.path}/${son.file_name}">${son.file_name}</a></span>   <!--通知标题 -->
+        <c:forEach var="doc" items="${document_list}">
+           <div class="list1">  <!--列表项 -->
+               <span class="biaoti" title="此处显示标题">${doc.file_name}</span>   <!--通知标题 -->
+               <span class="date"><a href="<%=path %>${doc.path}/${doc.file_name}">下载</a></span>
+               
           </div>
+           </c:forEach>
      </div>
       
      <div class="page">
