@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import jxl.Sheet;
 import jxl.Workbook;
+import model.Course;
 import model.Student;
 
 import org.apache.commons.fileupload.FileItem;
@@ -61,8 +62,7 @@ public class StudentImportServlet extends HttpServlet {
 	 * @throws IOException
 	 *             if an error occurred
 	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
@@ -81,12 +81,10 @@ public class StudentImportServlet extends HttpServlet {
 	 * @throws IOException
 	 *             if an error occurred
 	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if (!isMultipart) {
-			request.getRequestDispatcher("/course_student_list.jsp").forward(
-					request, response);
+			request.getRequestDispatcher("/Teacher/CourseStudentList").forward(request, response);
 			return;
 		}
 
@@ -95,8 +93,7 @@ public class StudentImportServlet extends HttpServlet {
 			f = uploadFile(request);
 			importFile(request, response, f);
 			f.deleteOnExit();
-			request.getRequestDispatcher("/course_student_list.jsp").forward(
-					request, response);
+			request.getRequestDispatcher("/Teacher/CourseStudentList").forward(request, response);
 			return;
 		} catch (FileUploadException e) {
 			// TODO Auto-generated catch block
@@ -118,15 +115,13 @@ public class StudentImportServlet extends HttpServlet {
 			FileItem item = (FileItem) iter.next();
 			if (!item.isFormField()) {
 				String name = item.getName();
-				String fileName = name.substring(name.lastIndexOf("\\") + 1,
-						name.length()); // 获取原文件名
+				String fileName = name.substring(name.lastIndexOf("\\") + 1, name.length()); // 获取原文件名
 				String uploadpath = request.getRealPath("temp");
 				File filepath = new File(uploadpath);
 				if (!filepath.exists()) {
 					filepath.mkdirs();
 				}
-				String path = request.getRealPath("temp") + File.separator
-						+ fileName;
+				String path = request.getRealPath("temp") + File.separator + fileName;
 				uploadFile = new File(path);
 				item.write(uploadFile);
 			}
@@ -135,9 +130,9 @@ public class StudentImportServlet extends HttpServlet {
 	}
 
 	// 解析并导入学生
-	private boolean importFile(HttpServletRequest request,
-			HttpServletResponse response, File file) throws IOException {
-		int courseId = Integer.valueOf(request.getParameter("courseId"));
+	private boolean importFile(HttpServletRequest request, HttpServletResponse response, File file) throws IOException {
+		Course c = (Course)request.getSession().getAttribute("course");
+		int courseId = c.getId();
 		InputStream is = null;
 		jxl.Workbook rwb = null;
 		Student s = new Student();
@@ -167,8 +162,7 @@ public class StudentImportServlet extends HttpServlet {
 			// rs).getRows());;
 
 			// 初始化第一行数据
-			String str[] = { "序号", "学号", "姓名", "性别", "电话", "邮箱", "学院", "年级",
-					"班级", "专业" };
+			String str[] = { "序号", "学号", "姓名", "性别", "电话", "邮箱", "学院", "年级", "班级", "专业" };
 			for (int i = 0; i < str.length; i++) {
 				if (!str[i].equals(rs.getCell(i, 0).getContents())) {
 					rwb.close();
@@ -182,7 +176,7 @@ public class StudentImportServlet extends HttpServlet {
 					String st = rs.getCell(i, j).getContents();
 					switch (i) {
 					case 1:
-						s.setStudent_id(st);;// 账号
+						s.setStudent_id(st);// 账号
 						break;
 					case 2:
 						s.setName(st);
@@ -211,12 +205,12 @@ public class StudentImportServlet extends HttpServlet {
 					}
 				}
 				s.setPassword("123456");
-				importbase(s,courseId);
+				importbase(s, courseId);
 			}
 			request.setAttribute("message", "导入成功");
 			// OperateUtil.add(request, "导入excel表",
 			// "导入了"+rs.getColumns()+"条学生基本个人信息的数据");
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -226,47 +220,49 @@ public class StudentImportServlet extends HttpServlet {
 		}
 		return true;
 	}
-	
-	private void importbase(Student s,int courseId){
-		if(s == null)	return;
-		String student_id = s.getStudent_id();// 账号
-		String name = s.getName();
-		String sex = s.getSex();
-		String phone = s.getPhone();
-		String email = s.getEmail();
-		String academy = s.getAcademy();
-		String grade = s.getAcademy();
-		String clazz = s.getClazz();
-		String major = s.getMajor();
-		String password = s.getPassword();
+
+	private void importbase(Student s, int courseId) {
+		if (s == null)
+			return;
 		Connection con = null;
 		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int i = 0 ;
 		try {
+			// 查询系统中是否已经存在该学号的学生
 			con = JdbcUtil.getConn();
-			String sql = "INSERT INTO table_student(student_id,name,sex,phone,email,academy,grade,clazz,major,password) VALUES(?,?,?,?,?,?,?,?,?,?)";
+			String sql = "select * from table_student where student_id=?";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, student_id); 
-			ps.setString(2, name); 
-			ps.setString(3, sex); 
-			ps.setString(4, phone); 
-			ps.setString(5, email); 
-			ps.setString(6, academy); 
-			ps.setString(7, grade); 
-			ps.setString(8, clazz); 
-			ps.setString(9, major); 
-			ps.setString(10, password); 
-			int i = ps.executeUpdate();
-			if(i>0){
-				sql = "INSERT INTO student_course_map(student_id,course_id) VALUES(?,?)";
+			ps.setString(1, s.getStudent_id());
+			rs = ps.executeQuery();
+//			JdbcUtil.close(null, ps);
+
+			//导入到学生表
+			if (!rs.next()) {
+				sql = "INSERT INTO table_student(student_id,name,sex,phone,email,academy,grade,clazz,major,password) VALUES(?,?,?,?,?,?,?,?,?,?)";
 				ps = con.prepareStatement(sql);
-				ps.setString(1, student_id); 
-				ps.setString(2, name);  
+				ps.setString(1, s.getStudent_id());
+				ps.setString(2, s.getName());
+				ps.setString(3, s.getSex());
+				ps.setString(4, s.getPhone());
+				ps.setString(5, s.getEmail());
+				ps.setString(6, s.getAcademy());
+				ps.setInt(7, s.getGrade());
+				ps.setString(8, s.getClazz());
+				ps.setString(9, s.getMajor());
+				ps.setString(10, s.getPassword());
 				i = ps.executeUpdate();
+				JdbcUtil.close(null, ps);
 			}
+			//导入到选课表
+			sql = "INSERT INTO student_course_map(student_id,course_id) VALUES(?,?)";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, s.getStudent_id());
+			ps.setInt(2, courseId);
+			i = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally{
+		} finally {
 			JdbcUtil.close(null, ps);
 			JdbcUtil.closeConnection(con);
 		}

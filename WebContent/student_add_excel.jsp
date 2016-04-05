@@ -50,7 +50,7 @@ input{border:none;border:1px solid #CCC;vertical-align:middle; }
 <div class="menu">
       <ul>
 		   <li><a href="<%=path %>/Teacher/MessageList" >通知公告</a></li>
-           <li><a href="<%=path %>/Teacher/TeacherCourseList" >视频管理</a></li>
+           <li><a href="<%=path %>/Teacher/VideoList" >视频管理</a></li>
             <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
            <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
           <li><a href="<%=path %>/Teacher/FileList" >资源管理</a></li>
@@ -59,14 +59,16 @@ input{border:none;border:1px solid #CCC;vertical-align:middle; }
 </div>
 <div class="mainxuesheng">
 <div id="duiqi">
-     <form method="post" action="" enctype="multipart/form-data">
+     <form method="post" action="<%=path %>/Teacher/StudentImport" enctype="multipart/form-data">
 <input type="text" id="txt" name="txt" class="input"><input type="button" onmousemove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="浏览" size="30" onclick="f.click()" class="liulan">
 <input type="file" id="f" onchange="txt.value=this.value" name="f" style="height:26px;" class="files"  size="1" hidefocus>
-</form>
+
+<div class="juzhong">
+          <div><input type="submit" value="导 入" class="btntijiao" /></div>
      </div>
-     <div class="juzhong">
-          <div><input type="button" value="导 入" class="btntijiao" /></div>
+     </form>
      </div>
+     
 
 </div>
 

@@ -38,36 +38,8 @@ public class CourseStudentListServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List student_list = new ArrayList<Student>();
-		List map_list = new ArrayList<Course>();
-		Teacher t =  (Teacher) request.getSession().getAttribute("teacher");
-		try {
-			Connection con = JdbcUtil.getConn();
-//			if(!con.isClosed())
-//				System.out.println("Succeeded connecting to the Database!");
-			Statement statement;
-			statement = con.createStatement();
-			int teacher_id = t.getId();
-			// 要执行的SQL语句
-			String sql = "SELECT A.id,B.name,A.state FROM teacher_course_map A,table_course B where teacher_id="+teacher_id+" and A.course_id = B.id";
-			//System.out.println(sql);
-			ResultSet rs = statement.executeQuery(sql);
-			while(rs.next()) {
-				Course map = new Course();
-				map.setId(rs.getInt("id"));
-				map.setName(rs.getString("name"));
-				int state = rs.getInt("state");
-				map.setState(state);
-				map_list.add(map);
-			}
-			JdbcUtil.close(rs, statement);
-			JdbcUtil.closeConnection(con);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		request.setAttribute("map_list", map_list);
-		List course_list = new ArrayList<Course>();
+		List<Student> student_list = new ArrayList<Student>();
+		Course c = (Course)request.getSession().getAttribute("course");
 		try {
 			Connection con = JdbcUtil.getConn();
 //			if(!con.isClosed())
@@ -75,7 +47,7 @@ public class CourseStudentListServlet extends HttpServlet {
 			Statement statement;
 			statement = con.createStatement();
 			// 要执行的SQL语句
-			String sql = "SELECT * FROM table_student";
+			String sql = "SELECT B.* FROM student_course_map A,table_student B where A.student_id = b.student_id and A.course_id = "+c.getId();
 			ResultSet rs = statement.executeQuery(sql);
 			while(rs.next()) {
 				Student s = new Student();
