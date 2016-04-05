@@ -44,7 +44,7 @@ public class AbleCourseServlet extends HttpServlet {
 			Connection con = JdbcUtil.getConn();
 			PreparedStatement ps = null;
 			// 要执行的SQL语句
-			String sql = "UPDATE teacher_course_map SET state=? WHERE id=?";
+			String sql = "UPDATE table_course SET state=? WHERE id=?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, state);
 			ps.setInt(2, id);
