@@ -23,7 +23,7 @@ request.setAttribute("student", t);
 	</div>
     <div class="menu">
 		<ul>
-			<li><a href="<%=path %>/Student/StudentVedioList">课程学习</a></li>
+			<li><a href="<%=path %>/Student/StudentVideoList">课程学习</a></li>
 			<li><a href="<%=path %>/Student/StudentAssignmentList">我的作业</a></li>
 			<li><a href="<%=path %>/Student/StudentMessageList">通知公告</a></li>
 			<li><a href="<%=path %>/Student/StudentFileList">资源下载</a></li>

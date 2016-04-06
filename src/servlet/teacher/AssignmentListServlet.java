@@ -82,7 +82,7 @@ public class AssignmentListServlet extends HttpServlet {
 		request.getRequestDispatcher("/assignment_manage.jsp").forward(request, response);
 		return;
 		}
-		;
+		
 
 	}
 

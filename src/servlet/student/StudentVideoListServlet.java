@@ -21,6 +21,7 @@ import model.Course;
 import model.Message;
 import model.Student;
 import model.Teacher;
+import model.Video;
 
 
 public class StudentVideoListServlet extends HttpServlet {
@@ -41,10 +42,8 @@ public class StudentVideoListServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		  List vedio_list = new ArrayList<Message>();
+		  List video_list = new ArrayList<Message>();
 		    Student s =  (Student) request.getSession().getAttribute("student");
-		    Teacher t = (Teacher) request.getSession().getAttribute("teacher");
-			int teacher_id= t.getId();
 			Course c = (Course) request.getSession().getAttribute("course");
 			int course_id= c.getId();
 		  System.out.println(course_id);
@@ -56,14 +55,18 @@ public class StudentVideoListServlet extends HttpServlet {
 			statement = con.createStatement();
 			
 			// 要执行的SQL语句
-			String sql = "SELECT * FROM table_message where course_id="+course_id;
+			String sql = "SELECT * FROM table_video where course_id="+course_id;
 			ResultSet rs = statement.executeQuery(sql);
 			while(rs.next()) {
-				Message v = new Message();
-				s.setId(rs.getInt("id"));
-				s.setName(rs.getString("title"));
-				s.setMajor(rs.getString("author"));
-				vedio_list.add(s);
+				Video v = new Video();
+				v.setId(rs.getInt("id"));
+				v.setName(rs.getString("name"));
+				v.setFileName(rs.getString("fileName"));
+				v.setPath(rs.getString("path"));
+				v.setPic_path(rs.getString("pic_path"));
+				v.setUploadtime(rs.getTimestamp("upload_time"));
+				v.setCourse_id(rs.getString("course_id"));
+				video_list.add(v);
 			}
 			JdbcUtil.close(rs, statement);
 			JdbcUtil.closeConnection(con);
@@ -72,8 +75,8 @@ public class StudentVideoListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("vedio_list", vedio_list);
-		request.getRequestDispatcher("/student_vedio_list.jsp").forward(request, response);
+		request.setAttribute("video_list", video_list);
+		request.getRequestDispatcher("/student_video_list.jsp").forward(request, response);
 		return;
 	}
 

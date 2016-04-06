@@ -52,14 +52,7 @@
   
   
   <!-- student start -->
-  <servlet>
-    <servlet-name>StudentInformationDetail</servlet-name>
-    <servlet-class>servlet.student.StudentInformationDetailServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>StudentInformationDetail</servlet-name>
-    <url-pattern>/Student/StudentInformationDetail</url-pattern>
-  </servlet-mapping>
+ 
   <servlet>
     <servlet-name>StudentUpdate</servlet-name>
     <servlet-class>servlet.student.StudentUpdateServlet</servlet-class>
@@ -111,6 +104,30 @@
   <servlet-mapping>
     <servlet-name>StudentMessageList</servlet-name>
     <url-pattern>/Student/StudentMessageList</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>StudentInformationDetail</servlet-name>
+    <servlet-class>servlet.student.StudentInformationDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentInformationDetail</servlet-name>
+    <url-pattern>/Student/StudentInformationDetail</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>StudentVideoList</servlet-name>
+    <servlet-class>servlet.student.StudentVideoListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentVideoList</servlet-name>
+    <url-pattern>/Student/StudentVideoList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>StudentVideoDetail</servlet-name>
+    <servlet-class>servlet.student.StudentVideoDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentVideoDetail</servlet-name>
+    <url-pattern>/Student/StudentVideoDetail</url-pattern>
   </servlet-mapping>
   <!-- student end -->
   
@@ -356,6 +373,14 @@
     <servlet-name>DocumentList</servlet-name>
     <url-pattern>/Teacher/DocumentList</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>DocumentDeleteChecked</servlet-name>
+    <servlet-class>servlet.teacher.DocumentDeleteCheckedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DocumentDeleteChecked</servlet-name>
+    <url-pattern>/Teacher/DocumentDeleteChecked</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>VideoAdd</servlet-name>
     <servlet-class>servlet.teacher.VideoAddServlet</servlet-class>
@@ -379,6 +404,14 @@
   <servlet-mapping>
     <servlet-name>VideoList</servlet-name>
     <url-pattern>/Teacher/VideoList</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>VideoDeleteChecked</servlet-name>
+    <servlet-class>servlet.teacher.VideoDeleteCheckedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VideoDeleteChecked</servlet-name>
+    <url-pattern>/Teacher/VideoDeleteChecked</url-pattern>
   </servlet-mapping>
   <!-- teacher end -->
   

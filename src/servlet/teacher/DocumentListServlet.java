@@ -40,8 +40,9 @@ public class DocumentListServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Course c = (Course) request.getSession().getAttribute("course");
+		String type = request.getParameter("type");
 		int course_id= c.getId();
-		String type = request.getParameter("type");	
+		
 		List<Document> document_list = new ArrayList<Document>();
 
 		try {
@@ -51,6 +52,7 @@ public class DocumentListServlet extends HttpServlet {
 	          Statement statement;
 	          statement = con.createStatement();
 			String sql = "SELECT * FROM table_document WHERE course_id="+course_id;
+			
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				Document s= new Document();
@@ -68,9 +70,16 @@ public class DocumentListServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("document_list", document_list);
-		request.getRequestDispatcher("/document_list.jsp").forward(request, response);
-		return;
 		
+		
+		if(type == null){
+			request.getRequestDispatcher("/document_list.jsp").forward(request, response);
+			return;
+		}
+		else if(type.equals("manage")){
+		request.getRequestDispatcher("/document_manage.jsp").forward(request, response);
+		return;
+		}
 	}
 
 	/**

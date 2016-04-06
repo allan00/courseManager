@@ -49,7 +49,7 @@ if(t==null){
       </span>
       <!--<span ><input type="button"  class="btnguanli" /></span>-->
       <span class="btnguanli">
-          <a href="<%=path %>/document_add.jsp"><img src="<%=path %>/image/teacher/btnziyuanguanli.jpg" /></a>
+          <a href="<%=path %>/Teahcer/DocumentList?type=manage"><img src="<%=path %>/image/teacher/btnziyuanguanli.jpg" /></a>
      </span>
       
 </div>

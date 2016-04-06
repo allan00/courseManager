@@ -70,7 +70,7 @@ public class StudentCourseWelcomeServlet extends HttpServlet {
 			request.getSession().setAttribute("course", c);
 		}
 		
-			request.getRequestDispatcher("/student_video_list.jsp").forward(request, response);
+			request.getRequestDispatcher("/Student/StudentVideoList").forward(request, response);
 			return;
 			
 		

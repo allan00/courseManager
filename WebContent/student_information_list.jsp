@@ -38,33 +38,33 @@ request.setAttribute("student", t);
  <c:forEach var="student" items="${student_list}">
 <div class="main">
      <div id="btnchange">
-          <a href="xueshengxiugaimima.html"><img src="<%=path %>/image/student/xiugaimima.jpg" /></a>
+          <a href="<%=path %>/student_password_update.jsp"><img src="<%=path %>/image/student/xiugaimima.jpg" /></a>
      </div>
      
      <div class="xinxikuai">
           <div class="xinxi">
-               <span class="mingcheng">学号：${student.student_id }</span>
-               <span class="neirong"> </span>
-               <span class="mingcheng">姓名：${student.name }</span>
-               <span class="neirong"> </span>
+               <span class="mingcheng">学号：</span>
+               <span class="neirong">${student.student_id }</span>
+               <span class="mingcheng">姓名：</span>
+               <span class="neirong">${student.name } </span>
           </div>
           <div class="xinxi">
-               <span class="mingcheng">性别：${student.sex }</span>
-               <span class="neirong"> </span>
-               <span class="mingcheng">学院：${student.academy }</span>
-               <span class="neirong"> </span>
+               <span class="mingcheng">性别：</span>
+               <span class="neirong">${student.sex } </span>
+               <span class="mingcheng">学院：</span>
+               <span class="neirong"> ${student.academy }</span>
           </div>
           <div class="xinxi">
-               <span class="mingcheng">专业：${student.major }</span>
-               <span class="neirong"></span>
-               <span class="mingcheng">班级：${student.clazz }</span>
-               <span class="neirong"></span>
+               <span class="mingcheng">专业：</span>
+               <span class="neirong">${student.major }</span>
+               <span class="mingcheng">班级：</span>
+               <span class="neirong">${student.clazz }</span>
            </div>
            <div class="xinxi">
-               <span class="mingcheng">邮箱：<input type="text" name="email" id="email" class="text" value="${student.email }"/></span>
-               <span class="neirong"></span>
-               <span class="mingcheng">手机：<input type="text" name="phone" id="phone" class="text" value="${student.phone }"/></span>
-               <span class="neirong"></span>
+               <span class="mingcheng">邮箱：</span>
+               <span class="neirong"><input type="text" name="email" id="email" class="text" value="${student.email }"/></span>
+               <span class="mingcheng">手机：</span>
+               <span class="neirong"><input type="text" name="phone" id="phone" class="text" value="${student.phone }"/></span>
            </div>
       </div>
       <div><input type="button" value="修 改" class="btntijiao"   onclick="this.disabled='true'"/>
