@@ -40,7 +40,7 @@ public class ManagerLoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Manager t = new Manager();
-		String email = request.getParameter("username");
+		String accout = request.getParameter("username");
 		String password = request.getParameter("password");
 		try {
 			Connection con = JdbcUtil.getConn();
@@ -48,7 +48,7 @@ public class ManagerLoginServlet extends HttpServlet {
 //				System.out.println("Succeeded connecting to the Database!");
 			Statement statement;
 			statement = con.createStatement();
-			String accout = null;
+			
 			// 要执行的SQL语句
 			String sql = "SELECT * FROM table_manager where accout="+accout+" and password="+password;
 			ResultSet rs = statement.executeQuery(sql);
@@ -70,7 +70,7 @@ public class ManagerLoginServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.getSession().setAttribute("manager", t);
-		request.getRequestDispatcher("/manager_index.jsp").forward(request, response);
+		request.getRequestDispatcher("/Manager/TeacherList").forward(request, response);
 		return;
 	}
 

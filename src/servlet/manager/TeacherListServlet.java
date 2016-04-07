@@ -38,6 +38,7 @@ public class TeacherListServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List teacher_list = new ArrayList<Teacher>();
+		String type = request.getParameter("type");
 		try {
 			Connection con = JdbcUtil.getConn();
 //			if(!con.isClosed())
@@ -66,8 +67,15 @@ public class TeacherListServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("teacher_list", teacher_list);
-		request.getRequestDispatcher("/teacher_list.jsp").forward(request, response);
+		request.setAttribute("teacher_list", teacher_list);	
+		if(type == null){
+			request.getRequestDispatcher("/manager_index.jsp").forward(request, response);
+			return;
+		}
+		else if(type.equals("manage")){
+		request.getRequestDispatcher("/manager_manage.jsp").forward(request, response);
+		return;
+		}
 
 	}
 

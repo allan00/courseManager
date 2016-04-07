@@ -1,4 +1,4 @@
-package servlet.manager;
+package servlet.teacher;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,52 +18,58 @@ import java.sql.Statement;
 import util.JdbcUtil;
 import model.Student;
 
-public class TeacherDeleteServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TeacherDeleteServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    public void destroy() {
+
+public class TeacherDeleteCheckedServlet extends HttpServlet {
+
+	public TeacherDeleteCheckedServlet() {
+		super();
+	}
+
+	public void destroy() {
 		super.destroy(); // Just puts "destroy" string in log
 		// Put your code here
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int id= Integer.valueOf(request.getParameter("id"));
-		
+		String[] checkArray = request.getParameterValues("checkList");
+		Connection con = null;
+		PreparedStatement ps = null;
+		int size = 0;
+		if(checkArray==null)
+		{
+			request.getRequestDispatcher("/Teacher/TeacherList?type=manage").forward(request, response);
+			return;
+		}
+		String sql = "DELETE FROM table_teacher WHERE id in(";
+		for(int i=0;i<checkArray.length;i++)
+		{
+			sql= sql+checkArray[i]+",";
+		}
+		sql = sql.substring(0,sql.length()-1)+")";					//截去最后一个","
+		//System.out.println(sql);
 		try {
-			Connection con = JdbcUtil.getConn();
-//			if(!con.isClosed())
-//				System.out.println("Succeeded connecting to the Database!");
-			PreparedStatement ps = null;
-			// 
-			String sql = "DELETE FROM table_teacher WHERE id=?";
+			con = JdbcUtil.getConn();
 			ps=con.prepareStatement(sql);
-            ps.setInt(1, id); 
             int i=ps.executeUpdate();
-				
-			JdbcUtil.close(null, ps);
-			JdbcUtil.closeConnection(con);
+            request.setAttribute("message", "删除成功 ");
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("message", "删除成功");
-		request.getRequestDispatcher("/Manager/TeacherList").forward(request, response);
+		finally{
+			JdbcUtil.close(null, ps);
+			JdbcUtil.closeConnection(con);
+		}
+		
+		request.getRequestDispatcher("/Teacher/TeacherList?type=manage").forward(request, response);
+		return;
 	}
 
 	/**

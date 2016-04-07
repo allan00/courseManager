@@ -1,4 +1,12 @@
 @charset "utf-8";
+@font-face{
+	font-family:FZHuPo-M04;
+	src:url(../CSS/%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E5%AD%97%E4%BD%93/webfontkit-20160405-083226/_gbk-webfont.woff);
+}
+@font-face{
+	font-family:STXinwei;
+	src:url(../%E5%AD%97%E4%BD%93/webfontkit-20160406-050523/stxinwei-webfont.woff);
+}
 .top{
 	margin:0;
 	padding:0;
@@ -8,11 +16,14 @@
 .logo {
 	margin-top:30px;;
 	height:100px;
-	padding:20px 0 0 150px;
+	padding:20px 0 0 130px;
 	letter-spacing: -3px;
-	font-size: 75px;
-	color:#2d6f9b;
-	font-weight:600;	
+	font-size: 80px;
+	color:#2e89b6;
+	font-weight:600;
+	font-family:"华文新魏";
+	margin-left:100px;
+	background-repeat:no-repeat;
 }
 body{
 	margin:0;
@@ -102,6 +113,27 @@ body{
 	height:40px;
 }
 /*修改密码按钮*/
+.btnxueshengmima{
+	margin-top:50px;
+	margin-left:650px;
+	padding-left:1px;
+	width:101px;
+	height:32px;
+}
+.btnteachergmima{
+	margin-top:0px;
+	margin-left:650px;
+	padding-left:1px;
+	width:101px;
+	height:32px;
+}
+.btnmima:hover{
+	padding-left:0px;
+	-moz-opacity:0.68 !important; 
+	filter:alpha(opacity=68); 
+	opacity: 0.68; 
+	 _-moz-opacity:0.68;
+}
 .btnchange{
 	width:101px;
 	height:30px;
@@ -116,11 +148,11 @@ body{
 	opacity: 0.68; 
 	 _-moz-opacity:0.68;
 }
-.mainxiugaimima{
+.maingerenzhongxin{
 	margin-top:2px;
 	margin-right:150px;
 	padding-top:50px;
-	background-image:url(../image/teacher/xiugaimima1.jpg);
+	background-image:url(../image/teacher/maingerenzhongxin.jpg);
 	background-repeat:no-repeat;
 	width:790px;
 	height:453px;
@@ -506,6 +538,11 @@ body{
 	text-align:left;
 }
 /*信息内容块*/
+.xinxikuaixinxixiugai{
+	margin-top:30px;
+	margin-left:50px;
+	margin-bottom:40px;
+}
 .xinxikuai{
 	margin-top:130px;
 	margin-left:50px;

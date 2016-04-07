@@ -8,12 +8,11 @@ String message = request.getParameter("message");
 Student t = (Student)request.getSession().getAttribute("student");
 request.setAttribute("student", t);
 %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>我的通知</title>
+<title>无标题文档</title>
 <link href="<%=path %>/css/studenttop.css" rel="stylesheet" type="text/css" />
 
 </head>
@@ -29,23 +28,38 @@ request.setAttribute("student", t);
 			<li><a href="<%=path %>/Student/StudentVideoList">课程学习</a></li>
 			<li><a href="<%=path %>/Student/StudentAssignmentList">我的作业</a></li>
 			<li><a href="<%=path %>/Student/StudentMessageList">通知公告</a></li>
-			<li><a href="<%=path %>/Student/StudentFileList">资源下载</a></li>
+			<li><a href="<%=path %>/Student/StudentDocumentList">资源下载</a></li>
 			<li><a href="<%=path %>/Student/StudentDisscussionList">讨论区</a></li>
             <li><a href="<%=path %>/Student/StudentInformationList">个人中心</a></li>
 		</ul>
     </div>
     
 </div>
-<div class="biaotitongzhi"></div>
+<div class="jiange">
+     <div class="namekecheng">你正在学习的课程是：
+          <a>${course.name }</a>; 授课老师是：
+          <a class="bianhua" href="#">小潘</a>
+     </div>
+     <div class="kechengxuanze"><a href="<%=path %>/Student/StudentWelcome"><img src="<%=path %>/image/student/kechengxuanze.jpg" /></a></div>
+</div>
+<div class="bigmain">
+<div class="alltitle">通知公告</div>
 <div class="main">        <!--网页主体 -->
       <span class="sousuo">
             <span><input type="text" value="请输入关键字" class="textsousuo" /></span>
             <span ><input type="button" value="搜 索" class="btnsousuo" /></span>
       </span>
-     <div class="list">   <!--列表块 -->
-       <c:forEach var="message" items="${message_list}">
+       <div class="list">   <!--列表块 -->
+     
+          <div class="listtitle">  <!--列表项 -->
+               <span >标题</span>   <!--通知标题 -->
+               <span class="date">发布日期</span>  <!--发布日期 -->
+         </div>
+       
+   
+        <c:forEach var="message" items="${message_list}">
           <div class="list1">  <!--列表项 -->
-               <span ><a href="xueshengtongzhichakan.html" >${message.title }</a></span>   <!--通知标题 -->
+               <span ><a href="<%=path %>/Student/StudentMessageDetail?id=${message.id }">${message.title }</a></span>   <!--通知标题 -->
                <span class="date">${message.date }</span>  <!--发布日期 -->
          </div>
          </c:forEach>
@@ -63,6 +77,6 @@ request.setAttribute("student", t);
       </div>
       
 </div>
-<div class="footer">design by Remember</div>
+</div>
 </body>
 </html>

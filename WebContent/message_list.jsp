@@ -22,7 +22,7 @@ int teacher_id = t.getId();
 
 <div class="jiange">
      <div class="btnchange">
-          <a href="teacherxiugaimima.html"><img src="<%=path %>/image/teacher/xiugaimima.jpg" /></a>
+          <a href="<%=path %>/Teacher/TeacherInformationList"><img src="<%=path %>/image/teacher/gerenzhongxin.jpg" /></a>
      </div>
      <div class="btnchange">
           <a href="<%=path %>/Teacher/TeacherWelcome"><img src="<%=path %>/image/teacher/kecheng.jpg" /></a>

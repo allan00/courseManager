@@ -40,6 +40,7 @@ public class TeacherWelcomeServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List course_list = new ArrayList<Course>();
+		String type = request.getParameter("type");
 		Teacher t =  (Teacher) request.getSession().getAttribute("teacher");
 		
 		try {
@@ -69,8 +70,14 @@ public class TeacherWelcomeServlet extends HttpServlet {
 		}
 		request.setAttribute("course_list", course_list);
 		//request.getSession().setAttribute("course", course_list);
-		request.getRequestDispatcher("/teacher_index.jsp").forward(request, response);
-		return;
+		
+		if(type == null){
+			request.getRequestDispatcher("/teacher_index.jsp").forward(request, response);
+			return;}
+			else if(type.equals("manage")){
+			request.getRequestDispatcher("/teacher_course_manage.jsp").forward(request, response);
+			return;
+			}
 	}
 
 	/**

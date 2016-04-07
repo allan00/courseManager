@@ -13,8 +13,81 @@ request.setAttribute("student", t);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>我的视频</title>
+<title>视频列表</title>
 <link href="<%=path %>/css/studenttop.css" rel="stylesheet" type="text/css" />
+<style> 
+#content{
+	margin-left:50px;
+}
+#content article { 
+float: left; 
+margin-right: 4%; 
+max-width: 236px; 
+position: relative; 
+width: 20%; 
+margin-bottom: 3.5%; 
+} 
+#content article:nth-child(4n+4) { 
+margin-right: 0; 
+} 
+.post-format-content { 
+position: relative; 
+background: #111; 
+} 
+.post-thumbnail { 
+max-width: 100%; 
+height: auto; 
+overflow: hidden; 
+} 
+.content-wrap { 
+padding: 0; 
+position: absolute; 
+text-align: center; 
+width: 100%; 
+top: 0; 
+bottom: 0; 
+display: table-cell; 
+vertical-align: middle; 
+overflow: hidden; 
+} 
+.content-wrap h1.entry-title { 
+display: table; 
+font-size: 90%; 
+height: 100%; 
+text-transform: uppercase; 
+width: 100%; 
+margin:0; 
+} 
+.edit-link { 
+z-index: 2; 
+} 
+.featured-image { 
+display: table-cell; 
+position: relative; 
+transition: opacity .25s ease-in-out, background .25s ease-in-out; 
+-moz-transition: opacity .25s ease-in-out, background .25s ease-in-out; 
+-webkit-transition: opacity .25s ease-in-out, background .25s ease-in-out; 
+vertical-align: middle; 
+z-index: 1; 
+color: #fff; 
+text-decoration: none; 
+opacity: 0; 
+padding: 10%; 
+} 
+.featured-image:hover { 
+opacity: 0.9; 
+color:#FFF; 
+background: rgba(0,0,0,0.8); 
+} 
+.post-thumbnail img { 
+display: block; 
+} 
+img { 
+max-width: 100%; 
+height: auto; 
+} 
+ 
+</style> 
 </head>
 
 <body>
@@ -27,33 +100,41 @@ request.setAttribute("student", t);
 			<li><a href="<%=path %>/Student/StudentVideoList">课程学习</a></li>
 			<li><a href="<%=path %>/Student/StudentAssignmentList">我的作业</a></li>
 			<li><a href="<%=path %>/Student/StudentMessageList">通知公告</a></li>
-			<li><a href="<%=path %>/Student/StudentFileList">资源下载</a></li>
+			<li><a href="<%=path %>/Student/StudentDocumentList">资源下载</a></li>
 			<li><a href="<%=path %>/Student/StudentDisscussionList">讨论区</a></li>
             <li><a href="<%=path %>/Student/StudentInformationList">个人中心</a></li>
 		</ul>
     </div>
 </div>
-<div class="mainshipin">
-     <div class="xianzhi">
-        
+<div class="jiange">
+     <div class="namekecheng">你正在学习的课程是：
+          <a>${course.name}</a>; 授课老师是：
+          <a class="bianhua" href="#">小潘</a>
+     </div>
+     <div class="kechengxuanze"><a href="<%=path %>/Student/StudentWelcome"><img src="<%=path %>/image/student/kechengxuanze.jpg" /></a></div>
+</div>
+<div class="bigmainkecheng">
+<div class="alltitle">课程学习</div>
+<div class="mainkecheng">
      <div id="content"> 
           <!--数据库原理-->
-          <c:forEach var="V" items="${video_list}">
+            <c:forEach var="V" items="${video_list}">
           <article class="post-152 post type-post status-publish format-standard hentry category-people category-photos"> 
                    <div class="post-format-content"> 
                         <div class="post-thumbnail"> 
                              <img width="480" height="480" src="<%=path %>/image/course/1.jpg"   class="attachment-thumbnail wp-post-image" alt="105694702"> 
                         </div> 
                         <div class="content-wrap"> 
-                             <h1 class="entry-title"><a href="<%=path %>/Teacher/VideoDetail?id=${V.id }" class="featured-image" rel="bookmark">${V.name}</a></h1> 
+                               <h1 class="entry-title"><a href="<%=path %>/Student/StudentVideoDetail?id=${V.id }" class="featured-image" rel="bookmark">${V.name}</a></h1> 
                         </div> 
                    </div> 
           </article> 
           </c:forEach>
           
-     </div>
+        
+          
+     
 </div>
-</div>
-<div class="footer">design by Remember</div>
+
 </body>
 </html>

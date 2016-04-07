@@ -19,9 +19,9 @@ import util.JdbcUtil;
 import model.Student;
 import model.Teacher;
 
-public class TeacherUpdateServlet extends HttpServlet {
+public class TeacherInformationDetailServlet extends HttpServlet {
 
-	public TeacherUpdateServlet() {
+	public TeacherInformationDetailServlet() {
 		super();
 	}
 
@@ -37,34 +37,43 @@ public class TeacherUpdateServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int id = Integer.valueOf(request.getParameter("id"));
-		String name = request.getParameter("name");
-		String sex = request.getParameter("sex");
-		String  phone= request.getParameter("phone");
-		String  password= request.getParameter("password");
+		String id = request.getParameter("id");
+		Teacher s = new Teacher();
 
 		try {
 			Connection con = JdbcUtil.getConn();
+			// if(!con.isClosed())
+			// System.out.println("Succeeded connecting to the Database!");
 			PreparedStatement ps = null;
 			// 要执行的SQL语句
-			String sql = "UPDATE table_teacher SET name=?,sex=?,phone=?,password=? WHERE id=?";
+			String sql = "SELECT * FROM table_teacher WHERE id=?";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, name);
-			ps.setString(2,sex );
-			ps.setString(3, phone);
-			ps.setString(4, password);
-
-			ps.setInt(5, id);
-			int i = ps.executeUpdate();
-	
+			ps.setString(1, id); // 对占位符设置值，占位符顺序从1开始，第一个参数是占位符的位置，第二个参数是占位符的值。
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs != null) {
+				rs.next();
+				s.setId(rs.getInt("id"));
+				s.setName(rs.getString("name"));
+				s.setAccount(rs.getString("account"));
+				s.setSex(rs.getString("sex"));
+				s.setPhone(rs.getString("phone"));
+				s.setEmail(rs.getString("email"));
+				s.setAcademy(rs.getString("academy"));
+				s.setAddress(rs.getString("address"));
+				s.setPassword(rs.getString("password"));
+			}
+			else{
+				System.out.println("the result set is empty");
+			}
 			JdbcUtil.close(null, ps);
 			JdbcUtil.closeConnection(con);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("message", "修改成功 ");
-		request.getRequestDispatcher("/Teacher/TeacherList").forward(request, response);
+		request.setAttribute("teacher", s);
+		request.getRequestDispatcher("/teacher_information_update.jsp").forward(request, response);
 	}
 
 	/**

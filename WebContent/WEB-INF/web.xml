@@ -98,12 +98,36 @@
     <url-pattern>/Student/StudentAssignmentList</url-pattern>
   </servlet-mapping>
    <servlet>
+    <servlet-name>StudentAssignmentDetail</servlet-name>
+    <servlet-class>servlet.student.StudentAssignmentDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentAssignmentDetail</servlet-name>
+    <url-pattern>/Student/StudentAssignmentDetail</url-pattern>
+  </servlet-mapping>
+   <servlet>
     <servlet-name>StudentMessageList</servlet-name>
     <servlet-class>servlet.student.StudentMessageListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>StudentMessageList</servlet-name>
     <url-pattern>/Student/StudentMessageList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>StudentMessageDetail</servlet-name>
+    <servlet-class>servlet.student.StudentMessageDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentMessageDetail</servlet-name>
+    <url-pattern>/Student/StudentMessageDetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>StudentDocumentList</servlet-name>
+    <servlet-class>servlet.student.StudentDocumentListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentDocumentList</servlet-name>
+    <url-pattern>/Student/StudentDocumentList</url-pattern>
   </servlet-mapping>
    <servlet>
     <servlet-name>StudentInformationDetail</servlet-name>
@@ -413,11 +437,52 @@
     <servlet-name>VideoDeleteChecked</servlet-name>
     <url-pattern>/Teacher/VideoDeleteChecked</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>TeacherInformationList</servlet-name>
+    <servlet-class>servlet.teacher.TeacherInformationListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeacherInformationList</servlet-name>
+    <url-pattern>/Teacher/TeacherInformationList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>TeacherInformationDetail</servlet-name>
+    <servlet-class>servlet.teacher.TeacherInformationDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeacherInformationDetail</servlet-name>
+    <url-pattern>/Teacher/TeacherInformationDetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>TeacherInformationUpdate</servlet-name>
+    <servlet-class>servlet.teacher.TeacherInformationUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeacherInformationUpdate</servlet-name>
+    <url-pattern>/Teacher/TeacherInformationUpdate</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>TeacherPasswordUpdate</servlet-name>
+    <servlet-class>servlet.teacher.TeacherPasswordUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeacherPasswordUpdate</servlet-name>
+    <url-pattern>/Teacher/TeacherPasswordUpdate</url-pattern>
+  </servlet-mapping>
+  
   <!-- teacher end -->
   
   
   
   <!-- manager start -->
+  <servlet>
+    <servlet-name>ManagerWelcome</servlet-name>
+    <servlet-class>servlet.manager.ManagerWelcomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagerWelcome</servlet-name>
+    <url-pattern>/Manager/ManagerWelcome</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>TeacherList</servlet-name>
     <servlet-class>servlet.manager.TeacherListServlet</servlet-class>

@@ -41,6 +41,7 @@ public class StudentCourseWelcomeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		int course_id = Integer.valueOf(request.getParameter("course_id"));
 		System.out.println(course_id);
+		Teacher t = new Teacher();
 		Course c = null;
 		
 		try {
@@ -60,6 +61,9 @@ public class StudentCourseWelcomeServlet extends HttpServlet {
 				c.setState(rs.getInt("state"));
 				c.setTeacher_id(Integer.valueOf(rs.getString("teacher_id")));
 			}
+			
+			
+			
 			JdbcUtil.close(rs, statement);
 			JdbcUtil.closeConnection(con);
 		} catch (SQLException e) {
