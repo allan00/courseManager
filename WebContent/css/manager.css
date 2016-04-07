@@ -1,0 +1,64 @@
+@charset "utf-8";
+@font-face{
+	font-family:STXinwei;
+	src:url(../%E5%AD%97%E4%BD%93/webfontkit-20160406-050523/stxinwei-webfont.woff);
+}
+body{
+	background-color:#b7deed;
+	font-family:"华文新魏";
+}
+.bigmain{
+	margin-left:170px;
+	margin-top:50px;
+	padding:10px;
+	font-size:35px;
+	width:1002px;
+	height:680px;
+	border-top-left-radius:8px;
+	border-top-right-radius:8px;
+	border-bottom-left-radius:8px;
+	border-bottom-right-radius:8px;
+	background-color:#8ec7dc;
+}
+.main{
+	margin-top:10px;
+	padding-top:30px;
+	padding-left:30px;
+	width:1002px;
+	height:530px;
+	background-color:#FFF;
+	border-top-left-radius:8px;
+	border-top-right-radius:8px;
+	border-bottom-left-radius:8px;
+	border-bottom-right-radius:8px;
+}
+/*搜索文字框*/
+.textsousuo{
+	margin:0;
+	border:1px solid #7fbbdd;
+	width:200px;
+	height:20px;
+	font-size:10px;
+	background-image:url(../image/student/sousuo1.jpg);
+	background-repeat:no-repeat;
+	background-position:left;
+	text-indent:20px;
+}
+/*搜索按钮*/
+.btnsousuo{
+	margin:0;
+	padding:0;
+	width:50px;
+	height:20px;
+	font-size:9px;
+	background-color:#7fbbdd;
+	color:#000;
+	font-family:"华文新魏";
+}
+.btnsousuo:hover{
+	-moz-opacity:0.68 !important;
+    filter:alpha(opacity=68); 
+	opacity: 0.68; 
+    _-moz-opacity:0.68;
+	color:#666;
+}
