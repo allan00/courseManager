@@ -91,6 +91,13 @@ height: auto;
 </head>
 
 <body>
+<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
+<script type="text/javascript">
+ 		var msg = document.getElementById('msg').value;
+ 		if(msg != null && msg != "null"){
+			alert(msg);
+		}
+</script>
 <div class="top">
     <div class="logo">
 		<h1>课程管理系统</h1>
@@ -109,7 +116,7 @@ height: auto;
 <div class="jiange">
      <div class="namekecheng">你正在学习的课程是：
           <a>${course.name}</a>; 授课老师是：
-          <a class="bianhua" href="#">${course_teacher.name}</a>
+          <a class="bianhua" href="<%=path %>/student_teacher_information.jsp">${course_teacher.name}</a>
      </div>
      <div class="kechengxuanze"><a href="<%=path %>/Student/StudentWelcome"><img src="<%=path %>/image/student/kechengxuanze.jpg" /></a></div>
 </div>

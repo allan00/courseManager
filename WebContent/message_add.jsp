@@ -56,8 +56,15 @@ dv.removeChild(b); //btn
 </head>
 
 <body>
+<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
+<script type="text/javascript">
+ 		var msg = document.getElementById('msg').value;
+ 		if(msg != null && msg != "null"){
+			alert(msg);
+		}
+</script>
 <div class="logo">课程管理系统</div>
-<div class="top"></div>
+
 <div class="jiange">
      
 </div>

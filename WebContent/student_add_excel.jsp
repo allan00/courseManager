@@ -44,6 +44,13 @@ input{border:none;border:1px solid #CCC;vertical-align:middle; }
 </head>
 
 <body>
+<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
+<script type="text/javascript">
+ 		var msg = document.getElementById('msg').value;
+ 		if(msg != null && msg != "null"){
+			alert(msg);
+		}
+</script>
 <div class="logo">课程管理系统</div>
 
 <div class="jiange"></div>
@@ -60,8 +67,8 @@ input{border:none;border:1px solid #CCC;vertical-align:middle; }
 <div class="mainxuesheng">
 <div id="duiqi">
      <form method="post" action="<%=path %>/Teacher/StudentImport" enctype="multipart/form-data">
-<input type="text" id="txt" name="txt" class="input"><input type="button" onmousemove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="浏览" size="30" onclick="f.click()" class="liulan">
-<input type="file" id="f" onchange="txt.value=this.value" name="f" style="height:26px;" class="files"  size="1" hidefocus>
+<input type="text" id="txt" name="txt" class="input"><input type="button" onmousemove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="浏览" size="30" onclick="f.click()" class="liulan"/>
+<input type="file" id="f" onchange="txt.value=this.value" name="f" style="height:26px;" class="files"  size="1" hidefocus />
 
 <div class="juzhong">
           <div><input type="submit" value="导 入" class="btntijiao" /></div>

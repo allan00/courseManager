@@ -1,4 +1,4 @@
-package servlet.teacher;
+package servlet.manager;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class TeacherDeleteCheckedServlet extends HttpServlet {
 		int size = 0;
 		if(checkArray==null)
 		{
-			request.getRequestDispatcher("/Teacher/TeacherList?type=manage").forward(request, response);
+			request.getRequestDispatcher("/Manager/TeacherList").forward(request, response);
 			return;
 		}
 		String sql = "DELETE FROM table_teacher WHERE id in(";
@@ -68,7 +68,7 @@ public class TeacherDeleteCheckedServlet extends HttpServlet {
 			JdbcUtil.closeConnection(con);
 		}
 		
-		request.getRequestDispatcher("/Teacher/TeacherList?type=manage").forward(request, response);
+		request.getRequestDispatcher("/Manager/TeacherList").forward(request, response);
 		return;
 	}
 

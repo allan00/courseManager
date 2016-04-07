@@ -17,6 +17,13 @@ request.setAttribute("student", t);
 </head>
 
 <body>
+<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
+<script type="text/javascript">
+ 		var msg = document.getElementById('msg').value;
+ 		if(msg != null && msg != "null"){
+			alert(msg);
+		}
+</script>
 <div class="top">
     <div class="logo">
 		<h1>课程管理系统</h1>
@@ -35,7 +42,7 @@ request.setAttribute("student", t);
 <div class="jiange">
      <div class="namekecheng">你正在学习的课程是：
           <a>${course.name}</a>; 授课老师是：
-          <a class="bianhua" href="#">小潘</a>
+           <a class="bianhua" href="<%=path %>/student_teacher_information.jsp">${course_teacher.name}</a>
      </div>
      <div class="kechengxuanze"><a href="<%=path %>/Student/StudentWelcome"><img src="<%=path %>/image/student/kechengxuanze.jpg" /></a></div>
 </div>
@@ -45,7 +52,7 @@ request.setAttribute("student", t);
 <form id="meg" name="meg" action="<%=path %>/Student/StudentInformationUpdate?id=${student.student_id }" method="post">
    <c:forEach var="student" items="${student_list}"> 
 <div id="btnchange">
-          <a href="xueshengxiugaimima.html"><img src="<%=path %>/image/student/xiugaimima.jpg" /></a>
+          <a href="<%=path %>/student_password_update.jsp"><img src="<%=path %>/image/student/xiugaimima.jpg" /></a>
      </div>
      <div class="xinxikuai">
           <div class="xinxi">
@@ -68,12 +75,12 @@ request.setAttribute("student", t);
            </div>
            <div class="xinxi">
                <span class="mingcheng">邮箱：</span>
-               <span class="neirong">${student.email }</span>
+               <span class="neirong"><input type="text" name="email" id="email" class="text" value="${student.email }"/></span>
                <span class="mingcheng">手机：</span>
-               <span class="neirong">${student.phone }</span>
+               <span class="neirong"><input type="text" name="phone" id="phone" class="text" value="${student.phone }"/></span>
            </div>
       </div>
-      <div><input type="submit" value="修 改" class="btntijiao" />
+      <div><input type="submit" value="修 改" class="btntijiao" onclick="this.disabled='true'" />
       </div>
       </c:forEach>
       </form>

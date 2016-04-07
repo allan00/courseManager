@@ -43,6 +43,13 @@ input{border:none;border:1px solid #CCC;vertical-align:middle; }
 </head>
 
 <body>
+<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
+<script type="text/javascript">
+ 		var msg = document.getElementById('msg').value;
+ 		if(msg != null && msg != "null"){
+			alert(msg);
+		}
+</script>
 <div class="top">
     <div class="logo">
 		<h1>课程管理系统</h1>
@@ -61,7 +68,7 @@ input{border:none;border:1px solid #CCC;vertical-align:middle; }
 <div class="jiange">
      <div class="namekecheng">你正在学习的课程是：
           <a>${course.name }</a>; 授课老师是：
-          <a class="bianhua" href="#">小潘</a>
+           <a class="bianhua" href="<%=path %>/student_teacher_information.jsp">${course_teacher.name}</a>
      </div>
      <div class="kechengxuanze"><a><img src="<%=path %>/image/student/kechengxuanze.jpg" /></a></div>
 </div>

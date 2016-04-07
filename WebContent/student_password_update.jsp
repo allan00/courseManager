@@ -12,10 +12,17 @@ request.setAttribute("student", t);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>修改密码</title>
+<title>无标题文档</title>
 <link href="<%=path %>/css/studenttop.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
+<script type="text/javascript">
+ 		var msg = document.getElementById('msg').value;
+ 		if(msg != null && msg != "null"){
+			alert(msg);
+		}
+</script>
 <div class="top">
     <div class="logo">
 		<h1>课程管理系统</h1>
@@ -31,18 +38,29 @@ request.setAttribute("student", t);
 		</ul>
     </div>
 </div>
-<div class="biaotigeren"></div>
+<div class="jiange">
+     <div class="namekecheng">你正在学习的课程是：
+          <a>${course.name }</a>; 授课老师是：
+         <a class="bianhua" href="<%=path %>/student_teacher_information.jsp">${course_teacher.name}</a>
+      </div>
+     <div class="kechengxuanze"><a href="<%=path %>/Student/StudentWelcome"><img src="<%=path %>/image/student/kechengxuanze.jpg" /></a></div>
+</div>
+<div class="bigmain">
+<div class="alltitle">个人中心</div>
 <div class="main">
+<form id="meg" name="meg" action="<%=path %>/Student/StudentPasswordUpdate?id=${student.student_id }" method="post">
      <div class="mimachange">
           <span class="mingcheng">新密码：</span>
-          <span class="neirong"><input type="password" class="text" /></span>
+          <span class="neirong"><input type="password" class="text" id="password" name="password"/></span>
      </div>
      <div class="mimachange">
           <span class="mingcheng">密码确认：</span>
-          <span class="neirong"><input type="password" class="text" /></span>
+          <span class="neirong"><input type="password" class="text"  id="password_sure" name="password_sure"/></span>
       </div>
-      <div><input type="button" value="修 改" class="btntijiao" /></div>
+      <div><input type="submit" value="修 改" class="btntijiao"  onclick="this.disabled='true'"/></div>
+      </form>
 </div>
-<div class="footer">design by Remember</div>
+</div>
+
 </body>
 </html>

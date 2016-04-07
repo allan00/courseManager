@@ -1,4 +1,4 @@
-package servlet.manager;
+package servlet.student;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,9 +19,9 @@ import util.JdbcUtil;
 import model.Student;
 import model.Teacher;
 
-public class TeacherDetailServlet extends HttpServlet {
+public class StudentPasswordUpdateServlet extends HttpServlet {
 
-	public TeacherDetailServlet() {
+	public StudentPasswordUpdateServlet() {
 		super();
 	}
 
@@ -37,45 +37,33 @@ public class TeacherDetailServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int id = Integer.valueOf(request.getParameter("id"));
-		Teacher s = new Teacher();
-
+		String student_id = String.valueOf(request.getParameter("student_id"));
+		String  password= request.getParameter("password");
+		String  password_sure= request.getParameter("password_sure");		
+		if(!password.equals(password_sure)){
+			request.setAttribute("message", "输入密码不一致，请重新输入 ");
+		}
+		else {
 		try {
 			Connection con = JdbcUtil.getConn();
-			// if(!con.isClosed())
-			// System.out.println("Succeeded connecting to the Database!");
 			PreparedStatement ps = null;
 			// 要执行的SQL语句
-			String sql = "SELECT * FROM table_teacher WHERE id=?";
+			String sql = "UPDATE table_student SET password=? WHERE student_id=?";
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, id); // 对占位符设置值，占位符顺序从1开始，第一个参数是占位符的位置，第二个参数是占位符的值。
-			ResultSet rs = ps.executeQuery();
 			
-			if (rs != null) {
-				rs.next();
-				s.setId(rs.getInt("id"));
-				s.setAccount(rs.getString("account"));
-				s.setName(rs.getString("name"));
-				s.setSex(rs.getString("sex"));
-				s.setPhone(rs.getString("phone"));
-				s.setEmail(rs.getString("email"));
-				s.setAcademy(rs.getString("academy"));
-				s.setAddress(rs.getString("address"));
-				s.setPassword(rs.getString("password"));
-			}
-			else{
-				System.out.println("the result set is empty");
-			}
+			ps.setString(1, password);
+			ps.setString(2, student_id);
+			int i = ps.executeUpdate();
 			JdbcUtil.close(null, ps);
 			JdbcUtil.closeConnection(con);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("teacher", s);
-		request.getRequestDispatcher("/manager_teacher_detail.jsp").forward(request, response);
+		request.setAttribute("message", "密码修改成功 ");
+		request.getRequestDispatcher("/Student/StudentInformationList").forward(request, response);
 	}
-
+	}
 	/**
 	 * Initialization of the servlet. <br>
 	 *

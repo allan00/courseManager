@@ -50,7 +50,7 @@ public class ManagerLoginServlet extends HttpServlet {
 			statement = con.createStatement();
 			
 			// 要执行的SQL语句
-			String sql = "SELECT * FROM table_manager where accout="+accout+" and password="+password;
+			String sql = "SELECT * FROM table_manager where accout='"+accout+"' and password='"+password+"'";
 			ResultSet rs = statement.executeQuery(sql);
 			if(rs.next()){
 				t.setId(rs.getInt("id"));

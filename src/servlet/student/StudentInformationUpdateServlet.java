@@ -19,9 +19,9 @@ import util.JdbcUtil;
 import model.Student;
 import model.Teacher;
 
-public class StudentUpdateServlet extends HttpServlet {
+public class StudentInformationUpdateServlet extends HttpServlet {
 
-	public StudentUpdateServlet() {
+	public StudentInformationUpdateServlet() {
 		super();
 	}
 
@@ -38,33 +38,19 @@ public class StudentUpdateServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String student_id = String.valueOf(request.getParameter("student_id"));
-		String name = request.getParameter("name");
-		String sex = request.getParameter("sex");
-		String clazz = request.getParameter("clazz");
 		String  phone= request.getParameter("phone");
-		String email = request.getParameter("email");
-		String academy = request.getParameter("academy");
-		String  password= request.getParameter("password");
-		String  grade= request.getParameter("grade");
-		String  major= request.getParameter("major");
+		String email = request.getParameter("email");	
 		try {
 			Connection con = JdbcUtil.getConn();
 			PreparedStatement ps = null;
 			// 要执行的SQL语句
-			String sql = "UPDATE table_student SET name=?,sex=?,clazz=?,phone=?,email=?,academy=?,password=? WHERE student_id=?";
+			String sql = "UPDATE table_student SET phone=?,email=? WHERE student_id=?";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, student_id);
-			ps.setString(2, name);
-			ps.setString(3,sex );
-			ps.setString(4,clazz );
-			ps.setString(5, phone);
-			ps.setString(6,email);
-			ps.setString(7, academy);
-			ps.setString(8,grade);
-			ps.setString(9,major );
-			ps.setString(10,password );
+			
+			ps.setString(1, phone);
+			ps.setString(2,email);
+			ps.setString(3, student_id);
 			int i = ps.executeUpdate();
-	
 			JdbcUtil.close(null, ps);
 			JdbcUtil.closeConnection(con);
 		} catch (SQLException e) {
@@ -72,7 +58,7 @@ public class StudentUpdateServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("message", "修改成功 ");
-		request.getRequestDispatcher("/Student/StudentList").forward(request, response);
+		request.getRequestDispatcher("/Student/StudentInformationList").forward(request, response);
 	}
 
 	/**

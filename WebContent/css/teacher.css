@@ -8,10 +8,12 @@
 	src:url(../%E5%AD%97%E4%BD%93/webfontkit-20160406-050523/stxinwei-webfont.woff);
 }
 .top{
-	margin:0;
+	margin:50;
 	padding:0;
-	height:60px;
+	height:300px;
+	background-position:center;
 	background-image:url(../image/teacher/top.jpg);
+	background-repeat:no-repeat;
 }
 .logo {
 	margin-top:30px;;

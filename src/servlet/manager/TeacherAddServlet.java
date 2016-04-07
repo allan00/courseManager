@@ -1,4 +1,4 @@
-package servlet.teacher;
+package servlet.manager;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,8 +37,12 @@ public class TeacherAddServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String account = request.getParameter("account");
 		String name = request.getParameter("name");
 		String sex = request.getParameter("sex");
+		String email = request.getParameter("email");
+		String academy = request.getParameter("academy");
+		String address = request.getParameter("address");
 		String phone = request.getParameter("phone");
 		String password = "123456";
 		try {
@@ -47,13 +51,17 @@ public class TeacherAddServlet extends HttpServlet {
 //				System.out.println("Succeeded connecting to the Database!");
 			PreparedStatement ps = null;
 			// 要执行的SQL语句
-			String sql = "INSERT INTO table_teacher(name,sex,phone,password) VALUES(?,?,?,?)";
+			String sql = "INSERT INTO table_teacher(account,name,sex,phone,email,academy,address,password) VALUES(?,?,?,?,?,?,?,?)";
 			ps=con.prepareStatement(sql);
            //对占位符设置值，占位符顺序从1开始，第一个参数是占位符的位置，第二个参数是占位符的值。
-            ps.setString(1, name); 
-            ps.setString(2, sex);
-            ps.setString(3, phone); 
-            ps.setString(4, password); 
+			 ps.setString(1, account);
+            ps.setString(2, name);
+            ps.setString(3, sex);
+            ps.setString(4, phone); 
+            ps.setString(5, email);
+            ps.setString(6, academy);
+            ps.setString(7, address);
+            ps.setString(8, password); 
             int i=ps.executeUpdate();
 				
 			JdbcUtil.close(null, ps);
@@ -63,7 +71,7 @@ public class TeacherAddServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("message", "添加成功 ");
-		request.getRequestDispatcher("/Teacher/TeacherList").forward(request, response);
+		request.getRequestDispatcher("/Manager/TeacherList").forward(request, response);
 	}
 
 	/**

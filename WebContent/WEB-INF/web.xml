@@ -48,18 +48,27 @@
     <servlet-name>ManagerLogin</servlet-name>
     <url-pattern>/ManagerLogin</url-pattern>
   </servlet-mapping>
+  
   <!-- common end -->
   
   
   <!-- student start -->
  
   <servlet>
-    <servlet-name>StudentUpdate</servlet-name>
-    <servlet-class>servlet.student.StudentUpdateServlet</servlet-class>
+    <servlet-name>StudentInformationUpdate</servlet-name>
+    <servlet-class>servlet.student.StudentInformationUpdateServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>StudentUpdate</servlet-name>
-    <url-pattern>/Student/StudentUpdate</url-pattern>
+    <servlet-name>StudentInformationUpdate</servlet-name>
+    <url-pattern>/Student/StudentInformationUpdate</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>StudentPasswordUpdate</servlet-name>
+    <servlet-class>servlet.student.StudentPasswordUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentPasswordUpdate</servlet-name>
+    <url-pattern>/Student/StudentPasswordUpdate</url-pattern>
   </servlet-mapping>
   
    <servlet>
@@ -153,6 +162,7 @@
     <servlet-name>StudentVideoDetail</servlet-name>
     <url-pattern>/Student/StudentVideoDetail</url-pattern>
   </servlet-mapping>
+  
   <!-- student end -->
   
   <!-- teacher start -->
@@ -500,12 +510,12 @@
     <url-pattern>/Manager/TeacherAdd</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>TeacherDelete</servlet-name>
-    <servlet-class>servlet.manager.TeacherDeleteServlet</servlet-class>
+    <servlet-name>TeacherDeleteChecked</servlet-name>
+    <servlet-class>servlet.manager.TeacherDeleteCheckedServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>TeacherDelete</servlet-name>
-    <url-pattern>/Manager/TeacherDelete</url-pattern>
+    <servlet-name>TeacherDeleteChecked</servlet-name>
+    <url-pattern>/Manager/TeacherDeleteChecked</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>ManagerTeacherDetail</servlet-name>
@@ -523,6 +533,16 @@
     <servlet-name>ManagerTeacherUpdate</servlet-name>
     <url-pattern>/Manager/TeacherUpdate</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>TeacherImport</servlet-name>
+    <servlet-class>servlet.manager.TeacherImportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeacherImport</servlet-name>
+    <url-pattern>/Manager/TeacherImport</url-pattern>
+  </servlet-mapping>
+ 
+ 
   
   <!-- manager end -->
   
