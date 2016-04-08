@@ -134,7 +134,6 @@ public class TeacherImportServlet extends HttpServlet {
 	private boolean importFile(HttpServletRequest request, HttpServletResponse response, File file) throws IOException {
 		InputStream is = null;
 		jxl.Workbook rwb = null;
-		Teacher s = new Teacher();
 		try {
 			// 1 从Excel文件读取数据表
 			// Java Excel
@@ -171,6 +170,7 @@ public class TeacherImportServlet extends HttpServlet {
 				}
 			}
 			for (int j = 1; j < rs.getRows(); j++) {
+				Teacher s = new Teacher();
 				for (int i = 1; i < rs.getColumns(); i++) {
 					String st = rs.getCell(i, j).getContents();
 					switch (i) {
@@ -195,16 +195,16 @@ public class TeacherImportServlet extends HttpServlet {
 					case 7:
 						s.setAddress((st));
 						break;
-					
+
+					}
+					s.setPassword("123456");
 				}
-				s.setPassword("123456");
 				importbase(s);
+				// OperateUtil.add(request, "导入excel表",
+				// "导入了"+rs.getColumns()+"条学生基本个人信息的数据");
 			}
 			request.setAttribute("message", "导入成功");
-			// OperateUtil.add(request, "导入excel表",
-			// "导入了"+rs.getColumns()+"条学生基本个人信息的数据");
-
-		} }catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 
 		} finally {
@@ -220,7 +220,7 @@ public class TeacherImportServlet extends HttpServlet {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		int i = 0 ;
+		int i = 0;
 		try {
 			// 查询系统中是否已经存在该学号的学生
 			con = JdbcUtil.getConn();
@@ -228,9 +228,9 @@ public class TeacherImportServlet extends HttpServlet {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, s.getId());
 			rs = ps.executeQuery();
-//			JdbcUtil.close(null, ps);
+			// JdbcUtil.close(null, ps);
 
-			//导入到学生表
+			// 导入到学生表
 			if (!rs.next()) {
 				sql = "INSERT INTO table_teacher(account,name,sex,phone,email,academy,address,password) VALUES(?,?,?,?,?,?,?,?)";
 				ps = con.prepareStatement(sql);
@@ -245,8 +245,8 @@ public class TeacherImportServlet extends HttpServlet {
 				i = ps.executeUpdate();
 				JdbcUtil.close(null, ps);
 			}
-			//导入到选课表
-			
+			// 导入到选课表
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
