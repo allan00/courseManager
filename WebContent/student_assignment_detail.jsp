@@ -49,7 +49,7 @@ request.setAttribute("student", t);
 <div class="bigmain">
 <div class="alltitle">我的作业</div>
 <div class="main">
-   <div id="btnupload"><a href="<%=path %>/student_assignment_add.jsp"><img src="<%=path %>/image/student/shangchuan1.png"  /></a></div>
+   <div id="btnupload"><a href="<%=path %>/student_assignment_add.jsp?assignmentId=${assignment.id }"><img src="<%=path %>/image/student/shangchuan1.png"  /></a></div>
    <div class="gonggaobiaoti">
      <h4>${assignment.title }</h4></div>
      <div class="gonggaoriqi">发布日期：${assignment.date_begin }</div>

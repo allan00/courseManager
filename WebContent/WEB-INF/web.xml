@@ -54,6 +54,7 @@
   
   <!-- student start -->
  
+ 
   <servlet>
     <servlet-name>StudentInformationUpdate</servlet-name>
     <servlet-class>servlet.student.StudentInformationUpdateServlet</servlet-class>
@@ -97,6 +98,14 @@
   <servlet-mapping>
     <servlet-name>StudentCourseWelcome</servlet-name>
     <url-pattern>/Student/StudentCourseWelcome</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>StudentAssignmentAdd</servlet-name>
+    <servlet-class>servlet.student.StudentAssignmentAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentAssignmentAdd</servlet-name>
+    <url-pattern>/Student/StudentAssignmentAdd</url-pattern>
   </servlet-mapping>
    <servlet>
     <servlet-name>StudentAssignmentList</servlet-name>

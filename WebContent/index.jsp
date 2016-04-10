@@ -44,20 +44,20 @@ String message = request.getParameter("message");
 								class="wz">登录名：</td>
 							<td width="117" height="37" bgcolor="#306BC7">
 							<input
-								name="username" id="username" type="text" size="15" value="teacher"/></td>
+								name="username" id="username" type="text" size="15" value="20122101035"/></td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
 							<td height="35" align="right" bgcolor="#306BC7" class="wz">密码：</td>
 							<td height="35" bgcolor="#306BC7"><input id="password"
-								name="password" type="password" size="15" value="teacher"/></td>
+								name="password" type="password" size="15" value="123456"/></td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
 							<td height="31" align="right" bgcolor="#306BC7" class="wz">身份：</td>
 							<td height="31" bgcolor="#306BC7">
 							<select name="userType"
 								id="userType">
+								<option value="1">学生</option>
 									<option value="2">教师</option>
-									<option value="1">学生</option>
 								    <option value="3">管理员</option>
 							</select></td>
 						</tr>

@@ -75,7 +75,7 @@ dv.removeChild(b); //btn
            <li><a href="<%=path %>/Teacher/Discussion" >讨论区</a></li>
 	 </ul>
 </div>
-<form name="form" action="<%=path %>/Teacher/AssignmentAdd" method="post" enctype="multipart/form-data">
+<form name="form" action="<%=path %>/Teacher/StudentAssignmentAdd" method="post" enctype="multipart/form-data">
 <div class="mainzuoye">
      <div class="zuoyebiaoti"><input type="text" class="text" id="title" name="title" /></div>
      <div class="zuoyejiezhiriqi">
