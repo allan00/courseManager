@@ -11,34 +11,36 @@ request.setAttribute("student", t);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
+<title>作业查看</title>
 <link href="<%=path %>/css/studenttop.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
 <%@include file="/student_top.jsp"%> 
 <div class="jiange">
      <div class="namekecheng">你正在学习的课程是：
           <a>${course.name }</a>; 授课老师是：
          <a class="bianhua" href="<%=path %>/student_teacher_information.jsp">${course_teacher.name}</a>
-      </div>
+     </div>
      <div class="kechengxuanze"><a href="<%=path %>/Student/StudentWelcome"><img src="<%=path %>/image/student/kechengxuanze.jpg" /></a></div>
 </div>
 <div class="bigmain">
-<div class="alltitle">个人中心</div>
+<div class="alltitle">我的作业</div>
 <div class="main">
-<form id="meg" name="meg" action="<%=path %>/Student/StudentPasswordUpdate?id=${student.student_id }" method="post">
-     <div class="mimachange">
-          <span class="mingcheng">新密码：</span>
-          <span class="neirong"><input type="password" class="text" id="password" name="password"/></span>
+   <div class="gonggaobiaoti">
+     <h4>${assignment_answer.title }</h4></div>
+     <div class="gonggaoriqi">提交日期：${assignment_answer.uploadTime }</div>
+     <div class="gonggaoneirong">
+     ${assignment_answer.content}
      </div>
-     <div class="mimachange">
-          <span class="mingcheng">密码确认：</span>
-          <span class="neirong"><input type="password" class="text"  id="password_sure" name="password_sure"/></span>
-      </div>
-      <div><input type="submit" value="修 改" class="btntijiao"  onclick="this.disabled='true'"/></div>
-      </form>
+    
+     <div class="list1">  <!--列表项 -->
+      <c:if test="${assignment_answer_son_list!=null}">附件：</c:if>
+		  <c:forEach var="son" items="${assignment_answer_son_list}">
+           <a href="<%=path %>${son.path}/${son.file_name}">${son.file_name}</a>
+           </c:forEach>
+           </div> 	
 </div>
 </div>
-
 </body>
 </html>

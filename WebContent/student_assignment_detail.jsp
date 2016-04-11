@@ -4,7 +4,6 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String message = request.getParameter("message");
 Student t = (Student)request.getSession().getAttribute("student");
 request.setAttribute("student", t);
 %>
@@ -17,28 +16,7 @@ request.setAttribute("student", t);
 </head>
 
 <body>
-<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
-<script type="text/javascript">
- 		var msg = document.getElementById('msg').value;
- 		if(msg != null && msg != "null"){
-			alert(msg);
-		}
-</script>
-<div class="top">
-    <div class="logo">
-		<h1>课程管理系统</h1>
-	</div>
-    <div class="menu">
-		<ul>
-			<li><a href="<%=path %>/Student/StudentVideoList">课程学习</a></li>
-			<li><a href="<%=path %>/Student/StudentAssignmentList">我的作业</a></li>
-			<li><a href="<%=path %>/Student/StudentMessageList">通知公告</a></li>
-			<li><a href="<%=path %>/Student/StudentDocumentList">资源下载</a></li>
-			<li><a href="<%=path %>/Student/StudentDisscussionList">讨论区</a></li>
-            <li><a href="<%=path %>/Student/StudentInformationList">个人中心</a></li>
-		</ul>
-    </div>
-</div>
+<%@include file="/student_top.jsp"%> 
 <div class="jiange">
      <div class="namekecheng">你正在学习的课程是：
           <a>${course.name }</a>; 授课老师是：
@@ -49,7 +27,11 @@ request.setAttribute("student", t);
 <div class="bigmain">
 <div class="alltitle">我的作业</div>
 <div class="main">
-   <div id="btnupload"><a href="<%=path %>/student_assignment_add.jsp?assignmentId=${assignment.id }"><img src="<%=path %>/image/student/shangchuan1.png"  /></a></div>
+   <div id="btnupload">
+   <c:if test="${assignment_answer==null}">
+   <a href="<%=path %>/student_assignment_add.jsp?assignmentId=${assignment.id }"><img src="<%=path %>/image/student/shangchuan1.png"  /></a>
+   </c:if>
+   </div>
    <div class="gonggaobiaoti">
      <h4>${assignment.title }</h4></div>
      <div class="gonggaoriqi">发布日期：${assignment.date_begin }</div>
@@ -57,6 +39,16 @@ request.setAttribute("student", t);
      <div class="gonggaoneirong">
      ${assignment.content}
      </div>
+     <div class="list1">  <!--列表项 -->
+		  <c:forEach var="son" items="${assignment_son_list}">
+           <a href="<%=path %>${son.path}/${son.file_name}">${son.file_name}</a>
+            </c:forEach>
+           </div>
+      <c:if test="${assignment_answer!=null}">已提交作业：      ${assignment_answer.title},提交时间：${assignment_answer.uploadTime}
+      <a href="<%=path %>/Student/StudentAssignmentAnswerDetail?assignmentAnswerId=${assignment_answer.id }">查看</a>
+      </c:if>
+   	
+      
 </div>
 </div>
 </body>

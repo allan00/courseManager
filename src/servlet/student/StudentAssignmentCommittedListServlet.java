@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.sql.Connection;    
-import java.sql.ResultSet;  
-import java.sql.SQLException;  
-import java.sql.Statement;  
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import util.JdbcUtil;
 import model.Assignment;
@@ -21,10 +21,9 @@ import model.Message;
 import model.Student;
 import model.Teacher;
 
+public class StudentAssignmentCommittedListServlet extends HttpServlet {
 
-public class StudentAssignmentListServlet extends HttpServlet {
-
-	public StudentAssignmentListServlet() {
+	public StudentAssignmentCommittedListServlet() {
 		super();
 	}
 
@@ -33,30 +32,29 @@ public class StudentAssignmentListServlet extends HttpServlet {
 		// Put your code here
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		List assignment_list = new ArrayList<Assignment>();
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Assignment> assignment_list = new ArrayList<Assignment>();
 		String type = request.getParameter("type");
 		Student s = (Student) request.getSession().getAttribute("student");
-		String student_id= s.getStudent_id();
+		String student_id = s.getStudent_id();
 		Course c = (Course) request.getSession().getAttribute("course");
-		int course_id= c.getId();
+		int course_id = c.getId();
 		try {
 			Connection con = JdbcUtil.getConn();
-//			if(!con.isClosed())
-//				System.out.println("Succeeded connecting to the Database!");
+			// if(!con.isClosed())
+			// System.out.println("Succeeded connecting to the Database!");
 			Statement statement;
 			statement = con.createStatement();
-			
+
 			// 要执行的SQL语句
-			String sql = "SELECT * FROM table_assignment where course_id="+course_id;
+			String sql = "select A.* from table_assignment A,assignment_answer B where A.id=B.assignmentId and B.studentId='"
+					+ student_id + "' and A.course_id = " + course_id;
 			ResultSet rs = statement.executeQuery(sql);
-			while(rs.next()) {
+			while (rs.next()) {
 				Assignment s1 = new Assignment();
 				s1.setId(rs.getInt("id"));
 				s1.setTitle(rs.getString("title"));
@@ -73,18 +71,15 @@ public class StudentAssignmentListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("assignment_list", assignment_list);
-
-		
-			request.getRequestDispatcher("/student_assignment_list.jsp").forward(request, response);
-			return;
-	
-
+		request.getRequestDispatcher("/student_assignment_committed_list.jsp").forward(request, response);
+		return;
 	}
 
 	/**
 	 * Initialization of the servlet. <br>
 	 *
-	 * @throws ServletException if an error occurs
+	 * @throws ServletException
+	 *             if an error occurs
 	 */
 	public void init() throws ServletException {
 		// Put your code here

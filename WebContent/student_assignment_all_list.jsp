@@ -13,40 +13,48 @@ request.setAttribute("student", t);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
 <link href="<%=path %>/css/studenttop.css" rel="stylesheet" type="text/css" />
-
 </head>
 
 <body>
 <%@include file="/student_top.jsp"%> 
 <div class="jiange">
      <div class="namekecheng">你正在学习的课程是：
-          <a>${course.name }</a>; 授课老师是：
-          <a class="bianhua" href="<%=path %>/student_teacher_information.jsp">${course_teacher.name}</a>
+          <a>${course.name}</a>; 授课老师是：
+        <a class="bianhua" href="<%=path %>/student_teacher_information.jsp">${course_teacher.name}</a>
      </div>
      <div class="kechengxuanze"><a href="<%=path %>/Student/StudentWelcome"><img src="<%=path %>/image/student/kechengxuanze.jpg" /></a></div>
 </div>
 <div class="bigmain">
-<div class="alltitle">通知公告</div>
-<div class="main">        <!--网页主体 -->
+<div class="alltitle">我的作业
+<div>
+	<a href="<%=path %>/Student/StudentAssignmentUncommittedList">未提交</a>
+	<a href="<%=path %>/Student/StudentAssignmentCommittedList">已提交</a>
+	<a href="<%=path %>/Student/StudentAssignmentAllList">所有</a>
+</div>
+</div>
+<div class="main">
       <span class="sousuo">
             <span><input type="text" value="请输入关键字" class="textsousuo" /></span>
             <span ><input type="button" value="搜 索" class="btnsousuo" /></span>
       </span>
-       <div class="list">   <!--列表块 -->
-     
-          <div class="listtitle">  <!--列表项 -->
+      <div class="list">   <!--列表块 -->
+      
+          
                <span >标题</span>   <!--通知标题 -->
-               <span class="date">发布日期</span>  <!--发布日期 -->
-         </div>
-       
-   
-        <c:forEach var="message" items="${message_list}">
+               <span class="datetitle">截止日期</span>  <!--发布日期 -->
+               <span class="datetitle">发布日期</span>  <!--发布日期 -->
+               <span class="datetitle">状态</span>  <!--发布日期 -->
+     <c:forEach var="assignment" items="${assignment_list}"> 
           <div class="list1">  <!--列表项 -->
-               <span ><a href="<%=path %>/Student/StudentMessageDetail?id=${message.id }">${message.title }</a></span>   <!--通知标题 -->
-               <span class="date">${message.date }</span>  <!--发布日期 -->
+               <span ><a href="<%=path %>/Student/StudentAssignmentDetail?id=${assignment.id }">${assignment.title }</a></span>   <!--通知标题 -->
+               <span class="overdate">${assignment.deadline}</span>  <!--截止日期 -->
+               <span class="date">${assignment.date_begin}</span>  <!--发布日期 -->
+               <span >
+                <c:if test="${assignment.ifcomit==1}">已提交</c:if>
+   				<c:if test="${assignment.ifcomit==0}">未提交</c:if>
+               </span>  <!--发布日期 -->
          </div>
          </c:forEach>
-         
      </div>
      
      <div class="page">
@@ -58,7 +66,6 @@ request.setAttribute("student", t);
           <a href="#" >n</a>
           <a href="#" >下一页</a>    第   页/共  页
       </div>
-      
 </div>
 </div>
 </body>

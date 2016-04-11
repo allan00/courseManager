@@ -107,13 +107,29 @@
     <servlet-name>StudentAssignmentAdd</servlet-name>
     <url-pattern>/Student/StudentAssignmentAdd</url-pattern>
   </servlet-mapping>
-   <servlet>
-    <servlet-name>StudentAssignmentList</servlet-name>
-    <servlet-class>servlet.student.StudentAssignmentListServlet</servlet-class>
+  <servlet>
+    <servlet-name>StudentAssignmentAllList</servlet-name>
+    <servlet-class>servlet.student.StudentAssignmentAllListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>StudentAssignmentList</servlet-name>
-    <url-pattern>/Student/StudentAssignmentList</url-pattern>
+    <servlet-name>StudentAssignmentAllList</servlet-name>
+    <url-pattern>/Student/StudentAssignmentAllList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>StudentAssignmentUncommittedList</servlet-name>
+    <servlet-class>servlet.student.StudentAssignmentUncommittedListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentAssignmentUncommittedList</servlet-name>
+    <url-pattern>/Student/StudentAssignmentUncommittedList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>StudentAssignmentCommittedList</servlet-name>
+    <servlet-class>servlet.student.StudentAssignmentCommittedListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentAssignmentCommittedList</servlet-name>
+    <url-pattern>/Student/StudentAssignmentCommittedList</url-pattern>
   </servlet-mapping>
    <servlet>
     <servlet-name>StudentAssignmentDetail</servlet-name>
@@ -122,6 +138,14 @@
   <servlet-mapping>
     <servlet-name>StudentAssignmentDetail</servlet-name>
     <url-pattern>/Student/StudentAssignmentDetail</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>StudentAssignmentAnswerDetail</servlet-name>
+    <servlet-class>servlet.student.StudentAssignmentAnswerDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentAssignmentAnswerDetail</servlet-name>
+    <url-pattern>/Student/StudentAssignmentAnswerDetail</url-pattern>
   </servlet-mapping>
    <servlet>
     <servlet-name>StudentMessageList</servlet-name>

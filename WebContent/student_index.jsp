@@ -4,7 +4,6 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String message = request.getParameter("message");
 Student t = (Student)request.getSession().getAttribute("student");
 request.setAttribute("student", t);
 %>

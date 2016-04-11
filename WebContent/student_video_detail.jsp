@@ -4,7 +4,6 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String message = request.getParameter("message");
 Student t = (Student)request.getSession().getAttribute("student");
 request.setAttribute("student", t);
 %>
@@ -19,21 +18,7 @@ request.setAttribute("student", t);
 </head>
 
 <body>
-<div class="top">
-    <div class="logo">
-		<h1>课程管理系统</h1>
-	</div>
-    <div class="menu">
-		<ul>
-			<li><a href="<%=path %>/Student/StudentVideoList">课程学习</a></li>
-			<li><a href="<%=path %>/Student/StudentAssignmentList">我的作业</a></li>
-			<li><a href="<%=path %>/Student/StudentMessageList">通知公告</a></li>
-			<li><a href="<%=path %>/Student/StudentDocumentList">资源下载</a></li>
-			<li><a href="<%=path %>/Student/StudentDisscussionList">讨论区</a></li>
-            <li><a href="<%=path %>/Student/StudentInformationList">个人中心</a></li>
-		</ul>
-    </div>
-</div>
+<%@include file="/student_top.jsp"%> 
 <div class="jiange">
     <div class="namekecheng">你正在学习的课程是：
           <a>${course.name}</a>; 授课老师是：

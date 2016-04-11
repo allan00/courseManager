@@ -11,7 +11,7 @@ request.setAttribute("student", t);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>资源列表</title>
+<title>无标题文档</title>
 <link href="<%=path %>/css/studenttop.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -19,35 +19,37 @@ request.setAttribute("student", t);
 <%@include file="/student_top.jsp"%> 
 <div class="jiange">
      <div class="namekecheng">你正在学习的课程是：
-          <a>数据结构</a>; 授课老师是：
-         <a class="bianhua" href="<%=path %>/student_teacher_information.jsp">${course_teacher.name}</a>
+          <a>${course.name}</a>; 授课老师是：
+        <a class="bianhua" href="<%=path %>/student_teacher_information.jsp">${course_teacher.name}</a>
      </div>
      <div class="kechengxuanze"><a href="<%=path %>/Student/StudentWelcome"><img src="<%=path %>/image/student/kechengxuanze.jpg" /></a></div>
 </div>
 <div class="bigmain">
-     <div class="alltitle">资源下载</div>
-     <div class="main">        <!--网页主体 -->
-          <span class="sousuo">
-                <span><input type="text" value="请输入关键字" class="textsousuo" /></span>
-                <span><input type="button" value="搜 索" class="btnsousuo" /></span>
-          </span>
-          <span id="btndownload"><img src="<%=path %>/image/student/xiazai1.png"/></span>
-    
-    
-          <div class="list">   <!--列表块 -->
-          <div class="listtitle">  <!--列表项 -->
-            <span><input type="checkbox"/></span>    <!--复选框 -->
-            <span >标题</span>   <!--通知标题 -->
-            <span class="datetitle">操作</span>  <!--发布日期 -->
-          </div>
-      <c:forEach var="doc" items="${document_list}">
-          <div class="list1"> <!--列表项 --> 
-               <span><input type="checkbox" /></span>    <!--复选框 -->
-               <span><a href="#" =>${doc.file_name}</a></span>          <!--通知标题 -->
-               <span class="date"><a href="<%=path %>${doc.path}/${doc.file_name}">下载</a></span>                        <!--发布日期 -->
+<div class="alltitle">我的作业
+<div>
+	<a href="<%=path %>/Student/StudentAssignmentUncommittedList">未提交</a>
+	<a href="<%=path %>/Student/StudentAssignmentCommittedList">已提交</a>
+	<a href="<%=path %>/Student/StudentAssignmentAllList">所有</a>
+</div>
+</div>
+<div class="main">
+      <span class="sousuo">
+            <span><input type="text" value="请输入关键字" class="textsousuo" /></span>
+            <span ><input type="button" value="搜 索" class="btnsousuo" /></span>
+      </span>
+      <div class="list">   <!--列表块 -->
+      
+          
+               <span >标题</span>   <!--通知标题 -->
+               <span class="datetitle">截止日期</span>  <!--发布日期 -->
+               <span class="datetitle">发布日期</span>  <!--发布日期 -->
+     <c:forEach var="assignment" items="${assignment_list}"> 
+          <div class="list1">  <!--列表项 -->
+               <span ><a href="<%=path %>/Student/StudentAssignmentDetail?id=${assignment.id }">${assignment.title }</a></span>   <!--通知标题 -->
+               <span class="overdate">${assignment.deadline}</span>  <!--截止日期 -->
+               <span class="date">${assignment.date_begin}</span>  <!--发布日期 -->
          </div>
          </c:forEach>
-  
      </div>
      
      <div class="page">
@@ -59,9 +61,7 @@ request.setAttribute("student", t);
           <a href="#" >n</a>
           <a href="#" >下一页</a>    第   页/共  页
       </div>
-      
 </div>
-
 </div>
 </body>
 </html>

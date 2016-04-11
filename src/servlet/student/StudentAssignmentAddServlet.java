@@ -120,7 +120,7 @@ public class StudentAssignmentAddServlet extends HttpServlet {
 				}
 			}
 			con = JdbcUtil.getConn();
-			String sql = "INSERT INTO student_assignment(title,content,uploadTime,state,score,assignmentId,studentId,studentName) VALUES(?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO assignment_answer(title,content,uploadTime,state,score,assignmentId,studentId,studentName) VALUES(?,?,?,?,?,?,?,?)";
 			ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, title); 
 			ps.setString(2, content);
@@ -150,7 +150,7 @@ public class StudentAssignmentAddServlet extends HttpServlet {
 					int m = new java.util.Date().getMonth()+1;
 					String month = m<10?("0"+m):(""+m);
 					String fileName = returnDate() + "-"+name.substring(name.lastIndexOf("\\") + 1, name.length()); // 获取原文件名
-					String uploadpath = request.getRealPath("/document/upload/studentAssignment/" + year+ month);
+					String uploadpath = request.getRealPath("/document/upload/AssignmentAnswer/" + year+ month);
 					
 					//如果不存在目录则新建
 					File filepath = new File(uploadpath);
@@ -163,8 +163,8 @@ public class StudentAssignmentAddServlet extends HttpServlet {
 					item.write(uploadFile);
 					
 				
-					String directory = "/document/upload/studentAssignment/" + year+ month;
-					sql = "INSERT INTO student_assignment_son(fileName,path,studentAssignmentId) VALUES(?,?,?)";
+					String directory = "/document/upload/AssignmentAnswer/" + year+ month;
+					sql = "INSERT INTO assignment_answer_son(fileName,path,studentAssignmentId) VALUES(?,?,?)";
 					ps = con.prepareStatement(sql);
 					ps.setString(1, fileName);
 					ps.setString(2, directory);

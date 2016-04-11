@@ -53,7 +53,7 @@ input{border:none;border:1px solid #CCC;vertical-align:middle; }
     <div class="menu">
 		<ul>
 			<li><a href="<%=path1 %>/Student/StudentVideoList">课程学习</a></li>
-			<li><a href="<%=path1 %>/Student/StudentAssignmentList">我的作业</a></li>
+			<li><a href="<%=path1 %>/Student/StudentAssignmentAllList">我的作业</a></li>
 			<li><a href="<%=path1 %>/Student/StudentMessageList">通知公告</a></li>
 			<li><a href="<%=path1 %>/Student/StudentDocumentList">资源下载</a></li>
 			<li><a href="<%=path1 %>/Student/StudentDisscussionList">讨论区</a></li>
