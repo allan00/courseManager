@@ -125,8 +125,8 @@ public class StudentAssignmentAddServlet extends HttpServlet {
 			ps.setString(1, title); 
 			ps.setString(2, content);
 			ps.setTimestamp(3, uploadTime);
-			ps.setInt(4, 1);
-			ps.setDouble(5, -1.0);
+			ps.setInt(4, 0);
+			ps.setDouble(5, -1);
 			ps.setString(6, assignmentId);
 			ps.setString(7, s.getStudent_id());
 			ps.setString(8, s.getName());
