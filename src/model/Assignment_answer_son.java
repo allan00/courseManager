@@ -3,7 +3,7 @@ package model;
 public class Assignment_answer_son {
 	private long id; 
 	private String path;   //保存路径
-	private String file_name;
+	private String fileName;
 	private int assignmentAnswerId;
 	public long getId() {
 		return id;
@@ -17,11 +17,11 @@ public class Assignment_answer_son {
 	public void setPath(String path) {
 		this.path = path;
 	}
-	public String getFile_name() {
-		return file_name;
+	public String getFileName() {
+		return fileName;
 	}
-	public void setFile_name(String file_name) {
-		this.file_name = file_name;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 	public int getAssignmentAnswerId() {
 		return assignmentAnswerId;

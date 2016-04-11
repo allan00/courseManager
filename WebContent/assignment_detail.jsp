@@ -57,6 +57,19 @@ int teacher_id = t.getId();
             </c:forEach>
            </div>
            </div>
+    </br></br></br>              
+          未提交作业：<c:forEach var="stu" items="${uncommitted_list}">
+           <span>${stu.name}</span>&nbsp;&nbsp;
+            </c:forEach>
+      </br></br></br>      
+            已提交作业：
+          <c:forEach var="son" items="${committed_list}">
+          <span>
+          <a href="<%=path %>/Teacher/AssignmentAnswerDetail?assignmentAnswerId=${son.id}">${son.studentName}</a>
+          <font color="red"><c:if test="${son.state==0}">(未批改)</c:if></font>
+          <c:if test="${son.state==1}">(${son.score})</c:if>
+          </span>
+          </c:forEach>
 	</div>
 
 </div>

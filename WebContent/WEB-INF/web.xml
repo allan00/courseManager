@@ -574,6 +574,22 @@
     <servlet-name>TeacherImport</servlet-name>
     <url-pattern>/Manager/TeacherImport</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AssignmentAnswerDetail</servlet-name>
+    <servlet-class>servlet.teacher.AssignmentAnswerDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AssignmentAnswerDetail</servlet-name>
+    <url-pattern>/Teacher/AssignmentAnswerDetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>TeacherScoreAssignmentAnswer</servlet-name>
+    <servlet-class>servlet.teacher.TeacherScoreAssignmentAnswerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeacherScoreAssignmentAnswer</servlet-name>
+    <url-pattern>/Teacher/TeacherScoreAssignmentAnswer</url-pattern>
+  </servlet-mapping>
  
  
   

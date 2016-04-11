@@ -1,4 +1,4 @@
-package servlet.student;
+package servlet.teacher;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,11 +16,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import util.JdbcUtil;
-import model.*;
+import model.Assignment;
+import model.Assignment_answer;
+import model.Assignment_answer_son;
+import model.Assignment_son;
+import model.Message;
+import model.Message_son;
+import model.Student;
+import model.Teacher;
 
-public class StudentAssignmentAnswerDetailServlet extends HttpServlet {
+public class AssignmentAnswerDetailServlet extends HttpServlet {
 
-	public StudentAssignmentAnswerDetailServlet() {
+	public AssignmentAnswerDetailServlet() {
 		super();
 	}
 
@@ -37,7 +44,7 @@ public class StudentAssignmentAnswerDetailServlet extends HttpServlet {
 		String id = request.getParameter("assignmentAnswerId");
 		String type = request.getParameter("type");
 		Assignment_answer ans = null;
-		List<Assignment_answer_son> assignment_answer_son_list = new ArrayList<Assignment_answer_son>();
+		List<Assignment_answer_son> son_list = new ArrayList<Assignment_answer_son>();
 		Connection con = null;
 		PreparedStatement ps = null;
 
@@ -62,22 +69,22 @@ public class StudentAssignmentAnswerDetailServlet extends HttpServlet {
 				ans.setStudentId(rs.getString("studentId"));
 				ans.setStudentName(rs.getString("studentName"));
 				ans.setCourseId(rs.getInt("courseId"));
-				request.setAttribute("assignment_answer", ans);
+			} else {
+				System.out.println("the result set is empty");
 			}
-			
+
 			sql = "SELECT * FROM assignment_answer_son WHERE assignmentAnswerId=?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id); // 对占位符设置值，占位符顺序从1开始，第一个参数是占位符的位置，第二个参数是占位符的值。
 			rs = ps.executeQuery();
-			if (rs.next()) {
-				Assignment_answer_son son = new Assignment_answer_son(); 
-				son.setId(rs.getLong("id"));
+
+			while (rs.next()) {
+				Assignment_answer_son son = new Assignment_answer_son();
+				son.setId(rs.getInt("id"));
 				son.setFileName(rs.getString("fileName"));
 				son.setPath(rs.getString("path"));
-				son.setAssignmentAnswerId(Integer.valueOf(id));
-				assignment_answer_son_list.add(son);
+				son_list.add(son);
 			}
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,9 +92,9 @@ public class StudentAssignmentAnswerDetailServlet extends HttpServlet {
 			JdbcUtil.close(null, ps);
 			JdbcUtil.closeConnection(con);
 		}
-		request.setAttribute("assignment", ans);
-		request.setAttribute("assignment_answer_son_list", assignment_answer_son_list);
-		request.getRequestDispatcher("/student_assignment_answer_detail.jsp").forward(request, response);
+		request.setAttribute("assignment_answer", ans);
+		request.setAttribute("son_list", son_list);
+		request.getRequestDispatcher("/teacher_score_assignment.jsp").forward(request, response);
 		return;
 
 	}
