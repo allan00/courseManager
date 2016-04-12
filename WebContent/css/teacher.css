@@ -6,33 +6,65 @@
 @font-face{
 	font-family:STXinwei;
 	src:url(../%E5%AD%97%E4%BD%93/webfontkit-20160406-050523/stxinwei-webfont.woff);
+	font-weight:normal;
 }
-.top{
-	margin:50;
-	padding:0;
-	height:300px;
-	background-position:center;
-	background-image:url(../image/teacher/top.jpg);
-	background-repeat:no-repeat;
-}
-.logo {
-	margin-top:30px;;
-	height:100px;
-	padding:20px 0 0 130px;
-	letter-spacing: -3px;
-	font-size: 80px;
-	color:#2e89b6;
-	font-weight:600;
-	font-family:"华文新魏";
-	margin-left:100px;
-	background-repeat:no-repeat;
+@font-face{
+	font-family:"imooc-icon";
+	src:url(../%E5%AD%97%E4%BD%93/%E5%9B%BE%E6%A0%87/fonts/icomoon.woff);
 }
 body{
+	font-family:"华文新魏";
 	margin:0;
 	padding:0;
-	background-image:url(../image/teacher/u=2422386843,1299541835&fm=21&gp=0.jpg);
-	background-repeat:repeat-x;
 	background-color:#f5fafe;
+	/*background-color:#d4e1f3;*/
+
+}
+.close{
+	float:right;
+	margin-right:20px;
+	margin-top:10px;
+	width:33px;
+	height:32px;
+	font-family:"imooc-icon";
+	font-size:32px;
+	padding-left:0px;
+
+}
+.close a{
+	text-decoration:none;
+	color:#fff;
+}
+.close a:hover{
+	padding-left:1px;
+	-moz-opacity:0.68 !important; 
+	filter:alpha(opacity=68); 
+	opacity: 0.68; 
+	 _-moz-opacity:0.68;
+}
+.top{
+	margin-top:0px;;
+	margin-left:150px;
+
+	height:170px;
+	width:1052px;
+	background-color:#999;
+	border-top-left-radius:8px;
+	border-top-right-radius:8px;
+	border-bottom-left-radius:8px;
+	border-bottom-right-radius:8px;
+	background-image:url(../image/teacher/background.jpg);
+}
+.logo {
+	margin-left:30px;
+	height:100px;
+	padding:50px 0 0 80px;
+	font-size: 85px;
+	color:#3c6478;
+	font-weight:600;
+	font-family:"华文新魏";
+	
+	background-repeat:no-repeat;
 }
 /*导航*/
 .menu{
@@ -43,31 +75,61 @@ body{
 	height:453px;
 	background-image:url(../image/teacher/menu1.jpg);
 	float:left;
+	border-top-left-radius:8px;
+	border-top-right-radius:8px;
+	border-bottom-left-radius:8px;
+	border-bottom-right-radius:8px;
 }
 .menu ul{
 	margin:0;
 	padding:50px 0 20px 0;
-	list-style:none;
+	color:#000;
+	list-style:square;
+	list-style-position:inside;
 	text-align:center;
 	height:50px;
 }
 .menu li{
-	height:50px;
+	height:auto;
 }
 .menu a{
 	display: block;
 	margin-left:5px;
 	margin-right:5px;
-	padding: 5px 20px;
-	font-size: 20px;
+	font-size: 22px;
 	font-weight: bold;
-	color:#333;
+	line-height:30px;
+	color:#000;
 	text-decoration:none;
+	border-bottom:1px solid #44a4ce;
+    font-weight:100;
 }
 .menu a:hover{
 	padding:5px 19px;
-	color:#999;
-	background-color:#145484;
+	color:#175878;
+	background-color:#44a4ce;
+	
+
+}
+.menu li dl{
+	padding-left:10px;
+	padding-right:10px;
+	line-height:20px;
+	margin-top:10px;
+	display:none;
+	list-style:square;
+	list-style-position:inside;
+	}
+.menu li:hover dl{
+	display:block;
+}
+.menu li dl a{
+	font-size:16px;
+	display:block;
+	line-height:20px;
+	border:none;
+	font-family:"华文新魏";
+	font-weight:50;
 }
 
 /*课程管理导航*/
@@ -247,6 +309,7 @@ body{
 	width:150px;
 	height:20px;
 	font-size:10px;
+	box-shadow:inset 1px 1px 1px  #999999;
 	}
 /*列表模块格式*/
 .list{
@@ -340,6 +403,7 @@ body{
 	font-size:16px;
 	height:30px;
 	color:#000;
+	font-family:"华文新魏";
 }
 .btntijiao:hover{
 	color:#666;
@@ -439,15 +503,29 @@ body{
 	margin-top:2px;
 	margin-right:150px;
 	padding-top:0;
-	background-image:url(../image/teacher/zuoyeguanli.jpg);
 	background-repeat:no-repeat;
 	width:790px;
 	height:453px;
 	float:right;
+	background-color:#F5F5F5;
+	border-top-left-radius:8px;
+	border-top-right-radius:8px;
+	border-bottom-left-radius:8px;
+	border-bottom-right-radius:8px;
+	border-right:1px solid #7fbbdd;
+	border-bottom:1px solid #7fbbdd;
+	background-image:url(../image/teacher/zuoyeguanli.jpg);
 	}
+.zuoyetitle{
+	width:150px;
+	height:35px;
+	margin:0;
+	padding-left:20px;
+	padding-top:10px;
+}
 /*作业查看*/
 .zuoyebiaoti{
-	margin-top:50px;
+	margin-top:10px;
 	width:790px;
 	height:30px;
 	text-align:center;
@@ -601,7 +679,7 @@ body{
 /*通知公告*/
 .maintongzhi{
 	margin-top:2px;
-	margin-right:150px;
+	margin-right:165px;
 	padding-top:0;
 	background-image:url(../image/teacher/tongzhigonggao.jpg);
 	background-repeat:no-repeat;
@@ -681,4 +759,10 @@ body{
 	height:453px;
 	float:right;
 	}
+/*添加附件*/
+.fujian{
+	margin-left:50px;
+	margin-top:5px;
+	padding:0;
+}
 

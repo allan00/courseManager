@@ -4,7 +4,6 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String message = request.getParameter("message");
 Teacher t = (Teacher)request.getSession().getAttribute("teacher");
 int teacher_id = t.getId();
 
@@ -18,31 +17,12 @@ int teacher_id = t.getId();
 </head>
 
 <body>
-<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
-<script type="text/javascript">
- 		var msg = document.getElementById('msg').value;
- 		if(msg != null && msg != "null"){
-			alert(msg);
-		}
-</script>
-<div class="logo">课程管理系统</div>
+<%@include file="/teacher_left.jsp"%>
 
-<div class="jiange">
-     <div class="biaogedaoru">
+<div class="maingerenzhongxin">
+ <div class="biaogedaoru">
           <a href="<%=path %>/teacher_password_update.jsp"><img src="<%=path %>/image/teacher/xiugaimima.jpg" /></a>
      </div>
-</div>
-<div class="menu">
-     <ul>
-		   <li><a href="<%=path %>/Teacher/MessageList" >通知公告</a></li>
-           <li><a href="<%=path %>/Teacher/VideoList" >视频管理</a></li>
-            <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
-           <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
-          <li><a href="<%=path %>/Teacher/DocumentList" >资源管理</a></li>
-           <li><a href="<%=path %>/Teacher/Discussion" >讨论区</a></li>
-	 </ul>
-</div>
-<div class="maingerenzhongxin">
 <form id="meg" name="meg" action="<%=path %>/Teacher/TeacherInformationUpdate?id=${teacher.id }" method="post">
      <div class="xinxikuaixinxixiugai">
           <div class="xinxi">

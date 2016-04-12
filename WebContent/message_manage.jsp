@@ -4,10 +4,8 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String message = request.getParameter("message");
 Teacher t = (Teacher)request.getSession().getAttribute("teacher");
-int teacher_id = t.getId();
-
+request.setAttribute("teacher", t);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -39,26 +37,7 @@ e.checked = form.selectAll.checked;
 			alert(msg);
 		}
 </script>
-<div class="logo">课程管理系统</div>
-
-<div class="jiange">
-     <div class="btnchange">
-          <a href="<%=path %>/Teacher/TeacherInformationList"><img src="<%=path %>/image/teacher/gerenzhongxin.jpg" /></a>
-     </div>
-     <div class="btnchange">
-          <a href="<%=path %>/Teacher/TeacherWelcome"><img src="<%=path %>/image/teacher/kecheng.jpg" /></a>
-     </div>
-</div>
-<div class="menu">
-     <ul>
-		   <li><a href="<%=path %>/Teacher/MessageList" >通知公告</a></li>
-           <li><a href="<%=path %>/Teacher/VideoList" >视频管理</a></li>
-            <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
-           <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
-          <li><a href="<%=path %>/Teacher/DocumentList" >资源管理</a></li>
-           <li><a href="<%=path %>/Teacher/Discussion" >讨论区</a></li>
-	 </ul>
-</div>
+<%@include file="/teacher_left.jsp"%>
 <div class="maintongzhi">
 <div class="xianzhi">
       <span class="sousuo">
@@ -71,9 +50,9 @@ e.checked = form.selectAll.checked;
             <div class="shanchu"><a href="<%=path %>/message_add.jsp"><img src="<%=path %>/image/teacher/tianjia.png"  /></a></div>
        </div>
 </div>
-       <div  class="xianzhi"></div>
+          	<form name="studentListForm" id="studentListForm" action="<%=path %>/Teacher/MessageDeleteChecked?type=manage" method="post" >
+       
       <div class="list">   <!--列表块 -->
-      	<form name="studentListForm" id="studentListForm" action="<%=path %>/Teacher/MessageDeleteChecked?type=manage" method="post" >
           <div class="listtitle">  <!--列表项 -->
                <span><input type='checkbox' name='selectAll' id="selectAll"  onclick='CheckAll(this.form)'  /></span>    <!--复选框 -->
                <span class="tongzhititle">标题</span> 
@@ -98,9 +77,9 @@ e.checked = form.selectAll.checked;
     
           </div>
           </c:forEach>
-          </form>
+         
      </div>
-      
+       </form>
      <div class="page">
           <a href="#" >上一页</a>
           <a href="#" >1</a>

@@ -4,7 +4,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String message = request.getParameter("message");
+
 Teacher t = (Teacher)request.getSession().getAttribute("teacher");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -56,30 +56,10 @@ dv.removeChild(b); //btn
 </head>
 
 <body>
-<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
-<script type="text/javascript">
- 		var msg = document.getElementById('msg').value;
- 		if(msg != null && msg != "null"){
-			alert(msg);
-		}
-</script>
-<div class="logo">课程管理系统</div>
-
-<div class="jiange">
-     
-</div>
-<div class="menu">
-   <ul>
-		   <li><a href="<%=path %>/Teacher/MessageList" >通知公告</a></li>
-           <li><a href="<%=path %>/Teacher/VideoList" >视频管理</a></li>
-            <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
-           <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
-          <li><a href="<%=path %>/Teacher/DocumentListt" >资源管理</a></li>
-           <li><a href="<%=path %>/Teacher/Discussion" >讨论区</a></li>
-	 </ul>
-</div>
+<%@include file="/teacher_left.jsp"%>
 
 <div class="mainzuoye">
+
 <form id="meg" name="meg" action="<%=path %>/Teacher/AssignmentUpdate?id=${assignment.id }" method="post">
      <div class="zuoyebiaoti">标题：<input type="text" name="title" id="title" class="text" value="${assignment.title }"/></div>
      <div class="zuoyebiaoti"> <label for="meeting">截止日期：</label><input type="date" name="deadline" id="deadline" value="${assignment.deadline}" /></div>

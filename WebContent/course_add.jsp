@@ -7,44 +7,68 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 String message = request.getParameter("message");
 
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>添加课程</title>
 <link href="<%=path %>/css/teacher.css" rel="stylesheet" type="text/css" />
+<style>
+#duiqi{
+	margin-bottom:50px;
+	margin-top:150px;
+	text-align:center;
+}
+input{border:none;border:1px solid #CCC;vertical-align:middle; }
+.input {height:24px; line-height:24px; border-right:none; width:200px;}
+.liulan {
+	width:100px;height:26px;
+	background-color:#7fbbdd;
+    cursor:pointer;
+}
+.liulan:hover{
+	-moz-opacity:0.68 !important; 
+	filter:alpha(opacity=68); 
+	opacity: 0.68; 
+	 _-moz-opacity:0.68;
+}
+.files{	position:absolute; left:202px; top:52px; heigth:26px;cursor:pointer;
+		 filter: Alpha(opacity=0);    
+ 			 -moz-opacity:0;    
+ 			 opacity:0;  
+		} 
+
+</style>
 </head>
 
 <body>
-<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
-<script type="text/javascript">
- 		var msg = document.getElementById('msg').value;
- 		if(msg != null && msg != "null"){
-			alert(msg);
-		}
-</script>
-<div class="logo">课程管理系统</div>
-
-<div class="jiange">
-     <div class="btnchange">
-          <a href="teacherxiugaimima.html"><img src="<%=path %>/image/teacher/xiugaimima.jpg" /></a>
-     </div>
+<div class="top">
+     <div class="close"><a title="退出登录" href="#">&#xe900 </a></div>
+     <div class="logo">课程管理系统</div>
 </div>
- <form name="form" action="<%=path %>/Teacher/CourseAdd" method="post">
+
+<div class="xiugai"></div>
+<form name="form" action="<%=path %>/Teacher/CourseAdd" enctype="multipart/form-data">
 <div class="mainkecheng">
      <div class="juzhong"></div>
-    
      <div class="juzhong">
           <span class="mingcheng">课程名称：</span>
           <span class="neirong"><input type="text" class="text"id="name" name="name" /></span>
      </div>
+     <div class="juzhong">
+                <input type="text"  class="text" />
+                <input type="button" onmousemove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="浏览" size="30" onclick="f.click()" class="liulan"/>
+                <input type="file" id="f" onchange="txt.value=this.value" name="f" style="height:26px;" class="files"  size="1" hidefocus/>
+     </div>
      <div class="btntianjiakecheng">
           <div><input type="submit" name="subm" value="添加课程"  onclick="this.disabled='false'"  /></div>
-      </div>      
-</div>
-
- </form>
+     </div>
       
+  
+</div>
+</form>
+
+
 
 </body>
 </html>

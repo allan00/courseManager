@@ -4,7 +4,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String message = request.getParameter("message");
+
 Teacher t = (Teacher)request.getSession().getAttribute("teacher");
 if(t==null){
 	request.setAttribute("message", "你没有权限查看此页面");
@@ -90,27 +90,7 @@ input{border:none;border:1px solid #CCC;vertical-align:middle; }
 </head>
 
 <body>
-<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
-<script type="text/javascript">
- 		var msg = document.getElementById('msg').value;
- 		if(msg != null && msg != "null"){
-			alert(msg);
-		}
-</script>
-<div class="logo">课程管理系统</div>
-
-<div class="jiange">
-     
-</div>
-<div class="menu">
-    <ul>
-		   <li><a href="<%=path %>/Teacher/MessageList" >通知公告</a></li>
-           <li><a href="<%=path %>/Teacher/VideoList" >视频管理</a></li>
-            <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
-           <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
-          <li><a href="<%=path %>/Teacher/DocumentList" >资源管理</a></li>
-           <li><a href="<%=path %>/Teacher/Discussion" >讨论区</a></li>
-	 </ul>
+<%@include file="/teacher_left.jsp"%>
 </div>
 <form name="form" action="<%=path %>/Teacher/VideoAdd" method="post" enctype="multipart/form-data">
 <div class="mainshipin">

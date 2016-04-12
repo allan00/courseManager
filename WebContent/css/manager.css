@@ -256,4 +256,28 @@ body{
 	opacity: 0.68; 
     _-moz-opacity:0.68;
 }
+/*文件域格式*/
+input{border:none;border:1px solid #CCC;vertical-align:middle; }
+.input {height:24px; line-height:24px; border-right:none; width:200px;}
+.liulan {
+	width:100px;height:26px;
+	background-color:#7fbbdd;
+    cursor:pointer;
+}
+.liulan:hover{
+	-moz-opacity:0.68 !important; 
+	filter:alpha(opacity=68); 
+	opacity: 0.68; 
+	 _-moz-opacity:0.68;
+}
+.files{	position:absolute; left:202px; top:52px; heigth:26px;cursor:pointer;
+		 filter: Alpha(opacity=0);    
+ 			 -moz-opacity:0;    
+ 			 opacity:0;  
+		} 
+#duiqi{
+	margin-bottom:50px;
+	margin-top:50px;
+	text-align:center;
+}
 

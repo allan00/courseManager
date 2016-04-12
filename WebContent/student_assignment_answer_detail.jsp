@@ -37,7 +37,7 @@ request.setAttribute("student", t);
      <div class="list1">  <!--列表项 -->
       <c:if test="${assignment_answer_son_list!=null}">附件：</c:if>
 		  <c:forEach var="son" items="${assignment_answer_son_list}">
-           <a href="<%=path %>${son.path}/${son.file_name}">${son.file_name}</a>
+           <a href="<%=path %>${son.path}/${son.fileName}">${son.fileName}</a>
            </c:forEach>
            </div> 	
 </div>

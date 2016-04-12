@@ -3,6 +3,10 @@
 	font-family:STXinwei;
 	src:url(../%E5%AD%97%E4%BD%93/webfontkit-20160406-050523/stxinwei-webfont.woff);
 }
+@font-face{
+	font-family:"imooc-icon";
+	src:url(../%E5%AD%97%E4%BD%93/%E5%9B%BE%E6%A0%87/fonts/icomoon.woff);
+}
 body {
 	background-color: #dff2f9;
 	font-family:"华文新魏";
@@ -44,6 +48,28 @@ body {
 	letter-spacing: -3px;
 	font-size: 5em;
 	
+}
+.close{
+	float:right;
+	margin-right:20px;
+	margin-top:10px;
+	width:33px;
+	height:32px;
+	font-family:"imooc-icon";
+	font-size:32px;
+	padding-left:0px;
+
+}
+.close a{
+	text-decoration:none;
+	color:#fff;
+}
+.close a:hover{
+	padding-left:1px;
+	-moz-opacity:0.68 !important; 
+	filter:alpha(opacity=68); 
+	opacity: 0.68; 
+	 _-moz-opacity:0.68;
 }
 /*导航条*/
 .menu{
@@ -268,9 +294,10 @@ body {
 	padding:5px 15px 5px 15px;
 	border:1px solid #7fbbdd;
 	background:#7fbbdd;
-	font-size:16px;
+	font-size:18px;
 	height:30px;
 	color:#000;
+	font-family:"华文新魏";
 	
 }
 .btntijiao:hover{
@@ -417,7 +444,7 @@ body {
 	font-size:16px;
 	line-height:10pt;
 	border:1px solid #a4d5e3;
-	 border-top-left-radius:8px;
+	border-top-left-radius:8px;
 	border-top-right-radius:8px;
 	border-bottom-left-radius:8px;
 	border-bottom-right-radius:8px;
@@ -501,6 +528,13 @@ body {
 #vd{
 	margin-left:100px;
 }
+.fujian{
+	margin:10px 150px 0 100px;
+	width:802px;
+	font-size:16px;
+	
+}
+
 
 
 

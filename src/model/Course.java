@@ -3,6 +3,7 @@ package model;
 public class Course {
 	private int id;
 	private String name;
+	private String pic_path;
 	private int state;
 	private int teacher_id;
 	public int getId() {
@@ -28,6 +29,12 @@ public class Course {
 	}
 	public void setTeacher_id(int teacher_id) {
 		this.teacher_id = teacher_id;
+	}
+	public String getPic_path() {
+		return pic_path;
+	}
+	public void setPic_path(String pic_path) {
+		this.pic_path = pic_path;
 	}
 	
 	

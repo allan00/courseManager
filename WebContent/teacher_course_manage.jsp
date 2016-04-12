@@ -8,11 +8,11 @@ String message = request.getParameter("message");
 Teacher t = (Teacher)request.getSession().getAttribute("teacher");
 request.setAttribute("teacher", t);
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>课程选择</title>
+<title>课程管理</title>
 <link href="<%=path %>/css/teacher.css" rel="stylesheet" type="text/css" />
 <script language=javascript>
 function select(){
@@ -38,28 +38,30 @@ e.checked = form.selectAll.checked;
 			alert(msg);
 		}
 </script>
-<div class="logo">课程管理系统</div>
-<div class="top"></div>
-<div class="xiugai">
-    
+<div class="top">
+     <div class="close"><a title="退出登录" href="#">&#xe900 </a></div>
+     <div class="logo">课程管理系统</div>
 </div>
+
+<div class="xiugai"></div>
 <div class="mainkecheng">
-    <div class="xianzhi">
+    <div id="btngroup">
          <div class="btn">
-            <div class="shanchu"><a href=javascript:studentListForm.submit();><img src="<%=path %>/image/teacher/shanchu.png"  /></a></div>
+             <div class="shanchu"><a href=javascript:studentListForm.submit();><img src="<%=path %>/image/teacher/shanchu.png"  /></a></div>
             <div class="shanchu"><a href="<%=path %>/course_add.jsp" ><img src="<%=path %>/image/teacher/tianjia.png"  /></a></div>
          </div>
      </div>
      <div class="list">   <!--列表块 -->
-           	<form name="studentListForm" id="studentListForm" action="<%=path %>/Teacher/CourseDeleteChecked" method="post" >
+       	<form name="studentListForm" id="studentListForm" action="<%=path %>/Teacher/CourseDeleteChecked" method="post" >
      <c:forEach var="map" items="${course_list}">
           <div class="list1">  <!--列表项 -->
                <span><input type="checkbox"   id="checkList" name="checkList"  onclick='select()' value="${map.id }"/>
                </span>    <!--复选框 -->
-               <span ><a href="<%=path %>/Teacher/CourseWelcome?course_id=${map.id }" >${map.name }</a></span>   <!--通知标题 -->    
+               <span> <a href="<%=path %>/Teacher/CourseWelcome?course_id=${map.id }" >${map.name }</a></span>   <!--通知标题 -->  
           </div>
-           </c:forEach>
-           </form>
+          
+          </c:forEach>
+          </form>
      </div>
       
      <div class="page">

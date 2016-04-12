@@ -4,7 +4,6 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String message = request.getParameter("message");
 Teacher t = (Teacher)request.getSession().getAttribute("teacher");
 int teacher_id = t.getId();
 %>
@@ -24,23 +23,7 @@ int teacher_id = t.getId();
 			alert(msg);
 		}
 </script>
-<div class="logo">课程管理系统</div>
-
-<div class="jiange">
-     <div class="tongzhixiugai">
-          <a href="<%=path %>/Teacher/TeacherWelcome"><img src="<%=path %>/image/teacher/tongzhixiugai.jpg" / ></a>
-     </div>
-</div>
-<div class="menu">
-     <ul>
-		   <li><a href="<%=path %>/Teacher/MessageList" >通知公告</a></li>
-           <li><a href="<%=path %>/Teacher/VideoList" >视频管理</a></li>
-            <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
-           <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
-          <li><a href="<%=path %>/Teacher/DocumentList" >资源管理</a></li>
-           <li><a href="<%=path %>/Teacher/Discussion" >讨论区</a></li>
-	 </ul>
-</div>
+<%@include file="/teacher_left.jsp"%>
 <div class="maintongzhi">
      <div class="zuoyebiaoti">标题：${message.title }</div>
      <div  class="juzhong" ><span>发布人：${message.author }</span><span>发布时间：${message.date }</span></div>

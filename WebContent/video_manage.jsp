@@ -4,7 +4,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String message = request.getParameter("message");
+
 Teacher t = (Teacher)request.getSession().getAttribute("teacher");
 int teacher_id = t.getId();
 %>
@@ -32,26 +32,7 @@ e.checked = form.selectAll.checked;
 </head>
 
 <body>
-<div class="logo">课程管理系统</div>
-
-<div class="jiange">
-     <div class="btnchange">
-          <a href="teacherxiugaimima.html"><img src="<%=path %>/image/teacher/gerenzhongxin.jpg" /></a>
-     </div>
-     <div class="btnchange">
-          <a href="teacherxiugaimima.html"><img src="<%=path %>/image/teacher/kecheng.jpg" /></a>
-     </div>
-</div>
-<div class="menu">
-    <ul>
-		   <li><a href="<%=path %>/Teacher/MessageList" >通知公告</a></li>
-           <li><a href="<%=path %>/Teacher/VideoList" >视频管理</a></li>
-            <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
-           <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
-          <li><a href="<%=path %>/Teacher/DocumentList" >资源管理</a></li>
-           <li><a href="<%=path %>/Teacher/Discussion" >讨论区</a></li>
-	 </ul>
-</div>
+<%@include file="/teacher_left.jsp"%>
 <div class="mainshipin">
      <div class="xianzhi">
           <span class="sousuo">

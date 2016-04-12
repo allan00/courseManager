@@ -83,25 +83,24 @@ max-width: 100%;
 height: auto; 
 } 
  
+ 
 </style> 
 </head>
 
 <body>
-<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
-<script type="text/javascript">
- 		var msg = document.getElementById('msg').value;
- 		if(msg != null && msg != "null"){
-			alert(msg);
-		}
-</script>
-<div class="logo">课程管理系统</div>
+<div class="top">
+     <div class="close"><a title="退出登录" href="#">&#xe900 </a></div>
+     <div class="logo">课程管理系统</div>
+</div>
 
 <div class="xiugai">
-     
+     <div class="btnchange">
+        
+     </div>
 </div>
 <div class="mainkechengxuanze">
      <div id="btnkechengguanli">
-          <a href="<%=path %>/Teacher/TeacherWelcome?type=manage">
+         <a href="<%=path %>/Teacher/TeacherWelcome?type=manage">
              <img src="<%=path %>/image/teacher/btnkechengguanli.jpg" />
           </a>
      </div>
@@ -116,13 +115,13 @@ height: auto;
                         <div class="content-wrap"> 
                              <h1 class="entry-title"><a href="<%=path %>/Teacher/CourseWelcome?course_id=${map.id }"  class="featured-image" rel="bookmark">${map.name }</a></h1> 
                         </div> 
+                
                    </div> 
+                     <div class="title">${map.name }</div>
           </article> 
           </c:forEach>
+          
          
-
-
-
 
 
 </div> 

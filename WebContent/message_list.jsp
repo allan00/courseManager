@@ -4,47 +4,20 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String message = request.getParameter("message");
 Teacher t = (Teacher)request.getSession().getAttribute("teacher");
-int teacher_id = t.getId();
+request.setAttribute("teacher", t);
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>通知列表</title>
+<title>消息列表</title>
 <link href="<%=path %>/css/teacher.css" rel="stylesheet" type="text/css" />
-
 </head>
 
 <body>
-<input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
-<script type="text/javascript">
- 		var msg = document.getElementById('msg').value;
- 		if(msg != null && msg != "null"){
-			alert(msg);
-		}
-</script>
-<div class="logo">课程管理系统</div>
 
-<div class="jiange">
-     <div class="btnchange">
-          <a href="<%=path %>/Teacher/TeacherInformationList"><img src="<%=path %>/image/teacher/gerenzhongxin.jpg" /></a>
-     </div>
-     <div class="btnchange">
-          <a href="<%=path %>/Teacher/TeacherWelcome"><img src="<%=path %>/image/teacher/kecheng.jpg" /></a>
-     </div>
-</div>
-<div class="menu">
-     <ul>
-		   <li><a href="<%=path %>/Teacher/MessageList" >通知公告</a></li>
-           <li><a href="<%=path %>/Teacher/VideoList" >视频管理</a></li>
-            <li><a href="<%=path %>/Teacher/AssignmentList" >作业管理</a></li>
-           <li><a href="<%=path %>/Teacher/StudentList" >学生管理</a></li>
-          <li><a href="<%=path %>/Teacher/DocumentList" >资源管理</a></li>
-           <li><a href="<%=path %>/Teacher/Discussion" >讨论区</a></li>
-	 </ul>
-</div>
+<%@include file="/teacher_left.jsp"%> 
 <div class="maintongzhi">
 <div class="xianzhi">
       <span class="sousuo">
@@ -64,16 +37,15 @@ int teacher_id = t.getId();
                <span class="biaoti">标题</span>   <!--通知标题 -->
                <span class="date">发布时间</span>
           </div>
-  
-      <c:forEach var="message" items="${message_list}">
-       <div class="list1">  <!--列表项 -->
+     
+           <c:forEach var="message" items="${message_list}">
+       <div class="list1"> 
        
-               <span class="biaoti"><a href="<%=path %>/Teacher/MessageDetail?id=${message.id }">${message.title }</a></span>   <!--通知标题 -->
+               <span class="biaoti"><a href="<%=path %>/Teacher/MessageDetail?id=${message.id }">${message.title }</a></span>   
                <span class="date">${message.date }</span>
           </div>
               </c:forEach>
      </div>
-    
       
      <div class="page">
           <a href="#" >上一页</a>
@@ -85,6 +57,8 @@ int teacher_id = t.getId();
           <a href="#" >下一页</a>    第   页/共  页
   </div>
 </div>
+
+
 
 </body>
 </html>
