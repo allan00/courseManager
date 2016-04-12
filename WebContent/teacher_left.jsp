@@ -21,7 +21,7 @@ String message = request.getParameter("message");
 		}
 </script>
 <div class="top">
-     <div class="close"><a title="退出登录" href="#">&#xe900 </a></div>
+     <div class="close"><a title="退出登录" href="<%=path1 %>/LoginOut">&#xe900 </a></div>
      <div class="logo">课程管理系统</div>
 </div>
 <div class="jiange">

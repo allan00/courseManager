@@ -51,7 +51,7 @@ public class CourseAddServlet extends HttpServlet {
 			// System.out.println("Succeeded connecting to the Database!");
 
 			// 要执行的SQL语句
-			String sql = "INSERT INTO table_course(teacher_id,name,state,) VALUES(?,?,1)";
+			String sql = "INSERT INTO table_course(teacher_id,name,state) VALUES(?,?,1)";
 			ps = con.prepareStatement(sql);
 			// 对占位符设置值，占位符顺序从1开始，第一个参数是占位符的位置，第二个参数是占位符的值。
 			ps.setInt(1, teacher_id);

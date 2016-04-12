@@ -48,6 +48,14 @@
     <servlet-name>ManagerLogin</servlet-name>
     <url-pattern>/ManagerLogin</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>LoginOut</servlet-name>
+    <servlet-class>servlet.LoginOutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginOut</servlet-name>
+    <url-pattern>/LoginOut</url-pattern>
+  </servlet-mapping>
   
   <!-- common end -->
   
