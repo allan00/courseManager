@@ -59,7 +59,8 @@ public class TeacherWelcomeServlet extends HttpServlet {
 				c1.setId(rs.getInt("id"));
 				c1.setName(rs.getString("name"));
 				c1.setState(Integer.valueOf(rs.getInt("state")));
-				c1.setTeacher_id(teacher_id);
+				c1.setPic_path(rs.getString("pic_path"));
+				c1.setPic_name(rs.getString("pic_name"));
 				course_list.add(c1);
 			}
 			JdbcUtil.close(rs, statement);

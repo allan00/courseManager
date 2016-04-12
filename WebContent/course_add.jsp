@@ -46,27 +46,15 @@ input{border:none;border:1px solid #CCC;vertical-align:middle; }
      <div class="close"><a title="退出登录" href="#">&#xe900 </a></div>
      <div class="logo">课程管理系统</div>
 </div>
-
-<div class="xiugai"></div>
-<form name="form" action="<%=path %>/Teacher/CourseAdd" enctype="multipart/form-data">
-<div class="mainkecheng">
-     <div class="juzhong"></div>
-     <div class="juzhong">
-          <span class="mingcheng">课程名称：</span>
-          <span class="neirong"><input type="text" class="text"id="name" name="name" /></span>
-     </div>
-     <div class="juzhong">
-                <input type="text"  class="text" />
-                <input type="button" onmousemove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="浏览" size="30" onclick="f.click()" class="liulan"/>
-                <input type="file" id="f" onchange="txt.value=this.value" name="f" style="height:26px;" class="files"  size="1" hidefocus/>
-     </div>
-     <div class="btntianjiakecheng">
-          <div><input type="submit" name="subm" value="添加课程"  onclick="this.disabled='false'"  /></div>
-     </div>
-      
-  
-</div>
+</br></br></br></br></br></br>
+<center>
+<form name="form" action="<%=path %>/Teacher/CourseAdd" enctype="multipart/form-data" method="post">
+     <span class="mingcheng">课程名称：</span>
+     <span class="neirong"><input type="text" class="text" id="name" name="name" /></span></br></br></br></br>
+     <span class="mingcheng">课程图片:</span>     <input type="file" class="text" id="f" name="f" style="height:26px;"></br></br></br></br>
+     <input type="submit" name="subm" value="添加课程"  onclick="this.disabled='false'"  />
 </form>
+</center>
 
 
 

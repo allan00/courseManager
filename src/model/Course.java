@@ -4,6 +4,7 @@ public class Course {
 	private int id;
 	private String name;
 	private String pic_path;
+	private String pic_name;
 	private int state;
 	private int teacher_id;
 	public int getId() {
@@ -36,6 +37,11 @@ public class Course {
 	public void setPic_path(String pic_path) {
 		this.pic_path = pic_path;
 	}
-	
+	public String getPic_name() {
+		return pic_name;
+	}
+	public void setPic_name(String pic_name) {
+		this.pic_name = pic_name;
+	}
 	
 }
