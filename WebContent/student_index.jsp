@@ -112,14 +112,17 @@ height: auto;
           <!--数据库原理-->
           <c:forEach var="map" items="${map_list}">
           <article class="post-152 post type-post status-publish format-standard hentry category-people category-photos"> 
-                   <div class="post-format-content"> 
+                    <div class="post-format-content"> 
                         <div class="post-thumbnail"> 
-                             <img width="480" height="480" src="<%=path %>/image/course/1.jpg"   class="attachment-thumbnail wp-post-image" alt="105694702"> 
+                             <c:if test="${map.pic_name==null or map.pic_name ==''}"><img width="480" height="480" src="<%=path %>/image/course/1.jpg"   class="attachment-thumbnail wp-post-image" alt="105694702" /> </c:if>
+                             <c:if test="${map.pic_name!=null and map.pic_name!=''}"><img width="480" height="480" src="<%=path %>${map.pic_path}/${map.pic_name}"   class="attachment-thumbnail wp-post-image" alt="105694702" /></c:if> 
                         </div> 
                         <div class="content-wrap"> 
-                             <h1 class="entry-title"><a href="<%=path %>/Student/StudentCourseWelcome?course_id=${map.course_id }" class="featured-image" rel="bookmark">${map.course_name }</a></h1> 
+                             <h1 class="entry-title"><a href="<%=path %>/Student/StudentCourseWelcome?course_id=${map.course_id }"  class="featured-image" rel="bookmark">${map.name }</a></h1> 
                         </div> 
+                
                    </div> 
+                     <div class="title">${map.name }</div>
           </article> 
           </c:forEach>
           

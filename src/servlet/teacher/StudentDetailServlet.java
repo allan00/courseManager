@@ -46,7 +46,7 @@ public class StudentDetailServlet extends HttpServlet {
 			// System.out.println("Succeeded connecting to the Database!");
 			PreparedStatement ps = null;
 			// 要执行的SQL语句
-			String sql = "SELECT * FROM table_student WHERE student_id="+student_id;
+			String sql = "SELECT * FROM table_student WHERE student_id=?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, student_id); // 对占位符设置值，占位符顺序从1开始，第一个参数是占位符的位置，第二个参数是占位符的值。
 			ResultSet rs = ps.executeQuery();

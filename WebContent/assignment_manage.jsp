@@ -41,7 +41,7 @@ e.checked = form.selectAll.checked;
             
       </span>
       <div class="btn">
-            <div class="shanchu"><a href="<%=path %>/Teacher/AssignmentDeleteChecked"><img src="<%=path %>/image/teacher/shanchu.png"  /></a></div>
+            <div class="shanchu"><a href=javascript:studentListForm.submit();><img src="<%=path %>/image/teacher/shanchu.png"  /></a></div>
             <div class="shanchu"><a href="<%=path %>/assignment_add.jsp"><img src="<%=path %>/image/teacher/tianjia.png"  /></a></div>
        </div>
 </div>

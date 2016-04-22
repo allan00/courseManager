@@ -115,6 +115,7 @@ height: auto;
                              <h1 class="entry-title"><a href="<%=path %>/Teacher/VideoDetail?id=${V.id }" class="featured-image" rel="bookmark">${V.name}</a></h1> 
                         </div> 
                    </div> 
+                     <div class="title">${V.name }</div>
           </article> 
           </c:forEach>
           

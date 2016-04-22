@@ -89,7 +89,7 @@ public class StudentAssignmentAddServlet extends HttpServlet {
 		String assignmentId = request.getParameter("assignmentId");
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if (!isMultipart || assignmentId == null) {
-			request.getRequestDispatcher("/StudentAssignmentList").forward(request,
+			request.getRequestDispatcher("/StudentAssignmentAllList").forward(request,
 					response);
 			return;
 		}
@@ -102,6 +102,8 @@ public class StudentAssignmentAddServlet extends HttpServlet {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		Course c = (Course)request.getSession().getAttribute("course");
+		int courseId = c.getId();
 
 		// 获取文本信息
 		try {
@@ -120,7 +122,7 @@ public class StudentAssignmentAddServlet extends HttpServlet {
 				}
 			}
 			con = JdbcUtil.getConn();
-			String sql = "INSERT INTO assignment_answer(title,content,uploadTime,state,score,assignmentId,studentId,studentName) VALUES(?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO assignment_answer(title,content,uploadTime,state,score,assignmentId,studentId,studentName,courseId) VALUES(?,?,?,?,?,?,?,?,?)";
 			ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, title); 
 			ps.setString(2, content);
@@ -130,6 +132,7 @@ public class StudentAssignmentAddServlet extends HttpServlet {
 			ps.setString(6, assignmentId);
 			ps.setString(7, s.getStudent_id());
 			ps.setString(8, s.getName());
+			ps.setInt(9,courseId );
 			int i = ps.executeUpdate();
 			
 			//获取刚刚插入通知的id
@@ -186,7 +189,7 @@ public class StudentAssignmentAddServlet extends HttpServlet {
 			JdbcUtil.closeConnection(con);
 		}
 		request.setAttribute("message", "发布成功 ");
-		request.getRequestDispatcher("/Student/StudentAssignmentList").forward(request, response);
+		request.getRequestDispatcher("/Student/StudentAssignmentAllList").forward(request, response);
 		return;
 	}
 

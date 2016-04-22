@@ -26,11 +26,13 @@ request.setAttribute("student", t);
 </div>
 <div class="bigmain">
 <div class="alltitle">我的作业
-<div>
+<!--
+ <div>
 	<a href="<%=path %>/Student/StudentAssignmentUncommittedList">未提交</a>
 	<a href="<%=path %>/Student/StudentAssignmentCommittedList">已提交</a>
 	<a href="<%=path %>/Student/StudentAssignmentAllList">所有</a>
 </div>
+-->
 </div>
 <div class="main">
       <span class="sousuo">
@@ -49,7 +51,7 @@ request.setAttribute("student", t);
                <span ><a href="<%=path %>/Student/StudentAssignmentDetail?id=${assignment.id }">${assignment.title }</a></span>   <!--通知标题 -->
                <span class="overdate">${assignment.deadline}</span>  <!--截止日期 -->
                <span class="date">${assignment.date_begin}</span>  <!--发布日期 -->
-               <span >
+               <span class="datetitle" >
                 <c:if test="${assignment.ifcomit==1}">已提交</c:if>
    				<c:if test="${assignment.ifcomit==0}">未提交</c:if>
                </span>  <!--发布日期 -->

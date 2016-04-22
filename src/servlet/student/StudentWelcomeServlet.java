@@ -50,13 +50,15 @@ public class StudentWelcomeServlet extends HttpServlet {
 			statement = con.createStatement();
 			String student_id = s.getStudent_id();
 			// 要执行的SQL语句
-			String sql = "SELECT A.id,B.name,B.id FROM student_course_map A,table_course B where student_id="+student_id+" and A.course_id = B.id";			
+			String sql = "SELECT A.id,B.name,B.id,B.pic_path,B.pic_name FROM student_course_map A,table_course B where student_id="+student_id+" and A.course_id = B.id";			
 			ResultSet rs = statement.executeQuery(sql);
 			while(rs.next()) {
 				V_StudentCourseMap map = new V_StudentCourseMap();
 				map.setId(rs.getInt("id"));
-				map.setCourse_name(rs.getString("name"));
+				map.setName(rs.getString("name"));
 				map.setCourse_id(rs.getInt("B.id"));
+				map.setPic_path(rs.getString("pic_path"));
+				map.setPic_name(rs.getString("pic_name"));
 				map_list.add(map);
 			}
 			JdbcUtil.close(rs, statement);

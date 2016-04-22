@@ -3,20 +3,24 @@ package view;
 
 public class V_StudentCourseMap {
 	private int id;
-	private String course_name;
+	private String name;
 	private String state;
 	private int course_id;
+	private String pic_path;
+	private String pic_name;
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getCourse_name() {
-		return course_name;
+	
+	public String getName() {
+		return name;
 	}
-	public void setCourse_name(String course_name) {
-		this.course_name = course_name;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getState() {
 		return state;
@@ -30,5 +34,18 @@ public class V_StudentCourseMap {
 	public void setCourse_id(int course_id) {
 		this.course_id = course_id;
 	}
+	public String getPic_path() {
+		return pic_path;
+	}
+	public void setPic_path(String pic_path) {
+		this.pic_path = pic_path;
+	}
+	public String getPic_name() {
+		return pic_name;
+	}
+	public void setPic_name(String pic_name) {
+		this.pic_name = pic_name;
+	}
+	
 	
 }
