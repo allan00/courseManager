@@ -39,7 +39,7 @@ public class LoginOutServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {request.getSession(false);
 			request.getSession().invalidate();
-			request.setAttribute("message", "退出成功 ");
+			request.setAttribute("message", "注销成功 ");
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 			return;
 	}
