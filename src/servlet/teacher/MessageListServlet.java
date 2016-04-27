@@ -68,6 +68,8 @@ public class MessageListServlet extends HttpServlet {
 			}
 			
 			page_count=(row_count + size - 1)/size;
+			if(page_count<1)
+				page_count = 1;
 			page_current = page_current<1?1:page_current;//如果page<1,则page=1
 			page_current = page_current>page_count?page_count:page_current;//如果page大于总页数1,则page设为最大值
 			begin=(page_current-1)*size;

@@ -5,16 +5,59 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String message = request.getParameter("message");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>课程管理系统</title>
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- <link href="css/mylove.css" type="text/css" rel="stylesheet" />
- <link type="text/css" href="css/jquery-ui-1.8.2.custom.css" rel="stylesheet" />
- <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
- <script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js"></script>
- </head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<link href="<%=path %>/css/main.css" rel="stylesheet" type="text/css" />
+<style>
+.photo{
+	overflow:hidden;
+	position:relative;
+	float:left;
+	width:580px;
+	height:360px;
+	margin-left:-39px;
+	margin-top:-13px;
+}
+.photo .step{
+	position:absolute;
+	bottom:10px;
+	right:15px;
+	height:23px;
+	z-index:2;
+	color:#fff;
+	font-size:14px;
+	font-weight:bold;
+	vertical-align:middle;
+	cursor:pointer;
+}
+.photo .step em{margin:0 5px;}
+.photo ul{
+	float:left;
+	position:absolute;
+	top:0;
+	left:0;
+	width:2160px;
+	list-style-type:none;
+}
+.photo li{
+	float:left;
+	background:#09e;
+}
+.photo li img{
+	display:block;
+	width:580px;
+	height:360px;
+}
+.login_box{
+	height:360px;
+	width:480px;
+	float:left;
+}
+</style>
+</head>
 
 <body>
 <input type="hidden" id="msg" name="msg" value="<%=request.getAttribute("message")%>"/>
@@ -24,117 +67,166 @@ String message = request.getParameter("message");
 			alert(msg);
 		}
 </script>
-   	
-	<table width="1005" border="0" align="center">
-		<tr>
-			<td height="100" colspan="3" class="bg"><img
-				src="images/top1.jpg" width="1002" height="186" /></td>
-		</tr>
-		<tr>
-			<td height="9" colspan="3" bgcolor="#FFFFFF"><img src="" alt=""
-				name="a" width="2" height="2" id="a" /></td>
-		</tr>
-		<tr valign="top">
-			<td width="221" height="211" align="center" valign="top"
-				bgcolor="#FFFFFF">
-				<form id="loginForm" name="loginForm" method="post">
-					<table width="219" border="0">
-						<tr>
-							<td width="69" height="37" align="right" bgcolor="#306BC7"
-								class="wz">登录名：</td>
-							<td width="117" height="37" bgcolor="#306BC7">
-							<input
-								name="username" id="username" type="text" size="15" value="20122101035"/></td>
-						</tr>
-						<tr bgcolor="#FFFFFF">
-							<td height="35" align="right" bgcolor="#306BC7" class="wz">密码：</td>
-							<td height="35" bgcolor="#306BC7"><input id="password"
-								name="password" type="password" size="15" value="123456"/></td>
-						</tr>
-						<tr bgcolor="#FFFFFF">
-							<td height="31" align="right" bgcolor="#306BC7" class="wz">身份：</td>
-							<td height="31" bgcolor="#306BC7">
-							<select name="userType"
-								id="userType">
-								<option value="1">学生</option>
-									<option value="2">教师</option>
-								    <option value="3">管理员</option>
-							</select></td>
-						</tr>
-						<tr align="center" bgcolor="#FFFFFF">
-							<td height="10" colspan="2" bgcolor="#306BC7">
-							<input type="button" name="subm" id="subm" value="登陆" onclick="return save_submit()" action="" /> 
-							<input type="reset" name="reset" id="reset" value="重置" /></td>
-						</tr>
-					</table>
-					<p class="bg"></p>
-					<p class="bg"></p>
-				</form>
-			</td>
-			<td width="487" height="155" rowspan="2" bgcolor="#FFFFFF"><div>
-					<iframe src="slide.html" width="480" height="280" frameborder="0"
-						scrolling="no"></iframe>
-				</div>
-				<div id="buttons" onmouseout="startChange();"></td>
-			<td width="286" height="155" rowspan="2" align="center"
-				bgcolor="#99CCFF"><table width="283" height="280" border="0">
-					<tr bgcolor="#33FF66">
-						<td width="277" height="54" bgcolor="#B5D4F0"><img
-							src="images/gonggao.png" width="280" height="49" /></td>
-					</tr>
-					<tr>
-						<td height="124" bgcolor="#BDD1EC" class="wz"><marquee
-								direction="up" height="124" scrollamount="3"
-								onmouseover="this.stop()" onmouseout="this.start()">本周五课程将调至下周一，时间地点不变，广而告之！</marquee></td>
-					</tr>
-				</table></td>
-		</tr>
-		<tr valign="top">
-			<td width="221" height="73" align="center" valign="top"
-				bgcolor="#28579E"><img src="images/ptjj.png" width="199"
-				height="73" /></td>
-		</tr>
-		<tr>
-			<td height="30" valign="top" bgcolor="#28579E" class="wz">
-				该平台供学生查看自己课程，作业完成情况，可下载资源，可参与老师与学生的互动。</td>
-			<td width="487" height="267" valign="top" bgcolor="#FFFFFF"><table
-					width="479" height="279" border="0">
-					<tr>
-						<td width="489" height="275" align="left" valign="top"><p>
-								<img src="images/tz.jpg" width="479" height="43" />
-							</p>
-							<ul>
-								<li class="wz"><a href="#" target="_blank">关于放假的通知</a></li>
-								<li class="wz"><a href="#" target="_blank">关于期末考试答疑的相关安排</a></li>
-								<li class="wz"><a href="#" target="_blank">第十四章的课件已经上传</a></li>
-								<li class="wz"><a href="#" target="_blank">关于本周数据库课程的调课通知</a></li>
-								<li class="wz"><a href="#" target="_blank">关于放假的通知</a></li>
-								<li class="wz"><a href="#" target="_blank">关于期末考试答疑的相关安排</a></li>
-								<li class="wz"><a href="#" target="_blank">第十四章的课件已经上传</a></li>
-								<li class="wz"><a href="#" target="_blank">关于本周数据库课程的调课通知</a></li>
-								<li class="wz"><a href="#" target="_blank">关于放假的通知</a></li>
-							</ul>
-							<p>&nbsp;</p></td>
-					</tr>
-				</table></td>
-			<td width="286" height="267" align="center" valign="top"
-				bgcolor="#99CCFF">
-				<div id="calender">
-					<div id="datepicker"></div>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td height="90" colspan="3" bgcolor="#BDD1EC">&nbsp;</td>
-		</tr>
-		<tr bgcolor="#FFFFFF">
-			<td height="49" colspan="3" align="center" bgcolor="#99CCFF"
-				class="bg"><span class="wz">版权所有 2016 华南师范大学计算机学院 张静 林倩贤<br />
-					Copyright ? School of computer Zhang jing Lin Qianxian
-			</span></td>
-		</tr>
-	</table>
-	
+<div class="top">
+      <span id="logo1">课程管理系统</span>
+     <span id="logo2">Course Management System </span>
+</div>
+<div id="top">
+    
+</div>
+<form id="loginForm" name="loginForm" method="post">
+<div id="login">
+    <div id="login-logo">Login</div>
+    <div id="user">用户名：
+         <span><input type="text"  name="username" id="user-text" value=""  /></span>
+    </div>
+    <div id="password">密   码：
+         <span><input id="password-text" name="password" type="password" value=""  /></span>
+    </div>
+    <div id="change">
+   
+         <input type="radio" id="usertype" name="usertype" value="1" />学生
+         <input type="radio" id="usertype" name="usertype" value="2" />教师
+         <input type="radio" id="usertype" name="usertype" value="3" />管理员
+      
+    </div>
+    <div id="btn">
+         <span>
+              <input type="button" name="subm" id="subm" value="登陆" onclick="return save_submit()"  class="btn1"/>         
+         </span>
+         <span>
+              <input type="reset" name="reset" id="reset"  value="重  置" class="btn1"/>         
+         </span>
+    </div>
+    
+</div>
+</form>
+<div id="top">
+    
+</div>
+<div id="main">
+         <div class="photo" id="photo">
+           <ul class="clear" id="photo-sub" style="width:2944px;">
+               <li><a href="#" title="图片说明一" target="_blank"><img src="<%=path %>/image/main/1.jpg" alt="1"></a></li>
+               <li><a href="#" title="图片说明二" target="_blank"><img src="<%=path %>/image/main/2.jpg" alt="2"></a></li>
+               <li><a href="#" title="图片说明三" target="_blank"><img src="<%=path %>/image/main/3.jpg" alt="3"></a></li>
+               <li><a href="#" title="图片说明四" target="_blank"><img src="<%=path %>/image/main/4.jpg" alt="4"></a></li>
+           </ul>
+           <div class="step" id="step-num"><span>上一页</span><em>1</em>/<em>3</em><span>下一页</span></div>
+          </div>
+</div>
+<script type="text/javascript">
+function photoAlbumn(photoObj,btnObj,numObj){
+var moveNum = 1,
+ _void=true,
+ cloneObj,nums,
+ voidClone=false,
+ d=document,
+ elem = d.getElementById(photoObj),
+ btnObj=d.getElementById(btnObj),
+ numObj=d.getElementById(numObj);
+if (!elem) return false;
+if (!btnObj) return false;
+var elemObj = elem.getElementsByTagName("li"),
+ autoWidth = elemObj[0].offsetWidth,
+ btns = btnObj.getElementsByTagName("span"),
+ max=elemObj.length;
+ elem.style.width = (max+1)*autoWidth + "px";
+var numElement =function(){
+if(numObj){
+ nums = numObj.getElementsByTagName("em");
+ nums[1].innerHTML = max;
+ nums[0].innerHTML = moveNum;
+ }
+}
+var moveElement =function(final_x,final_y,interval){
+ _void = false;
+ var step = function () {
+  if (elem.movement) clearTimeout(elem.movement);
+  if (!elem.style.left) elem.style.left = "0px";
+  if (!elem.style.top) elem.style.top = "0px";
+  var xpos = parseInt(elem.style.left);
+  var ypos = parseInt(elem.style.top);
+  //alert(xpos)
+  if (xpos == final_x && ypos == final_y) {
+   _void = true;
+if(voidClone){
+  elem.style.left = (moveNum > 2)?(-(max-1)*autoWidth +"px"):"0px";
+  elem.removeChild(cloneObj);
+  voidClone = false;
+ }
+   return true;
+  }
+  if (xpos < final_x) {
+    var dist = Math.ceil((final_x - xpos)/10);
+    xpos = xpos + dist;
+  }
+  if (xpos > final_x) {
+    var dist = Math.ceil((xpos - final_x)/10);
+    xpos = xpos - dist;
+  }
+  if (ypos < final_y) {
+    var dist = Math.ceil((final_y - ypos)/10);
+    ypos = ypos + dist;
+  }
+  if (ypos > final_y) {
+    var dist = Math.ceil((ypos - final_y)/10);
+    ypos = ypos - dist;
+  }
+  elem.style.left = xpos + "px";
+  elem.style.top = ypos + "px";
+  elem.movement = setTimeout(function(){step()},interval);
+}
+ elem.movement = setTimeout(function(){step()},interval);
+} ;
+var moveAutoShow = function (){
+ moveNum++;
+ if(moveNum > max){
+  cloneObj = elemObj[0].cloneNode(true);
+  elem.appendChild(cloneObj);
+  voidClone = true;
+ }
+ moveElement(-autoWidth*(moveNum-1),0,5);
+ if(moveNum > max) moveNum=1;
+ numElement();
+};
+var prepareSlideshow = function (){
+ var moveAuto = setInterval(function(){moveAutoShow()},5000);
+ btns[0].onmousedown = function() {
+  if(!_void) return false;
+  clearInterval(moveAuto);
+  moveNum--;
+    if(moveNum < 1){
+  cloneObj = elemObj[(max-1)].cloneNode(true);
+  cloneObj.style.cssText=";position:absolute;left:-" + autoWidth +"px";
+  elem.insertBefore(cloneObj,elemObj[0]);
+  voidClone = true;
+ }
+  moveElement(-autoWidth*(moveNum-1),0,5);
+  moveAuto = setInterval(function(){moveAutoShow()},5000);
+   if(moveNum < 1) moveNum=max;
+  numElement();
+ }
+ btns[1].onmousedown = function() {
+  if(!_void) return false;
+  clearInterval(moveAuto);
+  moveNum++;
+   if(moveNum > max){
+  cloneObj = elemObj[0].cloneNode(true);
+  elem.appendChild(cloneObj);
+  voidClone = true;
+ }
+  moveElement(-autoWidth*(moveNum-1),0,5);
+  moveAuto = setInterval(function(){moveAutoShow()},5000);
+  if(moveNum > max) moveNum=1;
+  numElement();
+ }
+};
+numElement();
+prepareSlideshow();
+}
+photoAlbumn("photo-sub","photo","step-num");
+</script>
 
 <script>
 function checkLogin(){
@@ -161,20 +253,29 @@ function save_submit(){
 	}
 		
 	var loginForm = document.getElementById("loginForm");
-	var userType = document.getElementById("userType").value;
-	if(userType==1){		
-	loginForm.action="<%=path%>/StudentLogin";}
+	var usertype = 1;
 	
-	else if(userType==2){
-		loginForm.action="<%=path%>/TeacherLogin";
-		   }
-	else  if(userType==3)
-		{loginForm.action="<%=path%>/ManagerLogin";}
+	
+	 var chkObjs = document.getElementsByName("usertype");
+     for(var i=0;i<chkObjs.length;i++){
+         if(chkObjs[i].checked){
+        	 usertype =  chkObjs[i].value;    
+        	 break;
+         }
+     }
+
+     if(usertype==1){		
+    		loginForm.action="<%=path%>/StudentLogin";}
+    		
+    	else if(usertype==2){
+    			loginForm.action="<%=path%>/TeacherLogin";
+    		}
+    	else  if(usertype==3){
+    		loginForm.action="<%=path%>/ManagerLogin";}
+     
 	loginForm.submit();
 }
 </script>
-	
+
 </body>
-
-
 </html>

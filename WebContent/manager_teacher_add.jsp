@@ -39,8 +39,8 @@ int manager_id = m.getId();
                <div class="messlist">
                     <span class="messname">性别：</span>
                     <span class="message">
-                          <input type="radio"  in="sex" name="sex" checked value="man" />男
-                          <input type="radio" id="sex" name="sex" value="women" />女
+                          <input type="radio"  in="sex" name="sex" checked value="男" />男
+                          <input type="radio" id="sex" name="sex" value="女" />女
                     </span>
                     <span class="messname">地址：</span>
                     <span class="message">
@@ -55,6 +55,13 @@ int manager_id = m.getId();
                     <span class="messname">手机：</span>
                     <span class="message">
                           <input type="text" class="text" id="phone" name="phone" />
+                    </span>
+               </div>
+                <div class="messlist">
+                    
+                    <span class="messname">学院：</span>
+                    <span class="message">
+                          <input type="text" class="text" id="academy" name="academy"/>
                     </span>
                </div>
           </div>

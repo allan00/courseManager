@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;  
 
 import util.JdbcUtil;
+import model.Course;
 import model.Student;
 
 
@@ -37,6 +38,8 @@ public class StudentDeleteCheckedServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Course c = (Course) request.getSession().getAttribute("course");
+		int course_id= c.getId();
 		String[] checkArray = request.getParameterValues("checkList");
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -46,17 +49,18 @@ public class StudentDeleteCheckedServlet extends HttpServlet {
 			request.getRequestDispatcher("/Teacher/StudentList").forward(request, response);
 			return;
 		}
-		String sql = "DELETE FROM table_student WHERE student_id in(";
+		String sql = "DELETE FROM student_course_map WHERE course_id ="+course_id+" and student_id in(";
 		for(int i=0;i<checkArray.length;i++)
 		{
 			sql= sql+checkArray[i]+",";
 		}
 		sql = sql.substring(0,sql.length()-1)+")";					//截去最后一个","
-		//System.out.println(sql);
+		System.out.println(sql);
 		try {
 			con = JdbcUtil.getConn();
 			ps=con.prepareStatement(sql);
             int i=ps.executeUpdate();
+            
             request.setAttribute("message", "删除成功 ");
 			
 		} catch (SQLException e) {

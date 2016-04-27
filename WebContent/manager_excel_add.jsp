@@ -20,13 +20,12 @@ int manager_id = m.getId();
 <div class="bigmain">教师管理
      <div class="main">
           <div id="duiqi">
-                <form method="post" action="<%=path %>/Manager/TeacherImport" enctype="multipart/form-data">
-<input type="file" id="f" onchange="txt.value=this.value" name="f" style="height:26px;" class="files"  size="1" hidefocus />
-
-<div class="juzhong">
+ <form method="post" action="<%=path %>/Manager/TeacherImport" enctype="multipart/form-data"> 
+ <input type="text" id="txt" name="txt" class="input"><input type="button" onmousemove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="浏览" size="30" onclick="f.click()" class="liulan"/>
+ <input type="file" id="f" onchange="txt.value=this.value" name="f" style="height:26px;" class="files"  size="1" hidefocus />
+    <div class="juzhong">
           <div><input type="submit" value="导 入" class="btntijiao" /></div>
      </div>
-     
      </form>
      </div>
 </div>

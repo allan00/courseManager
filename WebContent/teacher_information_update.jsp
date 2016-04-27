@@ -20,9 +20,9 @@ int teacher_id = t.getId();
 <%@include file="/teacher_left.jsp"%>
 
 <div class="maingerenzhongxin">
- <div class="biaogedaoru">
+<div class="btnteachergmima">
           <a href="<%=path %>/teacher_password_update.jsp"><img src="<%=path %>/image/teacher/xiugaimima.jpg" /></a>
-     </div>
+  </div>
 <form id="meg" name="meg" action="<%=path %>/Teacher/TeacherInformationUpdate?id=${teacher.id }" method="post">
      <div class="xinxikuaixinxixiugai">
           <div class="xinxi">
@@ -49,7 +49,9 @@ int teacher_id = t.getId();
                <span class="xueshengmingcheng">手机：</span>
                <span class="xueshengneirong"><input type="text" name="phone" id="phone" class="text" value="${teacher.phone }"/></span>
           </div>
+          <div class="juzhong">
           <div><input type="submit" value="修 改" class="btntijiao"   onclick="this.disabled='true'"/>
+          </div>
       </div>
       
    

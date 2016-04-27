@@ -35,7 +35,7 @@ body{
 }
 /*搜索文字框*/
 .textsousuo{
-	margin:0;
+	margin-bottom:30px;
 	border:1px solid #7fbbdd;
 	width:200px;
 	height:20px;

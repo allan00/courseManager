@@ -1,5 +1,5 @@
 package util;
 
 public class Constans {
-	public final static int ROW_PER_PAGE = 5;
+	public final static int ROW_PER_PAGE = 8;
 }

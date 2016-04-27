@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="model.Teacher"%>
 <%
 String path = request.getContextPath();
@@ -20,23 +21,24 @@ int teacher_id = t.getId();
 <%@include file="/teacher_left.jsp"%>
 
 <div class="mainzuoye">
-     <div class="zuoyebiaoti">标题：${assignment.title }</div>
-     <div  class="juzhong" ><span>发布时间：${assignment.date_begin }</span><span>截止时间：${assignment.deadline }</span></div>
+     <div class="zuoyebiaoti"> 标题：${assignment.title }</div>
+     <div  class="juzhong" ><span><font size=1px> 发布时间：<fmt:formatDate value="${assignment.date_begin }" type="both"/></span><span>&nbsp;&nbsp;&nbsp;截止时间：<fmt:formatDate value="${assignment.deadline }" type="both"/></font></span></div>
      <div class="zuoyejiezhiriqi">${assignment.content }</div>
-       <div class="zuoyejiezhiriqi">附件：
+     </br>  </br>  </br>
+       <div class="zuoyejiezhiriqi"><font color="blue">附件：</font>
          <div class="list1">  <!--列表项 -->
 		  <c:forEach var="son" items="${assignment_son_list}">
            <a href="<%=path %>${son.path}/${son.file_name}">${son.file_name}</a>
             </c:forEach>
            </div>
            </div>
-    </br></br></br>              
-          未提交作业：<c:forEach var="stu" items="${uncommitted_list}">
+    </br></br></br> </br> </br></br>     
+         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<font color="red">未提交作业：<c:forEach var="stu" items="${uncommitted_list}"></font>
            <span>${stu.name}</span>&nbsp;&nbsp;
             </c:forEach>
       </br></br></br>      
-            已提交作业：
-          <c:forEach var="son" items="${committed_list}">
+           &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  <font color="green"> 已提交作业：
+        <c:forEach var="son" items="${committed_list}"></font>
           <span>
           <a href="<%=path %>/Teacher/AssignmentAnswerDetail?assignmentAnswerId=${son.id}">${son.studentName}</a>
           <font color="red"><c:if test="${son.state==0}">(未批改)</c:if></font>

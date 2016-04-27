@@ -120,8 +120,8 @@ body{
 	list-style:square;
 	list-style-position:inside;
 	}
-.menu li:hover dl{
-	display:block;
+/*.menu li:hover dl{
+	display:block;*/
 }
 .menu li dl a{
 	font-size:16px;
@@ -498,6 +498,9 @@ body{
 	opacity: 0.68; 
     _-moz-opacity:0.68;
 }
+.title{
+	text-align:center;
+}
 /*作业管理*/
 .mainzuoye{
 	margin-top:2px;
@@ -549,7 +552,7 @@ body{
 	margin:0;
 	padding-left:50px;
 	height:30px;
-	font-size:10px;
+	font-size:14px;
 }
 .zuoyeshangjiao{
 	margin-top:10px;

@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="model.Teacher"%>
 <%
 String path = request.getContextPath();
@@ -13,6 +14,23 @@ int teacher_id = t.getId();
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>通知详情</title>
 <link href="<%=path %>/css/teacher.css" rel="stylesheet" type="text/css" />
+<style>
+#biaoti{
+	margin-top:50px;
+	margin-bottom:30px;
+	text-align:center;
+}
+#namefujian{
+	color:#03C;
+	text-decoration:none;
+	font-size:14px;
+}
+.btn2{
+	text-align:center;
+	margin-top:5px;
+	padding:0;
+}
+</style>
 </head>
 
 <body>
@@ -25,18 +43,14 @@ int teacher_id = t.getId();
 </script>
 <%@include file="/teacher_left.jsp"%>
 <div class="maintongzhi">
-     <div class="zuoyebiaoti">标题：${message.title }</div>
-     <div  class="juzhong" ><span>发布人：${message.author }</span><span>发布时间：${message.date }</span></div>
+     <div id="biaoti">${message.title }</div>
+     <div  class="juzhong" ><span>发布人：${message.author }</span><span>发布时间：<fmt:formatDate value="${message.date }" type="both"/></span></div> 
      <div class="zuoyejiezhiriqi">内容：${message.content }</div>
-     <div class="zuoyejiezhiriqi">附件：
-     <div class="list1">  <!--列表项 -->
-		<c:forEach var="son" items="${message_son_list}">
+    <div class="fujian">附件：<c:forEach var="son" items="${message_son_list}">
          <a href="<%=path %>${son.path}/${son.file_name}">${son.file_name}</a>
-          </c:forEach>
-           </div>
+          </c:forEach></div>
+</div>   
 
-	</div>
-</div>
 
 
 

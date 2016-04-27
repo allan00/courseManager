@@ -58,7 +58,7 @@ request.setAttribute("student", t);
                <span class="neirong"><input type="text" name="phone" id="phone" class="text" value="${student.phone }"/></span>
            </div>
       </div>
-      <div><input type="submit" value="修 改" class="btntijiao" onclick="this.disabled='true'" />
+      <div><input type="submit" value="保存" class="btntijiao" onclick="this.disabled='true'" />
       </div>
       </c:forEach>
       </form>

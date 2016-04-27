@@ -61,7 +61,7 @@ e.checked = form.selectAll.checked;
                <span class="stuname">${student.name }</span>
                <span class="stunum">${student.student_id }</span>
                <span class="stusex">${student.sex }</span>
-               <span class="stumajor">${student.major }）</span>
+               <span class="stumajor">${student.major }</span>
                <span class="stuclass">${student.clazz }</span>
                <span class="stuaction">
                      <span class="btntongzhiaction" title="查看">
@@ -77,13 +77,17 @@ e.checked = form.selectAll.checked;
      </div>
       </form>
      <div class="page">
-          <a href="#" >上一页</a>
-          <a href="#" >1</a>
-          <a href="#" >2</a>
-          <a href="#" >3</a> 
-          <a href="#" >...</a>
-          <a href="#" >n</a>
-          <a href="#" >下一页</a>    第   页/共  页
+     <a href="<%=path %>/Teacher/StudentList?page=1" >首页</a>
+     <c:if test="${page_current>1}"><a href="<%=path %>/Teacher/StudentList?page=${page_current-1}" >上一页</a></c:if>
+     [
+     <c:forEach var="i" begin="${(page_current-2)<1?1:(page_current-2) }" end="${page_current+2}">
+     	<c:if test="${i>=1 and i<=page_count}"><a href="<%=path %>/Teacher/StudentList?page=${i}" >${i}&nbsp;&nbsp;</a></c:if>
+     </c:forEach>
+     ]
+     
+     <c:if test="${page_current<page_count}"><a href="<%=path %>/Teacher/StudentList?page=${page_current+1}" >下一页</a></c:if>
+     <a href="<%=path %>/Teacher/StudentList?page=${page_count}" >尾页</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第${page_current}   页/共  ${page_count}页
   </div>
 </div>
 

@@ -20,9 +20,9 @@ int teacher_id = t.getId();
 <body>
 <%@include file="/teacher_left.jsp"%>
 <div class="maingerenzhongxin">
-<div class="biaogedaoru">
-          <a href="<%=path %>/Teacher/TeacherInformationDetail?id=${teacher.id}"><img src="<%=path %>/image/teacher/xueshengxiugai.jpg" /></a>
-     </div>
+ <div class="btnteachergmima">
+  <a href="<%=path %>/Teacher/TeacherInformationDetail?id=${teacher.id}"><img src="<%=path %>/image/teacher/xueshengxiugai.jpg" /></a>
+    </div>
  <c:forEach var="t" items="${teacher_list}">
      <div class="xinxikuaixinxixiugai">
           <div class="xinxi">

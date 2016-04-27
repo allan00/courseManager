@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Course;
 import model.Document;
+import util.Constans;
 import util.JdbcUtil;
 
 import com.jspsmart.upload.File;
@@ -39,6 +40,14 @@ public class DocumentListServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		int page_current = 1;
+		int page_count = 1;
+		int size = Constans.ROW_PER_PAGE;
+		int row_count  = 0;
+		int begin = 0;
+		if(request.getParameter("page")!=null){
+			page_current = Integer.valueOf(request.getParameter("page"));
+		}
 		Course c = (Course) request.getSession().getAttribute("course");
 		String type = request.getParameter("type");
 		int course_id= c.getId();
@@ -47,13 +56,25 @@ public class DocumentListServlet extends HttpServlet {
 
 		try {
 			Connection con = JdbcUtil.getConn();
-        //		if(!con.isClosed())
-           //		System.out.println("Succeeded connecting to the Database!");
-	          Statement statement;
-	          statement = con.createStatement();
-			String sql = "SELECT * FROM table_document WHERE course_id="+course_id;
+			Statement statement;
+			statement = con.createStatement();
 			
+			// 要执行的SQL语句
+			String sql = "SELECT count(*) FROM table_document where course_id="+course_id;
 			ResultSet rs = statement.executeQuery(sql);
+			if(rs.next()) {
+				row_count = rs.getInt(1);
+			}
+			
+			page_count=(row_count + size - 1)/size;
+			if(page_count<1)
+				page_count = 1;
+			page_current = page_current<1?1:page_current;//如果page<1,则page=1
+			page_current = page_current>page_count?page_count:page_current;//如果page大于总页数1,则page设为最大值
+			begin=(page_current-1)*size;
+			sql = "SELECT * FROM table_document WHERE course_id="+course_id+" limit "+begin+","+size;
+			
+			 rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				Document s= new Document();
 				s.setId(rs.getInt("id"));
@@ -70,6 +91,8 @@ public class DocumentListServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("document_list", document_list);
+		request.setAttribute("page_count", page_count);
+		request.setAttribute("page_current", page_current);
 		
 		
 		if(type == null){

@@ -56,7 +56,7 @@ public class DocumentDeleteCheckedServlet extends HttpServlet {
 		try {
 			con = JdbcUtil.getConn();
 			ps=con.prepareStatement(sql);
-            int i=ps.executeUpdate();
+			int i=ps.executeUpdate();
             request.setAttribute("message", "删除成功 ");
 			
 		} catch (SQLException e) {

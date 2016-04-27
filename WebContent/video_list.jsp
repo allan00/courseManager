@@ -100,12 +100,15 @@ height: auto;
             
       </span>
       <!--<span ><input type="button"  class="btnguanli" /></span>-->
-      <span class="btnshipinguanli">
+       <span class="btnshipinguanli">
           <a href="<%=path %>/Teacher/VideoList?type=manage"><img src="<%=path %>/image/teacher/btnshipinguanli.jpg" /></a>
-     </span>
+       </span>
+     
+     </div>
+     <c:forEach var="V" items="${video_list}">
      <div id="content"> 
           <!--数据库原理-->
-          <c:forEach var="V" items="${video_list}">
+          
           <article class="post-152 post type-post status-publish format-standard hentry category-people category-photos"> 
                    <div class="post-format-content"> 
                         <div class="post-thumbnail"> 
@@ -116,11 +119,23 @@ height: auto;
                         </div> 
                    </div> 
                      <div class="title">${V.name }</div>
-          </article> 
-          </c:forEach>
-          
+          </article>  
      </div>
-</div>
+      </c:forEach>
+<div class="list">  </div>
+ <div class="page">
+     <a href="<%=path %>/Teacher/VideoList?page=1" >首页</a>
+     <c:if test="${page_current>1}"><a href="<%=path %>/Teacher/VideoList?page=${page_current-1}" >上一页</a></c:if>
+     [
+     <c:forEach var="i" begin="${(page_current-2)<1?1:(page_current-2) }" end="${page_current+2}">
+     	<c:if test="${i>=1 and i<=page_count}"><a href="<%=path %>/Teacher/VideoList?page=${i}" >${i}&nbsp;&nbsp;</a></c:if>
+     </c:forEach>
+     ]
+     
+     <c:if test="${page_current<page_count}"><a href="<%=path %>/Teacher/VideoList?page=${page_current+1}" >下一页</a></c:if>
+     <a href="<%=path %>/Teacher/VideoList?page=${page_count}" >尾页</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第${page_current}   页/共  ${page_count}页
+  </div>
 </div>
 </body>
 </html>

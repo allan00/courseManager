@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="model.Teacher"%>
 <%
 String path = request.getContextPath();
@@ -41,24 +42,29 @@ if(t==null){
                <span class="date">截止日期</span>
           </div>
     
-          
+            <c:forEach var="assignment" items="${assignment_list}">
           <div class="list1">  <!--列表项 -->
-          <c:forEach var="assignment" items="${assignment_list}">
+        
                <span class="biaoti"><a href="<%=path %>/Teacher/AssignmentDetail?id=${assignment.id }">${assignment.title }</a></span>   <!--通知标题 -->
-               <span class="date">${assignment.deadline}</span>
-                 </c:forEach>
+               <span class="date"><fmt:formatDate value="${assignment.deadline}" type="both"/></span>
+                
           </div>
+           </c:forEach>
           </div>
         
       
-     <div class="page">
-          <a href="#" >上一页</a>
-          <a href="#" >1</a>
-          <a href="#" >2</a>
-          <a href="#" >3</a> 
-          <a href="#" >...</a>
-          <a href="#" >n</a>
-          <a href="#" >下一页</a>    第   页/共  页
+      <div class="page">
+     <a href="<%=path %>/Teacher/AssignmentList?page=1" >首页</a>
+     <c:if test="${page_current>1}"><a href="<%=path %>/Teacher/AssignmentList?page=${page_current-1}" >上一页</a></c:if>
+     [
+     <c:forEach var="i" begin="${(page_current-2)<1?1:(page_current-2) }" end="${page_current+2}">
+     	<c:if test="${i>=1 and i<=page_count}"><a href="<%=path %>/Teacher/AssignmentList?page=${i}" >${i}&nbsp;&nbsp;</a></c:if>
+     </c:forEach>
+     ]
+     
+     <c:if test="${page_current<page_count}"><a href="<%=path %>/Teacher/AssignmentList?page=${page_current+1}" >下一页</a></c:if>
+     <a href="<%=path %>/Teacher/AssignmentList?page=${page_count}" >尾页</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第${page_current}   页/共  ${page_count}页
   </div>
 </div>
 

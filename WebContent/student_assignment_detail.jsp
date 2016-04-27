@@ -37,14 +37,18 @@ request.setAttribute("student", t);
      <div class="gonggaoriqi">发布日期：${assignment.date_begin }</div>
      <div class="gonggaojiezhiriqi">截止日期：${assignment.deadline }</div>
      <div class="gonggaoneirong">
-     ${assignment.content}
-     </div>
-     <div class="list1">  <!--列表项 -->
+       &nbsp;  &nbsp;${assignment.content}
+        
+        <div class="list1"></div>
+         <div class="list1">  <!--列表项 -->
 		  <c:forEach var="son" items="${assignment_son_list}">
-           <a href="<%=path %>${son.path}/${son.file_name}">${son.file_name}</a>
+                                   附件： <a href="<%=path %>${son.path}/${son.file_name}">${son.file_name}</a>
             </c:forEach>
            </div>
-      <c:if test="${assignment_answer!=null}">已提交作业：      ${assignment_answer.title},提交时间：${assignment_answer.uploadTime}
+            </div>
+            <div class="list1"></div>
+     &nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp; <c:if test="${assignment_answer!=null}">已提交作业：      ${assignment_answer.title}</br>
+      &nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp; 提交时间：${assignment_answer.uploadTime}
       <a href="<%=path %>/Student/StudentAssignmentAnswerDetail?assignmentAnswerId=${assignment_answer.id }">查看</a>
       </c:if>
    	

@@ -51,7 +51,7 @@ public class StudentInformationListServlet extends HttpServlet {
 			Statement statement;
 			statement = con.createStatement();
 			// 要执行的SQL语句
-			String sql = "SELECT A.* FROM  table_student A,student_course_map B where A.student_id=B.student_id and B.course_id ="+course_id;
+			String sql =  "SELECT * FROM table_student where student_id="+student_id;
 			ResultSet rs = statement.executeQuery(sql);
 		
 			while(rs.next()) {

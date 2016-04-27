@@ -1,0 +1,157 @@
+@charset "utf-8";
+@font-face{
+	font-family:STXinwei;
+	src:url(../%E5%AD%97%E4%BD%93/webfontkit-20160406-050523/stxinwei-webfont.woff);
+	font-weight:normal;
+}
+body{
+	background-image:url(../image/main/009.jpg);
+	background-repeat:no-repeat;
+}
+.top{
+	margin-top:0px;;
+	margin-left:150px;
+
+	height:170px;
+	width:1052px;
+	
+	
+}
+.logo {
+	margin-left:30px;
+	height:100px;
+	padding:50px 0 0 80px;
+	font-size: 85px;
+	color:#3c6478;
+	font-weight:600;
+	font-family:"华文新魏";
+	
+	background-repeat:no-repeat;
+}
+#top{
+	margin:0;
+	padding:0;
+	height:30px;
+	width:100%;
+}
+#logo1{
+	position:absolute;
+	top:100px;
+	left:13%;
+	font-family:"华文新魏";
+	font-style:italic;
+	color:#f6f7fb;
+	font-size:72px;
+}
+#logo2{
+	position:absolute;
+	top:125px;
+	left:48%;
+	font-family:"华文新魏";
+	font-style:italic;
+	color:#f6f7fb;
+	font-size:36px;
+}
+#main{
+	margin-left:12%;
+	padding:0;
+	height:350px;
+	width:75%;
+	border:#f3f9f9 solid;
+	overflow:hidden;
+}
+#picture{
+	width:540px;
+	height:340px;
+	margin-top:5px;
+}
+#login{
+	position:absolute;
+	width:400px;
+	height:350px;
+	top:280px;
+	left:750px;
+	color:#050505;
+
+	
+	
+	
+}
+#login-logo{
+	padding-top:10px;
+	position:absolute;
+	width:40%;
+	height:50px;
+	top:0px;
+	left:0px;
+	text-align:center;
+	font-family:"华文新魏";
+	font-size:34px;
+	text-height:15px;
+	font-style:italic;
+}
+#user{
+	position:absolute;
+	top:100px;
+	left:0;
+	padding-top:15px;
+	text-indent:50px;
+	width:100%;
+	height:35px;
+}
+#user-text{
+	padding-left:25px;
+	width:200px;
+	height:20px;
+	background-image:url(../image/main/user.png);
+	background-repeat:no-repeat;
+	box-shadow:none;
+}
+#password{
+	position:absolute;
+	top:150px;
+	left:0;
+	padding-top:15px;
+	text-indent:53px;
+	width:100%;
+	height:35px;
+}
+#password-text{
+	margin-left:5px;
+	padding-left:25px;
+	width:201px;
+	height:20px;
+	background-image:url(../image/main/password.png);
+	background-repeat:no-repeat;
+	box-shadow:none;
+}
+#change{
+	position:absolute;
+	top:200px;
+	left:0;
+	padding-top:15px;
+	text-align:center;
+	width:100%;
+	height:35px;
+}
+#btn{
+	position:absolute;
+	top:270px;
+	left:0;
+	padding-top:15px;
+	text-align:center;
+	width:100%;
+	height:35px;
+}
+.btn1{
+	width:70px;
+	height:25px;
+	background-color:#0CC;
+}
+.btn1:hover{
+	-moz-opacity:0.68 !important; 
+	filter:alpha(opacity=68); 
+	opacity: 0.68; 
+	 _-moz-opacity:0.68;
+	 color:#CCC;
+}

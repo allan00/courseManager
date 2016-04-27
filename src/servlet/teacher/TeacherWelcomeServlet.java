@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;  
 import java.sql.Statement;  
 
+import util.Constans;
 import util.JdbcUtil;
 import model.Course;
 import model.Student;
@@ -39,21 +40,43 @@ public class TeacherWelcomeServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		int page_current = 1;
+		int page_count = 1;
+		int size = Constans.ROW_PER_PAGE;
+		int row_count  = 0;
+		int begin = 0;
+		if(request.getParameter("page")!=null){
+			page_current = Integer.valueOf(request.getParameter("page"));
+		}
+		
+		
 		List course_list = new ArrayList<Course>();
 		String type = request.getParameter("type");
 		Teacher t =  (Teacher) request.getSession().getAttribute("teacher");
+		int teacher_id=t.getId();
+		
 		
 		try {
 			Connection con = JdbcUtil.getConn();
-//			if(!con.isClosed())
-//				System.out.println("Succeeded connecting to the Database!");
 			Statement statement;
 			statement = con.createStatement();
-			int teacher_id = t.getId();
+			
 			// 要执行的SQL语句
-			String sql = "SELECT * FROM table_course where teacher_id="+teacher_id;
-			//System.out.println(sql);
+			String sql = "SELECT count(*) FROM table_course";
 			ResultSet rs = statement.executeQuery(sql);
+			if(rs.next()) {
+				row_count = rs.getInt(1);
+			}
+			
+			page_count=(row_count + size - 1)/size;
+			if(page_count<1)
+				page_count = 1;
+			page_current = page_current<1?1:page_current;//如果page<1,则page=1
+			page_current = page_current>page_count?page_count:page_current;//如果page大于总页数1,则page设为最大值
+			begin=(page_current-1)*size;
+			sql = "SELECT * FROM table_course where teacher_id="+teacher_id+" limit "+begin+","+size;
+			//System.out.println(sql);
+			 rs = statement.executeQuery(sql);
 			while(rs.next()) {
 				Course c1 = new Course();
 				c1.setId(rs.getInt("id"));
@@ -70,6 +93,8 @@ public class TeacherWelcomeServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("course_list", course_list);
+		request.setAttribute("page_count", page_count);
+		request.setAttribute("page_current", page_current);
 		//request.getSession().setAttribute("course", course_list);
 		
 		if(type == null){

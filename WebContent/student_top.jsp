@@ -56,7 +56,6 @@ input{border:none;border:1px solid #CCC;vertical-align:middle; }
 			<li><a href="<%=path1 %>/Student/StudentAssignmentAllList">我的作业</a></li>
 			<li><a href="<%=path1 %>/Student/StudentMessageList">通知公告</a></li>
 			<li><a href="<%=path1 %>/Student/StudentDocumentList">资源下载</a></li>
-			<li><a href="<%=path1 %>/Student/StudentDisscussionList">讨论区</a></li>
             <li><a href="<%=path1 %>/Student/StudentInformationList">个人中心</a></li>
 		</ul>
     </div>

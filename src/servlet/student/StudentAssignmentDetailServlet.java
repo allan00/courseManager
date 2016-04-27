@@ -42,6 +42,8 @@ public class StudentAssignmentDetailServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String type = request.getParameter("type");
+		Student t = (Student) request.getSession().getAttribute("student");
+		String student_id = t.getStudent_id();
 		Assignment s = new Assignment();
 		List<Assignment_son> assignment_son_list = new ArrayList<Assignment_son>();
 		Connection con = null;
@@ -81,7 +83,7 @@ public class StudentAssignmentDetailServlet extends HttpServlet {
 				son.setPath(rs.getString("path"));
 				assignment_son_list.add(son);
 			}
-			sql = "SELECT * FROM assignment_answer WHERE assignmentId=?";
+			sql = "SELECT * FROM assignment_answer WHERE assignmentId=? and studentId="+student_id;
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, assignmentId); // 对占位符设置值，占位符顺序从1开始，第一个参数是占位符的位置，第二个参数是占位符的值。
 			rs = ps.executeQuery();

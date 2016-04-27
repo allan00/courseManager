@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;  
 import java.sql.Statement;  
 
+import util.Constans;
 import util.JdbcUtil;
 import view.V_StudentAssignment;
 import model.Assignment;
@@ -41,6 +42,15 @@ public class StudentAssignmentAllListServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		int page_current = 1;
+		int page_count = 1;
+		int size = Constans.ROW_PER_PAGE;
+		int row_count  = 0;
+		int begin = 0;
+		if(request.getParameter("page")!=null){
+			page_current = Integer.valueOf(request.getParameter("page"));
+		}
+		
 		List<V_StudentAssignment> assignment_list = new ArrayList<V_StudentAssignment>();
 		String type = request.getParameter("type");
 		Student s = (Student) request.getSession().getAttribute("student");
@@ -49,14 +59,26 @@ public class StudentAssignmentAllListServlet extends HttpServlet {
 		int course_id= c.getId();
 		try {
 			Connection con = JdbcUtil.getConn();
-//			if(!con.isClosed())
-//				System.out.println("Succeeded connecting to the Database!");
 			Statement statement;
 			statement = con.createStatement();
 			
 			// 要执行的SQL语句
-			String sql = "select *,if(id in (select assignmentId from assignment_answer where courseId ="+course_id+"  and studentId = '"+student_id+"'),1,0)  as ifcomit from table_assignment  where course_id =" +course_id;
+			String sql = "SELECT count(*) FROM assignment_answer where courseId="+course_id;
 			ResultSet rs = statement.executeQuery(sql);
+			if(rs.next()) {
+				row_count = rs.getInt(1);
+			}
+			
+			page_count=(row_count + size - 1)/size;
+			if(page_count<1)
+				page_count = 1;
+			page_current = page_current<1?1:page_current;//如果page<1,则page=1
+			page_current = page_current>page_count?page_count:page_current;//如果page大于总页数1,则page设为最大值
+			begin=(page_current-1)*size;
+			
+			// 要执行的SQL语句
+			sql = "select *,if(id in (select assignmentId from assignment_answer where courseId ="+course_id+"  and studentId = '"+student_id+"'),1,0)  as ifcomit from table_assignment  where course_id ="+course_id+" limit "+begin+","+size;
+			rs = statement.executeQuery(sql);
 			while(rs.next()) {
 				V_StudentAssignment s1 = new V_StudentAssignment();
 				s1.setId(rs.getInt("id"));
@@ -75,6 +97,8 @@ public class StudentAssignmentAllListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("assignment_list", assignment_list);
+		request.setAttribute("page_count", page_count);
+		request.setAttribute("page_current", page_current);
 
 		
 			request.getRequestDispatcher("/student_assignment_all_list.jsp").forward(request, response);

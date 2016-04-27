@@ -30,6 +30,7 @@ e.checked = form.selectAll.checked;
 }
 </script>
 
+
 <body>
 <div class="bigmain">教师管理
      <div class="main">
@@ -39,9 +40,8 @@ e.checked = form.selectAll.checked;
                <div class="shanchu"><a href=javascript:studentListForm.submit();><img src="<%=path %>/image/manager/shanchu.png"  /></a></div>
                <div class="shanchu"><a href="<%=path %>/manager_teacher_add.jsp"><img src="<%=path %>/image/manager/tianjia.png"  /></a></div>
           </div>
-         <form name="studentListForm" id="studentListForm" action="<%=path %>/Manager/TeacherDeleteChecked" method="post" > 
           <div class="listtitle">  <!--列表项 -->
-               <span><input type='checkbox' name='selectAll' id="selectAll"  onclick='CheckAll(this.form)' class="fuxuankuang" /></span>    <!--复选框 -->
+               <span><input type='checkbox' name='selectAll' id="selectAll"  onclick='CheckAll(this.form)' class="fuxuankuang"/> </span>    <!--复选框 -->
                <span class="teachnum">账号</span>
                <span class="teachname">姓名</span>
                <span class="teachsex">性别</span>
@@ -51,9 +51,10 @@ e.checked = form.selectAll.checked;
                <span class="teachemail">邮箱</span>
                <span class="teachaction">操作</span>
           </div>
-          
+           <form name="studentListForm" id="studentListForm" action="<%=path %>/Manager/TeacherDeleteChecked" method="post" > 
+            <c:forEach var="teacher" items="${teacher_list}">
           <div class="list">  <!--列表项 -->
-          <c:forEach var="teacher" items="${teacher_list}">
+              
                <span><input type="checkbox"   id="checkList" name="checkList"  onclick='select()' value="${teacher.id }" class="fuxuankuang"/> </span>    <!--复选框 -->
                <span class="teachnum">${teacher.account}</span>
                <span class="teachname">${teacher.name}</span>
@@ -70,9 +71,12 @@ e.checked = form.selectAll.checked;
                            <a><img src="<%=path %>/image/manager/bianji.png" /></a>
                      </span>
                </span>
-               </c:forEach>
+               
           </div>
+          </c:forEach>
           </form>
+          
+          </div>
      </div>
 </div>
 </body>

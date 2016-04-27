@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="model.Teacher"%>
 <%
 String path = request.getContextPath();
@@ -42,7 +43,7 @@ request.setAttribute("teacher", t);
        <div class="list1"> 
        
                <span class="biaoti"><a href="<%=path %>/Teacher/MessageDetail?id=${message.id }">${message.title }</a></span>   
-               <span class="date">${message.date }</span>
+               <span class="date"><fmt:formatDate value="${message.date}" pattern="yyyy/MM/dd " /></span>
           </div>
               </c:forEach>
      </div>

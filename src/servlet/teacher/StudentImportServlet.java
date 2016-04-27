@@ -84,7 +84,7 @@ public class StudentImportServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if (!isMultipart) {
-			request.getRequestDispatcher("/Teacher/CourseStudentList").forward(request, response);
+			request.getRequestDispatcher("/Teacher/StudentList").forward(request, response);
 			return;
 		}
 
@@ -93,7 +93,7 @@ public class StudentImportServlet extends HttpServlet {
 			f = uploadFile(request);
 			importFile(request, response, f);
 			f.deleteOnExit();
-			request.getRequestDispatcher("/Teacher/CourseStudentList").forward(request, response);
+			request.getRequestDispatcher("/Teacher/StudentList").forward(request, response);
 			return;
 		} catch (FileUploadException e) {
 			// TODO Auto-generated catch block
@@ -133,6 +133,7 @@ public class StudentImportServlet extends HttpServlet {
 	private boolean importFile(HttpServletRequest request, HttpServletResponse response, File file) throws IOException {
 		Course c = (Course)request.getSession().getAttribute("course");
 		int courseId = c.getId();
+		StringBuilder message = new StringBuilder();
 		InputStream is = null;
 		jxl.Workbook rwb = null;
 		Student s = new Student();
@@ -205,9 +206,10 @@ public class StudentImportServlet extends HttpServlet {
 					}
 				}
 				s.setPassword("123456");
-				importbase(s, courseId);
+				importbase(s, courseId,message);
 			}
-			request.setAttribute("message", "导入成功");
+			message.append("导入结束");
+			request.setAttribute("message", message);
 			// OperateUtil.add(request, "导入excel表",
 			// "导入了"+rs.getColumns()+"条学生基本个人信息的数据");
 
@@ -221,7 +223,7 @@ public class StudentImportServlet extends HttpServlet {
 		return true;
 	}
 
-	private void importbase(Student s, int courseId) {
+	private void importbase(Student s, int courseId,StringBuilder message) {
 		if (s == null)
 			return;
 		Connection con = null;
@@ -254,12 +256,28 @@ public class StudentImportServlet extends HttpServlet {
 				i = ps.executeUpdate();
 				JdbcUtil.close(null, ps);
 			}
+			else{
+				message.append("学号："+s.getStudent_id()+"的学生已存在\n");
+			}
+			
+			//先判断学生是否已选修该课程
+			sql = "select * from student_course_map where student_id=? and course_id=?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, s.getStudent_id());
+			ps.setInt(2, courseId);
+			rs = ps.executeQuery();
+			
+			if (!rs.next()) {
 			//导入到选课表
 			sql = "INSERT INTO student_course_map(student_id,course_id) VALUES(?,?)";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, s.getStudent_id());
 			ps.setInt(2, courseId);
 			i = ps.executeUpdate();
+			}
+			else{
+				message.append("学号："+s.getStudent_id()+"的学生已选修该课程\n");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
